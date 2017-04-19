@@ -1,0 +1,168 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+img {
+  max-height: 100%;
+  max-width: 100%;
+}
+body header {
+  font-size: 18px;
+  background-color: #55cbd2;
+  height: 70px;
+  padding: 10px;
+  position: relative;
+}
+body header #logo {
+  float: left;
+  padding-left: 100px;
+}
+body header #logo a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 28px;
+}
+body header #nav {
+  float: right;
+}
+body header #nav #menu {
+  display: inline-block;
+}
+body header #nav #menu ul {
+  list-style-type: none;
+  margin-right: 50px;
+}
+body header #nav #menu ul li {
+  display: inline-block;
+}
+body header #nav #menu ul li a {
+  padding: 10px;
+  font-size: 20px;
+  color: #fff;
+  text-decoration: none;
+}
+body header #nav #menu ul li a:hover {
+  text-decoration: underline;
+}
+body header #nav #menu ul #linkGallery {
+  display: none;
+}
+body header #nav #login {
+  display: inline-block;
+  color: #fff;
+}
+body header #nav #login input {
+  width: 150px;
+  border-radius: 10px;
+  color: #888;
+  padding: 5px;
+}
+body header #nav #login input[type="button"] {
+  color: #888;
+  width: 80px;
+}
+body header #nav #login *::-webkit-input-placeholder {
+  color: #ccc;
+}
+body header #nav #login *:-moz-placeholder {
+  color: #ccc;
+}
+body header #nav #logout {
+  display: none;
+}
+body header #nav #logout #linkLogOut {
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+}
+body header #nav #logout #linkLogOut:hover {
+  text-decoration: underline;
+}
+body header #nav #logout #loggedInUser {
+  margin-right: 10px;
+  color: #fff;
+}
+body header #load,
+body header #info,
+body header #error {
+  font-size: 20px;
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  width: 900px;
+  height: 50px;
+  padding: 10px;
+  display: none;
+  position: absolute;
+  top: 80px;
+  left: 1000px;
+  z-index: 100;
+}
+body header #load {
+  border: 2px solid lightseagreen;
+  background-color: rgba(0, 172, 230, 0.7);
+}
+body header #info {
+  border: 2px solid green;
+  background-color: rgba(0, 153, 51, 0.7);
+}
+body header #error {
+  border: 2px solid red;
+  background-color: rgba(255, 0, 0, 0.7);
+}
+body main #main-view {
+  background-image: url("../images/header.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  position: relative;
+}
+body main #main-view #main-title {
+  padding-top: 200px;
+  padding-bottom: 230px;
+  text-align: right;
+  color: #fff;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+body main #main-view #main-title h1 {
+  font-size: 100px;
+}
+body main #main-view #main-title h3 {
+  font-size: 60px;
+}
+body main .gallery {
+  padding: 20px;
+}
+body main .gallery .galleryItems {
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+body main .gallery .galleryItems .itemGallery {
+  width: 400px;
+  height: 400px;
+  margin: auto;
+}
+body main .gallery .galleryItems .itemGallery .imgGallery {
+  width: 300px;
+  height: 300px;
+  display: block;
+  margin: 0 auto;
+}
+body main .gallery .galleryItems .itemGallery .artist,
+body main .gallery .galleryItems .itemGallery .title {
+  font-weight: bold;
+  text-align: center;
+}
+body footer {
+  background-color: #55cbd2;
+  height: 50px;
+  color: #fff;
+  font-size: 18px;
+  padding: 10px 10px;
+  padding-left: 100px;
+}

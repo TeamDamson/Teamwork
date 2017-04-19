@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>E-Gallery</title>
+    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="./libraries/bootstrap-3.3.7-dist/css/bootstrap.css">
+    <script src="./libraries/jquery-3.1.1.min.js"></script>
+    <script src="./libraries/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+    <script src="./libraries/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <div id="logo">
+            <a href="#">E-Gallery</a>
+        </div>
+        <div id="nav">
+            <div id="menu">
+                <ul>
+                    <li id="linkHome"><a href="#">Home</a></li>
+                    <li id="linkGallery"><a href="#">Gallery</a></li>
+                    <li id="linkLocation"><a href="#">Find Us</a></li>
+                </ul>
+            </div>
+            <div id="login">
+                <input type="button" value="Login" id="btnLogin">
+                <input type="text" placeholder="User Name" name="user" required>
+                <input type="password" placeholder="Password" name="pass" required>
+                <span>or</span>
+                <input type="button" value="Register" id="btnRegister">
+            </div>
+            <div id="logout">
+                <span id="loggedInUser"></span>
+                <a href="#" id="linkLogOut">Log Out</a>
+            </div>
+        </div>
+            <div id="load">Loading...</div>
+            <div id="info"></div>
+            <div id="error"></div>            
+    </header>
+    <main>
+        <div id="main-view">
+            <div class="container">
+                <div id="main-title">
+                    <h1>Welcome</h1>
+                    <h1>to E-Gallery</h1>
+                    <h3>See Our New Paintings</h3>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div>
+            &copy; Copyright E-Gallery 2017
+        </div>
+    </footer>
+    <script src="./scripts/script.js"></script>
+    <script>
+        (function () {
+            solve();
+        }());
+    </script>
+</body>
+
+</html>

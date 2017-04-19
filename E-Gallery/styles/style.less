@@ -1,0 +1,171 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+img {
+    max-height: 100%;
+    max-width: 100%;
+}
+
+body {
+    header {
+        font-size: 18px;
+        background-color: #55cbd2;
+        height: 70px;
+        padding: 10px;
+        position: relative;
+        #logo {
+            float: left;
+            padding-left: 100px;
+            a {
+                color: #fff;
+                text-decoration: none;
+                font-size: 28px;
+            }
+        }
+        #nav {
+            float: right;
+            #menu {
+                display: inline-block;
+                ul {
+                    list-style-type: none;
+                    margin-right: 50px;
+                    li {
+                        display: inline-block;
+                        a {
+                            padding: 10px;
+                            font-size: 20px;
+                            color: #fff;
+                            text-decoration: none;
+                            &:hover {
+                                text-decoration: underline;
+                            }
+                        }
+                    }
+                    #linkGallery {
+                        display: none;
+                    }
+                }
+            }
+            #login {
+                display: inline-block;
+                color: #fff;
+                input {
+                    width: 150px;
+                    border-radius: 10px;
+                    color: #888;
+                    padding: 5px;
+                }
+                input[type="button"] {
+                    color: #888;
+                    width: 80px;
+                }
+                *::-webkit-input-placeholder {
+                    color: #ccc;
+                }
+                *:-moz-placeholder {
+                    color: #ccc;
+                }
+            }
+            #logout {
+                display: none;
+                #linkLogOut {
+                    color: #fff;
+                    text-decoration: none;
+                    cursor: pointer;
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+                #loggedInUser {
+                    margin-right: 10px;
+                    color: #fff;
+                }
+            }
+        }
+        #load, #info, #error {
+            font-size: 20px;
+            color: #fff;
+            text-align: center;
+            border-radius: 5px;
+            width: 900px;
+            height: 50px;
+            padding: 10px;
+            display: none;
+            position: absolute;
+            top: 80px;
+            left: 1000px;
+            z-index: 100;
+        }
+        #load {
+            border: 2px solid lightseagreen;
+            background-color: rgba(0, 172, 230, 0.7);
+        }
+        #info {
+            border: 2px solid green;
+            background-color: rgba(0, 153, 51, 0.7);
+        }
+        #error {
+            border: 2px solid red;
+            background-color: rgba(255, 0, 0, 0.7);
+        }
+    }
+    main {
+        #main-view {
+            background-image: url("../images/header.png");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center center;
+            position: relative;
+            #main-title {
+                padding-top: 200px;
+                padding-bottom: 230px;
+                text-align: right;
+                color: #fff;
+                font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+                h1 {
+                    font-size: 100px;
+                }
+                h3 {
+                    font-size: 60px;
+                }
+            }
+        }
+        .gallery {
+            padding: 20px;
+            .galleryItems {
+                list-style-type: none;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                .itemGallery {
+                    width: 400px;
+                    height: 400px;
+                    margin: auto;
+                    .imgGallery {
+                        width: 300px;
+                        height: 300px;
+                        display: block;
+                        margin: 0 auto;
+                    }
+                    .artist, .title {
+                        font-weight: bold;
+                        text-align: center;
+                    }
+                }
+            }
+        }
+    }
+    footer {
+        background-color: #55cbd2;
+        height: 50px;
+        color: #fff;
+        font-size: 18px;
+        padding: 10px 10px;
+        padding-left: 100px;
+    }
+}
