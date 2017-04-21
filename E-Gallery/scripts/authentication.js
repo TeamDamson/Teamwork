@@ -1,23 +1,20 @@
-const baseUrl = "https://baas.kinvey.com/";
-const appKey = "kid_r1MLNB66l";
-const appSecret = "3666160cc45b4b23b3d7f50e46903ae4";
-const authHeaders = {
-    "Authorization": "Basic " + btoa(appKey + ":" + appSecret)
-};
+//TO DO VALIDATION REGISTER
+import{kinveyUrls} from 'constants';
+import { showSuccessMessage, displayError } from 'utility';
+import{viewGallery} from 'request';
+import 'jquery';
 
- //TO DO VALIDATION REGISTER
-
-function logInUser() {   //(event)
-    // event.preventDefault(); //without event.preventDefault() refresh page by submit
+function logInUser(event) {
+    event.preventDefault(); //without event.preventDefault() refresh page by submit
     let userData = {
         username: $('input[name=user]').val(),
         password: $('input[name=pass]').val()
     };
 
     $.post({
-        url: baseUrl + 'user/' + appKey + '/login',
+        url: kinveyUrls.baseUrl + 'user/' + kinveyUrls.appKey + '/login',
         data: JSON.stringify(userData),
-        headers: authHeaders,
+        headers: kinveyUrls.authHeaders,
         contentType: 'application/json'
     }).then(loginWithSuccess).catch(displayError);
 
@@ -26,7 +23,7 @@ function logInUser() {   //(event)
         viewGallery();
         showSuccessMessage('Login successful.');
         $('#linkGallery').css('display', 'inline-block');
-        $('#login').css('display', 'none');
+        $('.login-register').css('display', 'none');
         $('#logout').css('display', 'inline-block');
     }
 
@@ -34,17 +31,17 @@ function logInUser() {   //(event)
     $('input[name=pass]').val('');
 }
 
-function registerUser() {   //(event)
-    // event.preventDefault(); // without event.preventDefault() refresh page by submit
+function registerUser(event) {
+    event.preventDefault(); // without event.preventDefault() refresh page by submit
     let userData = {
         username: $('input[name=user]').val(),
         password: $('input[name=pass]').val()
     };
 
     $.post({
-        url: baseUrl + 'user/' + appKey,
+        url: kinveyUrls.baseUrl + 'user/' + kinveyUrls.appKey,
         data: JSON.stringify(userData),
-        headers: authHeaders,
+        headers: kinveyUrls.authHeaders,
         contentType: 'application/json'
     }).then(registerWithSuccess).catch(displayError);
 
@@ -53,7 +50,7 @@ function registerUser() {   //(event)
         viewGallery();
         showSuccessMessage('User registration successful.');
         $('#linkGallery').css('display', 'inline-block');
-        $('#login').css('display', 'none');
+        $('.login-register').css('display', 'none');
         $('#logout').css('display', 'inline-block');
     }
 
@@ -67,15 +64,15 @@ function saveAuthInSession(userInfo) {
     $('#loggedInUser').text('Welcome ' + userInfo.username + '!');
 }
 
-
-
 function logOutUser() {
     sessionStorage.clear();
     showSuccessMessage('Logout successful!');
     $('#loggedInUser').text('');
     $('#linkGallery').css('display', 'none');
-    $('#login').css('display', 'inline-block');
+    $('.login-register').css('display', 'inline-block');
     $('#logout').css('display', 'none');
     $('#main-view').css('display', 'block');
     $('.gallery').css('display', 'none');
 }
+
+export { logInUser, registerUser, logOutUser };

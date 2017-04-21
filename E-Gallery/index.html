@@ -6,41 +6,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>E-Gallery</title>
+    <link rel="icon" href="./images/favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css?family=Francois+One" rel="stylesheet">
     <link rel="stylesheet" href="./styles/style.css">
-    <link rel="stylesheet" href="./libraries/bootstrap-3.3.7-dist/css/bootstrap.css">
-    <script src="./libraries/jquery-3.1.1.min.js"></script>
-    <script src="./libraries/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
-    <script src="./libraries/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.css">
 </head>
 
 <body>
-    <header>
-        <div id="logo">
-            <a href="#">E-Gallery</a>
-        </div>
-        <div id="nav">
-            <div id="menu">
-                <ul>
-                    <li id="linkHome"><a href="#">Home</a></li>
-                    <li id="linkGallery"><a href="#">Gallery</a></li>
-                    <li id="linkLocation"><a href="#">Find Us</a></li>
-                </ul>
+    <header class="navbar navbar-fixed-top">
+        <div class="container row">
+            <div id="logo" class="col-md-3">
+                <a href="#">E-Gallery</a>
             </div>
-            <div id="login">
-                <input type="button" value="Login" id="btnLogin">
-                <input type="text" placeholder="User Name" name="user" required>
-                <input type="password" placeholder="Password" name="pass" required>
-                <span>or</span>
-                <input type="button" value="Register" id="btnRegister">
-            </div>
-            <div id="logout">
+            <div id="nav" class="col-md-9">
+                <div id="menu">
+                    <ul class="list-inline">
+                        <li id="linkHome"><a href="#">Home</a></li>
+                        <li id="linkGallery"><a href="#">Gallery</a></li>
+                        <li id="linkLocation"><a href="#">Find Us</a></li>
+                        <li id="logout"><a href="#" id="linkLogOut">Log Out</a></li>
+                    </ul>
+                </div>
+                <form class="login-register form-inline">
+                    <button type="submit" id="btnLogin" class="btn btn-info">Login</button>
+                    <div class="form-group">
+                        <label class="sr-only" for="inputEmail">User Name</label>
+                        <input type="text" class="form-control" name="user" required placeholder="User Name">
+                    </div>
+                    <div class="form-group">
+                        <label class="sr-only" for="inputPassword">Password</label>
+                        <input type="password" class="form-control" name="pass" required placeholder="Password">
+                    </div>
+                    <span>or</span>
+                    <button type="submit" id="btnRegister" class="btn btn-info">Register</button>
+                </form>
                 <span id="loggedInUser"></span>
-                <a href="#" id="linkLogOut">Log Out</a>
             </div>
-        </div>
             <div id="load">Loading...</div>
             <div id="info"></div>
-            <div id="error"></div>            
+            <div id="error"></div>
+        </div>
     </header>
     <main>
         <div id="main-view">
@@ -52,18 +57,28 @@
                 </div>
             </div>
         </div>
+        <div class="gallery row"></div>
     </main>
-    <footer>
-        <div>
+    <footer class="row navbar navbar-fixed-bottom">
+        <div class="col-md-3">
             &copy; Copyright E-Gallery 2017
         </div>
+        <div class="col-md-9"></div>
     </footer>
+    <!--<script src="./scripts/authentication.js"></script>
+    <script src="./scripts/utility.js"></script>
+    <script src="./scripts/requests.js"></script>
     <script src="./scripts/script.js"></script>
     <script>
         (function () {
-            solve();
+            startApp();
         }());
-    </script>
+    </script>-->
+    <script src="./bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="./bower_components/jquery-ui/jquery-ui.min.js"></script>
+    <script src="./bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="./node_modules/systemjs/dist/system.js"></script>
+    <script src="./config.js"></script>
 </body>
 
 </html>
