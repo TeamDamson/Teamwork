@@ -9,11 +9,15 @@ SystemJS.config({
         'handlebars': './bower_components/handlebars/handlebars.js',
         //'sammy': './bower_components/sammy/lib/sammy.js',
         //'cryptojs': './bower_components/crypto-js/crypto-js.js',
-       'script': './scripts/script.js',
-       'auth': './scripts/authentication.js',
-       'utility': './scripts/utility.js',
-       'request': './scripts/requests.js',
-       'constants': './scripts/constants.js',
+        'script': './scripts/script.js',
+        'auth': './scripts/authentication.js',
+        'utility': './scripts/utility.js',
+        'request': './scripts/requests.js',
+        'constants': './scripts/helpers/constants.js',
+        'autenticationManager': './scripts/managers/authenticationManager.js',
+        'user': './scripts/data/user.js',
+        'validators': './scripts/helpers/validators.js',
+        'galeryApplication': './scripts'
     }
 });
 
