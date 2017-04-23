@@ -1,4 +1,5 @@
-//function startApp() {
+
+    //function startApp() {
 import{logInUser, registerUser, logOutUser} from 'auth';
 import{viewGallery} from 'request';
 import 'jquery';
