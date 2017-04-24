@@ -4,9 +4,10 @@ import 'jquery';
 
 function viewGallery() {
     $('.gallery').empty();
+    let authHeaders = getKinveyUserAuthHeaders();
     $.get({
         url: kinveyUrls.baseUrl + 'appdata/' + kinveyUrls.appKey + '/paintings',
-        headers: getKinveyUserAuthHeaders(),
+        headers: authHeaders,
         contentType: 'application/json'
     }).then(displayGallery).catch(displayError);
 }
@@ -22,10 +23,10 @@ function displayGallery(paintings) {
         let list = $('<ul>').addClass('galleryItems list-group row col-md-8');
         for (let picture of paintings) {
             list.append($('<li class="itemGallery list-group-item col-md-4">').append($('<img class="imgGallery img-responsive">').attr('src', picture.image._downloadURL))
-                .append($('<div>').append($('<a class="artist" data-id="' + picture._id + '" href="#">').text(picture.artist).click(function () {
+                .append($('<div>').append($('<a class="artist" data-id="' + picture._id + '" href="#">').text(picture.artist).click(function() {
                     viewPaintingByArtist($(this).text());
                 })))
-                .append($('<div>').append($('<a class="title" data-id="' + picture._id + '" href="#">').text(picture.title).click(function () {
+                .append($('<div>').append($('<a class="title" data-id="' + picture._id + '" href="#">').text(picture.title).click(function() {
                     viewPaintingInfo($(this).attr('data-id'));
                 }))));
         }

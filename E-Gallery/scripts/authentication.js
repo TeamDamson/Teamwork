@@ -1,31 +1,18 @@
 //TO DO VALIDATION REGISTER
-import{kinveyUrls} from 'constants';
+'use strict'
+import { kinveyUrls } from 'constants';
 import { showSuccessMessage, displayError } from 'utility';
-import{viewGallery} from 'request';
+import { viewGallery } from 'request';
 import 'jquery';
+import { KinveyPostManager, AuthenticationManager, JSONFormatter } from 'authenticationManager';
+import { User } from 'user';
 
 function logInUser(event) {
-    event.preventDefault(); //without event.preventDefault() refresh page by submit
-    let userData = {
-        username: $('input[name=user]').val(),
-        password: $('input[name=pass]').val()
-    };
-
-    $.post({
-        url: kinveyUrls.baseUrl + 'user/' + kinveyUrls.appKey + '/login',
-        data: JSON.stringify(userData),
-        headers: kinveyUrls.authHeaders,
-        contentType: 'application/json'
-    }).then(loginWithSuccess).catch(displayError);
-
-    function loginWithSuccess(userInfo) {
-        saveAuthInSession(userInfo);
-        viewGallery();
-        showSuccessMessage('Login successful.');
-        $('#linkGallery').css('display', 'inline-block');
-        $('.login-register').css('display', 'none');
-        $('#logout').css('display', 'inline-block');
-    }
+    var kinveyManager = new KinveyPostManager(kinveyUrls.baseUrl, kinveyUrls.appKey, kinveyUrls.appSecret, kinveyUrls.authHeaders),
+        formatter = new JSONFormatter(),
+        user = new User($('input[name=user]').val(), $('input[name=pass]').val());
+    var autotenticationManager = new AuthenticationManager(user, formatter, kinveyManager);
+    autotenticationManager.logInUser(event);
 
     $('input[name=user]').val('');
     $('input[name=pass]').val('');
