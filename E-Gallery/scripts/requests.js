@@ -4,9 +4,10 @@ import 'jquery';
 
 function viewGallery() {
     $('.gallery').empty();
+    let authHeaders = getKinveyUserAuthHeaders();
     $.get({
         url: kinveyUrls.baseUrl + 'appdata/' + kinveyUrls.appKey + '/paintings',
-        headers: getKinveyUserAuthHeaders(),
+        headers: authHeaders,
         contentType: 'application/json'
     }).then(displayGallery).catch(displayError);
 }

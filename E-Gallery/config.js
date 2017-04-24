@@ -17,7 +17,9 @@ SystemJS.config({
         'autenticationManager': './scripts/managers/authenticationManager.js',
         'user': './scripts/data/user.js',
         'validators': './scripts/helpers/validators.js',
-        'galeryApplication': './scripts'
+        'galeryApplication': './scripts',
+        'kinveyPostManager': './scripts/managers/kinveyPostManagerManager.js',
+        'JSONFormatter': './scripts/helpers/JSONFormatter.js'
     }
 });
 
