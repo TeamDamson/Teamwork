@@ -2,17 +2,26 @@
 import { kinveyUrls } from 'constants';
 import { logInUser, registerUser, logOutUser } from 'auth';
 import { GalleryApplication } from 'galleryApplication';
-import { UIManager } from 'uimanager';
+import { GaleryUI } from 'galeryUIManager';
 import { viewGallery } from 'request';
 import 'jquery';
 
-sessionStorage.clear();
-
-
 (function() {
-    let getManager = new KinveyGetManager(kinveyUrls.baseUrl, kinveyUrls.appKey, kinveyUrls.appSecret);
-    let authenticationManager = new AuthenticationManager(formatter, postManager, storage);
-    uiManager = new UIManager($('.gallery'), getManager, authenticationManager);
+    let headerProvider = new KinveyAuthorizationHeaderProvider(sessionStorage),
+        getManager = new KinveyGetManager(kinveyUrls.baseUrl, kinveyUrls.appKey, headerProvider),
+        postManager = new KinveyPostManager(kinveyUrls.baseUrl, kinveyUrls.appKey, headerProvider),
+        authenticationManager = new AuthenticationManager(formatter, postManager, sessionStorage),
+        eventsParam = {
+            registerUser: ['#btnRegister', 'click'],
+            logInUser: ['#btnLogin', 'click'],
+            logOutUser: ['#linkLogOut', 'click']
+        },
+        authenticationUI = new AuthenticationUI(authenticationManager, eventsParam),
+        galeryUI = new GaleryUI($('.gallery'), getManager);
+    sessionStorage.clear();
+    authenticationUI.init();
+    galeryUI.init();
+
 })();
 
 function showHomeView() {

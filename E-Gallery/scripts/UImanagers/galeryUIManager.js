@@ -2,21 +2,14 @@ import { displayError } from 'utility';
 import { kinveyUrls } from 'constants';
 import 'jquery';
 
-class UIManager {
-    constructor(galeryElement, getManager, authenticationManager) {
+class GaleryUI {
+    constructor(galeryElement, getManager) {
         Validator.ValidateObject(storage, ["clear"]);
-        Validator.ValidateObject(autenticationManager, ["logInUser", "logOutUser", "registerUser"]);
         Validator.ValidateObject(getManager, ["getPainitngInfo", "getGalery", "getPainitngsByArtist"]);
         this._galeryElement = galeryElement;
         this._getManager = getManager;
-        this._authenticationManager = authenticationManager;
     }
-
     init() {
-        $('#btnRegister').on('click', this._autenticationManager.registerUser);
-        $('#btnLogin').on('click', this._autenticationManager.logInUser);
-        $('#linkLogOut').on('click', this._autenticationManager.logOutUser);
-
         $('#linkHome').on('click', showHomeView);
         $('#linkGallery').on('click', this._getManager.getGalery);
 
@@ -45,12 +38,12 @@ class UIManager {
             let list = $('<ul>').addClass('galleryItems list-group row col-md-8');
             for (let picture of paintings) {
                 list.append($('<li class="itemGallery list-group-item col-md-4">').append($('<img class="imgGallery img-responsive">').attr('src', picture.image._downloadURL))
-                    .append($('<div>').append($('<a class="artist" data-id="' + picture._id + '" href="#">').text(picture.artist).click(function() {
-                        viewPaintingByArtist($(this).text());
-                    })))
-                    .append($('<div>').append($('<a class="title" data-id="' + picture._id + '" href="#">').text(picture.title).click(function() {
-                        viewPaintingInfo($(this).attr('data-id'));
-                    }))));
+                    .append($('<div>').append($('<a class="artist" data-id="' + picture._id + '" href="#">').text(picture.artist)
+                        .click(this._getManager.getPaintingByArtist(picture.artist, 'application/json'))))
+                    .append($('<div>').append($('<a class="title" data-id="' + picture._id + '" href="#">').text(picture.title)
+                        .click(function() {
+                            viewPaintingInfo(this._getManager.getPainitngInfo(picture._id, 'application/json'));
+                        }))));
             }
             let pagination = `<nav class="col-md-6 col-md-offset-4" aria-label="Page navigation">
                             <ul class="pagination">

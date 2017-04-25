@@ -1,13 +1,14 @@
 import 'jquery';
 
 class KinveyGetManager {
-    constructor(baseUrl, appKey, appSecret) {
+    constructor(baseUrl, appKey, headerProvider) {
         this.baseUrl = baseUrl;
         this.appKey = appKey;
-        this.appSecret = appSecret;
+        this._headerProvide = headerProvider;
     }
 
-    getPainitngInfo(paintingId, formatType, authHeaders) {
+    getPainitngInfo(paintingId, formatType) {
+        let authHeaders = this._headerProvider.getHeaders();
         return $.get({
             url: this.baseUrl + 'appdata/' + this.appKey + '/paintings/' + paintingId,
             headers: authHeaders,
@@ -15,7 +16,8 @@ class KinveyGetManager {
         })
     }
 
-    getGalery(formatType, authHeaders) {
+    getGalery(formatType) {
+        let authHeaders = this._headerProvider.getHeaders();
         return $.get({
             url: this.baseUrl + 'appdata/' + this.appKey + '/paintings',
             headers: authHeaders,
@@ -23,7 +25,8 @@ class KinveyGetManager {
         })
     }
 
-    getPainitngsByArtist(artistName, formatType, authHeaders) {
+    getPainitngsByArtist(artistName, formatType) {
+        let authHeaders = this._headerProvider.getHeaders();
         return $.get({
             url: this.baseUrl + 'appdata/' + this.appKey + '/paintings/?query={"artist":"' + artistName + '"}',
             headers: authHeaders,

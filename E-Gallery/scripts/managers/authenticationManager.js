@@ -9,7 +9,7 @@ import { JSONFormatter } from 'JSONFormatter';
 import 'jquery';
 
 class AuthenticationManager {
-    constructor(formatter, postManager, storage) {
+    constructor(formatter, postManager, storage, headerProvider) {
         Validator.ValidateObject(formatter, ["format", "formatType"]);
         Validator.ValidateObject(postManager, ["logInUser", "registerUser"]);
         Validator.ValidateObject(storage, ["setItem"]);
@@ -17,18 +17,21 @@ class AuthenticationManager {
         this._formatter = formatter;
         this._postManager = postManager;
         this._storage = storage;
+        this._headerProvider = headerProvider;
     }
 
     logInUser(event, user) {
         event.preventDefault(); //without event.preventDefault() refresh page by submit
-        let userData = this._formatter.format(user);
-        this._postManager.loginUser(userData, this._formatter.formatType).then(this._onLoginSuccess).catch(_onFail);
+        let userData = this._formatter.format(user),
+            header = this._headerProvider.getHeaders();
+        this._postManager.loginUser(userData, this._formatter.formatType, header).then(this._onLoginSuccess).catch(_onFail);
     }
 
     registerUser(event, user) {
         event.preventDefault(); //without event.preventDefault() refresh page by submit
-        let userData = this._formatter.format(user);
-        this._postManager.registerUser(userData, this._formatter.formatType).then(this._onRegisterSuccess).catch(_onFail);
+        let userData = this._formatter.format(user),
+            header = this._headerProvider.getHeaders();
+        this._postManager.registerUser(userData, this._formatter.formatType, header).then(this._onRegisterSuccess).catch(_onFail);
     }
 
     logOutUser() {
@@ -58,7 +61,7 @@ class AuthenticationManager {
     _saveAuthInSession(userInfo) {
         this._storage.setItem("username", userInfo.username);
         this._storage.setItem("authtoken", userInfo._kmd.authtoken);
-        $('#loggedInUser').text('Welcome ' + userInfo.username + '!');
+        // $('#loggedInUser').text('Welcome ' + userInfo.username + '!');
     }
 }
 

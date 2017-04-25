@@ -1,14 +1,14 @@
 import 'jquery';
 
 class KinveyPostManager {
-    constructor(baseUrl, appKey, appSecret) {
+    constructor(baseUrl, appKey, headerProvider) {
         this.baseUrl = baseUrl;
         this.appKey = appKey;
-        this.appSecret = appSecret;
-        this.authHeaders = authHeaders;
+        this._headerProvider;
     }
 
     loginUser(userData, formatType, authHeaders) {
+        let authHeaders = this._headerProvider.getHeaders();
         return $.post({
             url: this.baseUrl + 'user/' + this.appKey + '/login',
             data: userData,
@@ -18,6 +18,7 @@ class KinveyPostManager {
     }
 
     registerUser(userData, formatType, authHeaders) {
+        let authHeaders = this._headerProvider.getHeaders();
         return $.post({
             url: kinveyUrls.baseUrl + 'user/' + kinveyUrls.appKey,
             data: userData,
