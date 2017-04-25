@@ -9,27 +9,25 @@ import { JSONFormatter } from 'JSONFormatter';
 import 'jquery';
 
 class AuthenticationManager {
-    constructor(user, formatter, postManager, storage) {
-        Validator.ValidateObject(user, ["username", "password"]);
+    constructor(formatter, postManager, storage) {
         Validator.ValidateObject(formatter, ["format", "formatType"]);
-        Validator.ValidateObject(postManager, ["post"]);
+        Validator.ValidateObject(postManager, ["logInUser", "registerUser"]);
         Validator.ValidateObject(storage, ["setItem"]);
 
-        this._user = user;
         this._formatter = formatter;
         this._postManager = postManager;
         this._storage = storage;
     }
 
-    logInUser(event) {
+    logInUser(event, user) {
         event.preventDefault(); //without event.preventDefault() refresh page by submit
-        let userData = this._formatter.format(this.user);
+        let userData = this._formatter.format(user);
         this._postManager.loginUser(userData, this._formatter.formatType).then(this._onLoginSuccess).catch(_onFail);
     }
 
-    registerUser(event) {
+    registerUser(event, user) {
         event.preventDefault(); //without event.preventDefault() refresh page by submit
-        let userData = this._formatter.format(this.user);
+        let userData = this._formatter.format(user);
         this._postManager.registerUser(userData, this._formatter.formatType).then(this._onRegisterSuccess).catch(_onFail);
     }
 

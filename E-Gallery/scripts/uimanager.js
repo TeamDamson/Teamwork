@@ -2,35 +2,37 @@ import { displayError } from 'utility';
 import { kinveyUrls } from 'constants';
 import 'jquery';
 
-function viewGallery() {
-    $('.gallery').empty();
-    let authHeaders = getKinveyUserAuthHeaders();
-    $.get({
-        url: kinveyUrls.baseUrl + 'appdata/' + kinveyUrls.appKey + '/paintings',
-        headers: authHeaders,
-        contentType: 'application/json'
-    }).then(displayGallery).catch(displayError);
-}
+class UIManager {
+    constructor(galeryElement, getManager, authenticationManager) {
+        Validator.ValidateObject(storage, ["clear"]);
+        Validator.ValidateObject(autenticationManager, ["logInUser", "logOutUser", "registerUser"]);
+        Validator.ValidateObject(getManager, ["getPainitngInfo", "getGalery", "getPainitngsByArtist"]);
+        this._galeryElement = galeryElement;
+        this._getManager = getManager;
+        this._authenticationManager = authenticationManager;
+    }
 
-function displayGallery(paintings) {
-    let gallery = $('.gallery');
-    $('#main-view').css('display', 'none');
-    $('.gallery').css('display', 'block');
-    if (paintings.length === 0) {
-        gallery.text('No paintings available');
-    } else {
-        $('.gallery').append('<div class="search col-md-4">');
-        let list = $('<ul>').addClass('galleryItems list-group row col-md-8');
-        for (let picture of paintings) {
-            list.append($('<li class="itemGallery list-group-item col-md-4">').append($('<img class="imgGallery img-responsive">').attr('src', picture.image._downloadURL))
-                .append($('<div>').append($('<a class="artist" data-id="' + picture._id + '" href="#">').text(picture.artist).click(function() {
-                    viewPaintingByArtist($(this).text());
-                })))
-                .append($('<div>').append($('<a class="title" data-id="' + picture._id + '" href="#">').text(picture.title).click(function() {
-                    viewPaintingInfo($(this).attr('data-id'));
-                }))));
-        }
-        let pagination = `<nav class="col-md-6 col-md-offset-4" aria-label="Page navigation">
+    init() {
+
+    }
+    displayGallery(paintings) {
+        this._galeryElement.css('display', 'block');
+        $('#main-view').css('display', 'none');
+        if (paintings.length === 0) {
+            this._galeryElement.text('No paintings available');
+        } else {
+            this._galeryElement.append('<div class="search col-md-4">');
+            let list = $('<ul>').addClass('galleryItems list-group row col-md-8');
+            for (let picture of paintings) {
+                list.append($('<li class="itemGallery list-group-item col-md-4">').append($('<img class="imgGallery img-responsive">').attr('src', picture.image._downloadURL))
+                    .append($('<div>').append($('<a class="artist" data-id="' + picture._id + '" href="#">').text(picture.artist).click(function() {
+                        viewPaintingByArtist($(this).text());
+                    })))
+                    .append($('<div>').append($('<a class="title" data-id="' + picture._id + '" href="#">').text(picture.title).click(function() {
+                        viewPaintingInfo($(this).attr('data-id'));
+                    }))));
+            }
+            let pagination = `<nav class="col-md-6 col-md-offset-4" aria-label="Page navigation">
                             <ul class="pagination">
                                 <li>
                                     <a href="#" aria-label="Previous">
@@ -48,10 +50,23 @@ function displayGallery(paintings) {
                                 </li>
                             </ul>
                         </nav>`;
-        gallery.append(list);
-        gallery.append(pagination);
+            this._galeryElement.append(list);
+            this._galeryElement.append(pagination);
+        }
     }
 }
+
+function viewGallery() {
+    $('.gallery').empty();
+    let authHeaders = getKinveyUserAuthHeaders();
+    $.get({
+        url: kinveyUrls.baseUrl + 'appdata/' + kinveyUrls.appKey + '/paintings',
+        headers: authHeaders,
+        contentType: 'application/json'
+    }).then(displayGallery).catch(displayError);
+}
+
+
 
 function getKinveyUserAuthHeaders() {
     return {
