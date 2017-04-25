@@ -13,8 +13,28 @@ class UIManager {
     }
 
     init() {
+        $('#btnRegister').on('click', this._autenticationManager.registerUser);
+        $('#btnLogin').on('click', this._autenticationManager.logInUser);
+        $('#linkLogOut').on('click', this._autenticationManager.logOutUser);
 
+        $('#linkHome').on('click', showHomeView);
+        $('#linkGallery').on('click', this._getManager.getGalery);
+
+        $(document).on({
+            ajaxStart: function() {
+                $('#load').show();
+            },
+            ajaxStop: function() {
+                $('#load').hide();
+            }
+        });
     }
+
+    showHomeView() {
+        $('#main-view').css('display', 'block');
+        $('.gallery').css('display', 'none');
+    }
+
     displayGallery(paintings) {
         this._galeryElement.css('display', 'block');
         $('#main-view').css('display', 'none');
