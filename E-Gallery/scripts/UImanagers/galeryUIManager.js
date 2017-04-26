@@ -37,13 +37,12 @@ class GaleryUI {
             this._galeryElement.append('<div class="search col-md-4">');
             let list = $('<ul>').addClass('galleryItems list-group row col-md-8');
             for (let picture of paintings) {
-                list.append($('<li class="itemGallery list-group-item col-md-4">').append($('<img class="imgGallery img-responsive">').attr('src', picture.image._downloadURL))
-                    .append($('<div>').append($('<a class="artist" data-id="' + picture._id + '" href="#">').text(picture.artist)
-                        .click(this._getManager.getPaintingByArtist(picture.artist, 'application/json'))))
-                    .append($('<div>').append($('<a class="title" data-id="' + picture._id + '" href="#">').text(picture.title)
-                        .click(function() {
-                            viewPaintingInfo(this._getManager.getPainitngInfo(picture._id, 'application/json'));
-                        }))));
+                list.append($('<li class="itemGallery list-group-item col-md-4">'));
+                list.append($('<img class="imgGallery img-responsive">').attr('src', picture.image._downloadURL));
+                list.append($('<div>').append($('<a class="artist" data-id="' + picture._id + '" href="#">')).text(picture.artist)
+                    .click(onArtistClicked));
+                list.append($('<div>').append($('<a class="title" data-id="' + picture._id + '" href="#">')).text(picture.title)
+                    .click(onPainitngClicked));
             }
             let pagination = `<nav class="col-md-6 col-md-offset-4" aria-label="Page navigation">
                             <ul class="pagination">
@@ -67,37 +66,18 @@ class GaleryUI {
             this._galeryElement.append(pagination);
         }
     }
-}
 
-function viewGallery() {
-    $('.gallery').empty();
-    let authHeaders = getKinveyUserAuthHeaders();
-    $.get({
-        url: kinveyUrls.baseUrl + 'appdata/' + kinveyUrls.appKey + '/paintings',
-        headers: authHeaders,
-        contentType: 'application/json'
-    }).then(displayGallery).catch(displayError);
-}
+    onArtistClicked() {
+        this._getManager.getPaintingByArtist(picture.artist, 'application/json')
+            .then(displayPaintingByArtist);
+    }
 
+    onPainitngClicked() {
+        this._getManager.getPainitngInfo(picture._id, 'application/json')
+            .then(displayPaintingInfo)
+    }
 
-
-function getKinveyUserAuthHeaders() {
-    return {
-        "Authorization": "Kinvey " + sessionStorage.getItem("authtoken")
-    };
-}
-
-function viewPaintingInfo(paintingId) {
-    $('.gallery').empty();
-    $('.galleryItems').css('display', 'none');
-    $('.gallery').css('display', 'block');
-    $.get({
-        url: kinveyUrls.baseUrl + 'appdata/' + kinveyUrls.appKey + '/paintings/' + paintingId,
-        headers: getKinveyUserAuthHeaders(),
-        contentType: 'application/json'
-    }).then(displayPaintingInfo).catch(displayError);
-
-    function displayPaintingInfo(painting) {
+    displayPaintingInfo(painting) {
         let info = $('<div class="col-md-7">');
         info.append(
             $('<img>').attr('src', painting.image._downloadURL).addClass('img-thumbnail'),
@@ -119,36 +99,82 @@ function viewPaintingInfo(paintingId) {
             $('<button type="button">').text('Add a comment').addClass('btn btn-lg'),
             $('<button type="button">').text('Download').addClass('btn btn-lg')
         );
-        $('.gallery').append('<div class="search col-md-5">');
-        $('.gallery').append(info);
+        this._galeryElement.append('<div class="search col-md-5">');
+        this._galeryElement.append(info);
     }
-}
 
-function viewPaintingByArtist(artistName) {
-    $('.gallery').empty();
-    $('.galleryItems').css('display', 'none');
-    $('.gallery').css('display', 'block');
-    $.get({
-        url: kinveyUrls.baseUrl + 'appdata/' + kinveyUrls.appKey + '/paintings/?query={"artist":"' + artistName + '"}',
-        headers: getKinveyUserAuthHeaders(),
-        contentType: 'application/json'
-    }).then(displayPaintingByArtist).catch(displayError);
-
-
-    function displayPaintingByArtist(paintings) {
+    displayPaintingByArtist(paintings) {
         if (paintings.length === 0) {
-            $('.gallery').text('No paintings available');
+            this._galeryElement.text('No paintings available');
         } else {
-            $('.gallery').append('<div class="search col-md-4">');
+            this._galeryElement.append('<div class="search col-md-4">');
             let list = $('<ul>').addClass('galleryItems list-group row col-md-8');
             for (let picture of paintings) {
                 list.append($('<li class="itemGallery list-group-item col-md-4">').append($('<img class="img-thumbnail">').attr('src', picture.image._downloadURL))
                     .append($('<div>').append($('<a class="artist" data-id="' + picture._id + '" href="#">').text(picture.artist)))
                     .append($('<div>').append($('<a class="title" data-id="' + picture._id + '" href="#">').text(picture.title))));
             }
-            $('.gallery').append(list);
+            this._galeryElement.append(list);
         }
     }
 }
+
+// function viewGallery() {
+//     $('.gallery').empty();
+//     let authHeaders = getKinveyUserAuthHeaders();
+//     $.get({
+//         url: kinveyUrls.baseUrl + 'appdata/' + kinveyUrls.appKey + '/paintings',
+//         headers: authHeaders,
+//         contentType: 'application/json'
+//     }).then(displayGallery).catch(displayError);
+// }
+
+
+
+// function getKinveyUserAuthHeaders() {
+//     return {
+//         "Authorization": "Kinvey " + sessionStorage.getItem("authtoken")
+//     };
+// }
+
+// function viewPaintingInfo(paintingId) {
+//     $('.gallery').empty();
+//     $('.galleryItems').css('display', 'none');
+//     $('.gallery').css('display', 'block');
+//     $.get({
+//         url: kinveyUrls.baseUrl + 'appdata/' + kinveyUrls.appKey + '/paintings/' + paintingId,
+//         headers: getKinveyUserAuthHeaders(),
+//         contentType: 'application/json'
+//     }).then(displayPaintingInfo).catch(displayError);
+
+
+
+
+// function viewPaintingByArtist(artistName) {
+//     $('.gallery').empty();
+//     $('.galleryItems').css('display', 'none');
+//     $('.gallery').css('display', 'block');
+//     $.get({
+//         url: kinveyUrls.baseUrl + 'appdata/' + kinveyUrls.appKey + '/paintings/?query={"artist":"' + artistName + '"}',
+//         headers: getKinveyUserAuthHeaders(),
+//         contentType: 'application/json'
+//     }).then(displayPaintingByArtist).catch(displayError);
+
+
+//     function displayPaintingByArtist(paintings) {
+//         if (paintings.length === 0) {
+//             $('.gallery').text('No paintings available');
+//         } else {
+//             $('.gallery').append('<div class="search col-md-4">');
+//             let list = $('<ul>').addClass('galleryItems list-group row col-md-8');
+//             for (let picture of paintings) {
+//                 list.append($('<li class="itemGallery list-group-item col-md-4">').append($('<img class="img-thumbnail">').attr('src', picture.image._downloadURL))
+//                     .append($('<div>').append($('<a class="artist" data-id="' + picture._id + '" href="#">').text(picture.artist)))
+//                     .append($('<div>').append($('<a class="title" data-id="' + picture._id + '" href="#">').text(picture.title))));
+//             }
+//             $('.gallery').append(list);
+//         }
+//     }
+// }
 
 export { viewGallery };
