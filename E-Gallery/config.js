@@ -19,7 +19,9 @@ SystemJS.config({
         'validators': './scripts/helpers/validators.js',
         'galeryApplication': './scripts',
         'kinveyPostManager': './scripts/managers/kinveyPostManagerManager.js',
-        'JSONFormatter': './scripts/helpers/JSONFormatter.js'
+        'JSONFormatter': './scripts/helpers/JSONFormatter.js',
+        'patterns': './tamplates/patterns.js',
+        'tamplates': './tamplates/tamplates.js'
     }
 });
 

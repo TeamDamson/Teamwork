@@ -33,6 +33,12 @@ class Validator {
 
         return ((typeof objectToCheck === 'function') || (typeof objectToCheck === 'object'));
     }
+
+    static validDataTamplate(value) {
+        if (value === null || value === undefined) {
+            throw Error('Passed tamplate data is missing');
+        }
+    }
 }
 
 export { Validator };

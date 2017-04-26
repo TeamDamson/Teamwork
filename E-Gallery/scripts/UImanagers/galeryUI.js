@@ -1,6 +1,7 @@
 import { displayError } from 'utility';
 import { kinveyUrls } from 'constants';
 import 'jquery';
+import { Tamplates } from 'tamplates';
 
 class GaleryUI {
     constructor(galeryElement, getManager) {
@@ -13,10 +14,10 @@ class GaleryUI {
         $('#linkHome').on('click', this._showHomeView);
         $('#linkGallery').on('click', this._getManager.getGalery);
         $(document).on({
-            ajaxStart: function() {
+            ajaxStart: function () {
                 $('#load').show();
             },
-            ajaxStop: function() {
+            ajaxStop: function () {
                 $('#load').hide();
             }
         });
@@ -33,6 +34,9 @@ class GaleryUI {
         if (paintings.length === 0) {
             this._galeryElement.text('No paintings available');
         } else {
+
+            // will replace with handelbars tamplate
+
             this._galeryElement.append('<div class="search col-md-4">');
             let list = $('<ul>').addClass('galleryItems list-group row col-md-8');
             for (let picture of paintings) {
@@ -43,24 +47,33 @@ class GaleryUI {
                 list.append($('<div>').append($('<a class="title" data-id="' + picture._id + '" href="#">')).text(picture.title)
                     .click(onPainitngClicked));
             }
-            let pagination = `<nav class="col-md-6 col-md-offset-4" aria-label="Page navigation">
-                            <ul class="pagination">
-                                <li>
-                                    <a href="#" aria-label="Previous">
-                                        <span aria-hidden="true">&laquo;</span>
-                                    </a>
-                                </li>
-                                <li><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li>
-                                    <a href="#" aria-label="Next">
-                                        <span aria-hidden="true">&raquo;</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </nav>`;
+            // let pagination = `<nav class="col-md-6 col-md-offset-4" aria-label="Page navigation">
+            //                 <ul class="pagination">
+            //                     <li>
+            //                         <a href="#" aria-label="Previous">
+            //                             <span aria-hidden="true">&laquo;</span>
+            //                         </a>
+            //                     </li>
+            //                     <li><a href="#">1</a></li>
+            //                     <li><a href="#">2</a></li>
+            //                     <li><a href="#">3</a></li>
+            //                     <li><a href="#">4</a></li>
+            //                     <li>
+            //                         <a href="#" aria-label="Next">
+            //                             <span aria-hidden="true">&raquo;</span>
+            //                         </a>
+            //                     </li>
+            //                 </ul>
+            //             </nav>`;
+            let data = {
+                el:
+                [
+                    { num: `<span aria-hidden="true">&laquo;</span>`, ariaLabel: `aria-label="Previous"` },
+                    { num: 1 }, { num: 2 }, { num: 3 }, { num: 4 },
+                    { num: `<span aria-hidden="true">&raquo;</span>`, ariaLabel: `aria-label="Next"` }
+                ]
+            };
+            let pagination = Tamplates.setPagination(data);
             this._galeryElement.append(list);
             this._galeryElement.append(pagination);
         }
@@ -106,6 +119,9 @@ class GaleryUI {
         if (paintings.length === 0) {
             this._galeryElement.text('No paintings available');
         } else {
+
+            // will replace with handelbars tamplate
+
             this._galeryElement.append('<div class="search col-md-4">');
             let list = $('<ul>').addClass('galleryItems list-group row col-md-8');
             for (let picture of paintings) {
