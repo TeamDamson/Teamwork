@@ -1,31 +1,32 @@
-
-    //function startApp() {
-import{logInUser, registerUser, logOutUser} from 'auth';
-import{viewGallery} from 'request';
+//function startApp() {
+import { kinveyUrls } from 'constants';
+import { logInUser, registerUser, logOutUser } from 'auth';
+import { GalleryApplication } from 'galleryApplication';
+import { GaleryUI } from 'galeryUIManager';
+import { viewGallery } from 'request';
 import 'jquery';
 
-    sessionStorage.clear();
-
-    $('#linkLogOut').on('click', logOutUser);
-
-    $('#linkHome').on('click', showHomeView);
-    $('#linkGallery').on('click', viewGallery);
-
-    $('#btnRegister').on('click', registerUser);
-    $('#btnLogin').on('click', logInUser);
-
-    $(document).on({
-        ajaxStart: function () {
-            $('#load').show();
+(function() {
+    let headerProvider = new KinveyAuthorizationHeaderProvider(sessionStorage),
+        getManager = new KinveyGetManager(kinveyUrls.baseUrl, kinveyUrls.appKey, headerProvider),
+        postManager = new KinveyPostManager(kinveyUrls.baseUrl, kinveyUrls.appKey, headerProvider),
+        authenticationManager = new AuthenticationManager(formatter, postManager, sessionStorage),
+        eventsParam = {
+            registerUser: ['#btnRegister', 'click'],
+            logInUser: ['#btnLogin', 'click'],
+            logOutUser: ['#linkLogOut', 'click']
         },
-        ajaxStop: function () {
-            $('#load').hide();
-        }
-    });
+        authenticationUI = new AuthenticationUI(authenticationManager, eventsParam),
+        galeryUI = new GaleryUI($('.gallery'), getManager);
+    sessionStorage.clear();
+    authenticationUI.init();
+    galeryUI.init();
+    $(document).on('login', galeryUI.displayGallery);
+    $(document).on('logout', galeryUI.logOutUser)
+})();
 
-    function showHomeView() {
-        $('#main-view').css('display', 'block');
-        $('.gallery').css('display', 'none');
-    }
-    //}
-
+function showHomeView() {
+    $('#main-view').css('display', 'block');
+    $('.gallery').css('display', 'none');
+}
+//}

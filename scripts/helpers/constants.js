@@ -13,4 +13,3 @@ let kinveyUrls = {
 };
 
 export { kinveyUrls };
-
