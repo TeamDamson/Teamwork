@@ -120,15 +120,15 @@ class GaleryUI {
             this._galeryElement.text('No paintings available');
         } else {
 
-            // will replace with handelbars tamplate
+            // this._galeryElement.append('<div class="search col-md-4">');
+            // let list = $('<ul>').addClass('galleryItems list-group row col-md-8');
+            // for (let picture of paintings) {
+            //     list.append($('<li class="itemGallery list-group-item col-md-4">').append($('<img class="img-thumbnail">').attr('src', picture.image._downloadURL))
+            //         .append($('<div>').append($('<a class="artist" data-id="' + picture._id + '" href="#">').text(picture.artist)))
+            //         .append($('<div>').append($('<a class="title" data-id="' + picture._id + '" href="#">').text(picture.title))));
+            // }
 
-            this._galeryElement.append('<div class="search col-md-4">');
-            let list = $('<ul>').addClass('galleryItems list-group row col-md-8');
-            for (let picture of paintings) {
-                list.append($('<li class="itemGallery list-group-item col-md-4">').append($('<img class="img-thumbnail">').attr('src', picture.image._downloadURL))
-                    .append($('<div>').append($('<a class="artist" data-id="' + picture._id + '" href="#">').text(picture.artist)))
-                    .append($('<div>').append($('<a class="title" data-id="' + picture._id + '" href="#">').text(picture.title))));
-            }
+            let list = Tamplates.paintingByArtist({ count: paintings });
             this._galeryElement.append(list);
         }
     }

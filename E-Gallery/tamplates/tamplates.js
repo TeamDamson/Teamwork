@@ -11,6 +11,10 @@ class Tamplates {
         return _compaling(data, Patterns.patternList);
     }
 
+    static paintingByArtist(data) {
+        return _compaling(data, Patterns.patternDisplayPaintingByArtist);
+    }
+
     _compaling(data, tamplate) {
         Validator.validDataTamplate(data);
         let templateFunc = Handlebars.compile(tamplate);
