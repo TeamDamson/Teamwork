@@ -10,9 +10,8 @@ class GaleryUI {
         this._getManager = getManager;
     }
     init() {
-        $('#linkHome').on('click', showHomeView);
+        $('#linkHome').on('click', this._showHomeView);
         $('#linkGallery').on('click', this._getManager.getGalery);
-
         $(document).on({
             ajaxStart: function() {
                 $('#load').show();
@@ -23,7 +22,7 @@ class GaleryUI {
         });
     }
 
-    showHomeView() {
+    _showHomeView() {
         $('#main-view').css('display', 'block');
         $('.gallery').css('display', 'none');
     }
@@ -69,15 +68,15 @@ class GaleryUI {
 
     onArtistClicked() {
         this._getManager.getPaintingByArtist(picture.artist, 'application/json')
-            .then(displayPaintingByArtist);
+            .then(this._displayPaintingByArtist);
     }
 
     onPainitngClicked() {
         this._getManager.getPainitngInfo(picture._id, 'application/json')
-            .then(displayPaintingInfo)
+            .then(this._displayPaintingInfo)
     }
 
-    displayPaintingInfo(painting) {
+    _displayPaintingInfo(painting) {
         let info = $('<div class="col-md-7">');
         info.append(
             $('<img>').attr('src', painting.image._downloadURL).addClass('img-thumbnail'),
@@ -103,7 +102,7 @@ class GaleryUI {
         this._galeryElement.append(info);
     }
 
-    displayPaintingByArtist(paintings) {
+    _displayPaintingByArtist(paintings) {
         if (paintings.length === 0) {
             this._galeryElement.text('No paintings available');
         } else {
@@ -116,6 +115,20 @@ class GaleryUI {
             }
             this._galeryElement.append(list);
         }
+    }
+
+    logOutUser() {
+        this._showSuccessMessage('Logout successful!');
+        $('#loggedInUser').text('');
+        $('#linkGallery').css('display', 'none');
+        $('.login-register').css('display', 'inline-block');
+        $('#logout').css('display', 'none');
+        $('#main-view').css('display', 'block');
+        $('.gallery').css('display', 'none');
+    }
+
+    _showSuccessMessage(message) {
+        $('#info').text(message).show().hide("fade", 4000);
     }
 }
 
@@ -177,4 +190,4 @@ class GaleryUI {
 //     }
 // }
 
-export { viewGallery };
+export { GaleryUI };

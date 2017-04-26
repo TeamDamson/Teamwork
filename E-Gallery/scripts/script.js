@@ -21,7 +21,8 @@ import 'jquery';
     sessionStorage.clear();
     authenticationUI.init();
     galeryUI.init();
-
+    $(document).on('login', galeryUI.displayGallery);
+    $(document).on('logout', galeryUI.logOutUser)
 })();
 
 function showHomeView() {

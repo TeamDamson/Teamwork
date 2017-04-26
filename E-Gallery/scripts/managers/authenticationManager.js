@@ -34,16 +34,16 @@ class AuthenticationManager {
         this._postManager.registerUser(userData, this._formatter.formatType, header).then(this._onRegisterSuccess).catch(_onFail);
     }
 
-    logOutUser() {
-        this._storage.clear();
-        let logOutEvent = $.Event('logout');
-        $(window).trigger(logOutEvent);
-    }
-
     _onLoginSuccess(userInfo) {
         this._saveAuthInSession(userInfo);
         let loginEvent = $.Event('login');
         $(window).trigger(loginEvent);
+    }
+
+    logOutUser() {
+        this._storage.clear();
+        let logOutEvent = $.Event('logout');
+        $(window).trigger(logOutEvent);
     }
 
     _onRegisterSuccess(userInfo) {
