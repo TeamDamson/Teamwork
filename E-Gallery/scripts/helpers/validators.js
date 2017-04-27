@@ -13,9 +13,9 @@ class Validator {
             throw new Error(message)
     }
 
-    static validateObject(objectToValidate, propertiesToValidate) {
+    static ValidateObject(objectToValidate, propertiesToValidate) {
         let message = "Missing object property/method";
-        if (!isObject(objectToValidate)) {
+        if (!Validator.isObject(objectToValidate)) {
             throw new Error("Value passed is not an object");
         }
 

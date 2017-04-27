@@ -1,25 +1,27 @@
 import 'jquery';
+import { Validator } from 'validators';
 
 class AuthenticationUI {
     constructor(authenticationManager, eventsParam, resultElements) {
-        Validator.ValidateObject(autenticationManager, ["logInUser", "logOutUser", "registerUser"]);
-        this._autenticationManager = authenticationManager;
-        this._successElement = resultElements.successElement;
+        Validator.ValidateObject(authenticationManager, ["logInUser", "logOutUser", "registerUser"]);
+        this._authenticationManager = authenticationManager;
+        this._successElement = resultElements.successMessageElement;
         this._errorElement = resultElements.errorMessageElement
+        this._eventsParam = eventsParam;
     }
 
     init() {
-        let registerUserElement = eventsParam.registerUser[0],
-            registerUserEvent = eventsParam.registerUser[1],
-            logInUserElement = eventsParam.logInUser[0],
-            logInUserEvent = eventsParam.logInUser[1],
-            logOutUserElement = eventsParam.logInUser[0],
-            logOutUserEvent = eventsParam.logOutUser[1];
-        registerUserElement.on(registerUserEvent, this._autenticationManager.registerUser);
-        logInElement.on(logInUserEvent, this._autenticationManager.logInUser);
-        logOutElement.on(logOutUserEvent, this._autenticationManager.logOutUser);
+        let registerUserElement = this._eventsParam.registerUser[0],
+            registerUserEvent = this._eventsParam.registerUser[1],
+            logInUserElement = this._eventsParam.logInUser[0],
+            logInUserEvent = this._eventsParam.logInUser[1],
+            logOutUserElement = this._eventsParam.logInUser[0],
+            logOutUserEvent = this._eventsParam.logOutUser[1];
+        registerUserElement.on(registerUserEvent, this._authenticationManager.registerUser);
+        logInUserElement.on(logInUserEvent, this._authenticationManager.logInUser);
+        logOutUserElement.on(logOutUserEvent, this._authenticationManager.logOutUser);
         this._successElement.on('login', this.showSuccessMessage);
-        this._errorElement.on('loginFailed', showSuccessMessage)
+        this._errorElement.on('loginFailed', this.displayError)
     }
 
     displayError(error) {

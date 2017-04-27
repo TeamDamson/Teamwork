@@ -1,10 +1,10 @@
 //import { displayError } from 'utility';
 //import { kinveyUrls } from 'constants';
 import 'jquery';
+import { Validator } from 'validators';
 
 class GaleryUI {
     constructor(galeryElement, getManager) {
-        Validator.ValidateObject(storage, ["clear"]);
         Validator.ValidateObject(getManager, ["getPainitngInfo", "getGalery", "getPainitngsByArtist"]);
         this._galeryElement = galeryElement;
         this._getManager = getManager;
@@ -12,8 +12,8 @@ class GaleryUI {
     init() {
         $('#linkHome').on('click', this._showHomeView);
         $('#linkGallery').on('click', this._getManager.getGalery);
-        this._galeryElement.on('login', this.getManager.getGalery().then(this.displayGallery));
-        this._galeryElement.on('register', this.getManager.getGalery().then(this.displayGallery));
+        this._galeryElement.on('login', this._getManager.getGalery().then(this.displayGallery));
+        this._galeryElement.on('register', this._getManager.getGalery().then(this.displayGallery));
         $(document).on({
             ajaxStart: function() {
                 $('#load').show();
@@ -133,7 +133,7 @@ class GaleryUI {
         $('#info').text(message).show().hide("fade", 4000);
     }
 }
-
+export { GaleryUI };
 // function viewGallery() {
 //     $('.gallery').empty();
 //     let authHeaders = getKinveyUserAuthHeaders();
@@ -191,5 +191,3 @@ class GaleryUI {
 //         }
 //     }
 // }
-
-export { GaleryUI };

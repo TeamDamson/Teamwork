@@ -4,7 +4,7 @@
 //import { viewGallery } from 'request';
 
 import 'jquery';
-import { galeryUI } from 'galeryUI';
+import { GaleryUI } from 'galeryUI';
 import { kinveyUrls } from 'constants';
 import { KinveyAuthorizationHeaderProvider } from 'kinveyAuthorizationHeaderProvider';
 import { KinveyGetManager } from 'kinveyGetManager';
@@ -22,11 +22,15 @@ import { Validator } from 'validators';
         formatter = new JSONFormatter(),
         authenticationManager = new AuthenticationManager(formatter, postManager, sessionStorage, headerProvider),
         eventsParam = {
-            registerUser: ['#btnRegister', 'click'],
-            logInUser: ['#btnLogin', 'click'],
-            logOutUser: ['#linkLogOut', 'click']
+            registerUser: [$('#btnRegister'), 'click'],
+            logInUser: [$('#btnLogin'), 'click'],
+            logOutUser: [$('#linkLogOut'), 'click']
         },
-        authenticationUI = new AuthenticationUI(authenticationManager, eventsParam, { successMessageElement: $('#info'), errorMessageElement: $('#error') }),
+        resultParam = {
+            successMessageElement: $('#info'),
+            errorMessageElement: $('#error')
+        },
+        authenticationUI = new AuthenticationUI(authenticationManager, eventsParam, resultParam),
         galeryUI = new GaleryUI($('.gallery'), getManager);
     sessionStorage.clear();
     authenticationUI.init();

@@ -1,4 +1,5 @@
 import 'jquery';
+import { Validator } from 'validators';
 
 class KinveyPostManager {
     constructor(baseUrl, appKey, headerProvider) {

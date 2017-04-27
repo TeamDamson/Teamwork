@@ -1,3 +1,5 @@
+import { Validator } from 'validators';
+
 class KinveyAuthorizationHeaderProvider {
     constructor(storage) {
         Validator.ValidateObject(storage, ["getItem"])
