@@ -35,18 +35,16 @@ class GaleryUI {
             this._galeryElement.text('No paintings available');
         } else {
 
-            // will replace with handelbars tamplate
-
-            this._galeryElement.append('<div class="search col-md-4">');
-            let list = $('<ul>').addClass('galleryItems list-group row col-md-8');
-            for (let picture of paintings) {
-                list.append($('<li class="itemGallery list-group-item col-md-4">'));
-                list.append($('<img class="imgGallery img-responsive">').attr('src', picture.image._downloadURL));
-                list.append($('<div>').append($('<a class="artist" data-id="' + picture._id + '" href="#">')).text(picture.artist)
-                    .click(onArtistClicked));
-                list.append($('<div>').append($('<a class="title" data-id="' + picture._id + '" href="#">')).text(picture.title)
-                    .click(onPainitngClicked));
-            }
+            // this._galeryElement.append('<div class="search col-md-4">');
+            // let list = $('<ul>').addClass('galleryItems list-group row col-md-8');
+            // for (let picture of paintings) {
+            //     list.append($('<li class="itemGallery list-group-item col-md-4">'));
+            //     list.append($('<img class="imgGallery img-responsive">').attr('src', picture.image._downloadURL));
+            //     list.append($('<div>').append($('<a class="artist" data-id="' + picture._id + '" href="#">')).text(picture.artist)
+            //         .click(onArtistClicked));
+            //     list.append($('<div>').append($('<a class="title" data-id="' + picture._id + '" href="#">')).text(picture.title)
+            //         .click(onPainitngClicked));
+            // }
             // let pagination = `<nav class="col-md-6 col-md-offset-4" aria-label="Page navigation">
             //                 <ul class="pagination">
             //                     <li>
@@ -74,6 +72,7 @@ class GaleryUI {
                 ]
             };
             let pagination = Tamplates.setPagination(data);
+            let list = Tamplates.setList({ count: paintings });
             this._galeryElement.append(list);
             this._galeryElement.append(pagination);
         }
@@ -90,6 +89,9 @@ class GaleryUI {
     }
 
     _displayPaintingInfo(painting) {
+
+        // will use Handelbars
+        
         let info = $('<div class="col-md-7">');
         info.append(
             $('<img>').attr('src', painting.image._downloadURL).addClass('img-thumbnail'),
