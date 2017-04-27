@@ -1,5 +1,5 @@
-import { displayError } from 'utility';
-import { kinveyUrls } from 'constants';
+//import { displayError } from 'utility';
+//import { kinveyUrls } from 'constants';
 import 'jquery';
 
 class GaleryUI {
@@ -12,6 +12,8 @@ class GaleryUI {
     init() {
         $('#linkHome').on('click', this._showHomeView);
         $('#linkGallery').on('click', this._getManager.getGalery);
+        this._galeryElement.on('login', this.getManager.getGalery().then(this.displayGallery));
+        this._galeryElement.on('register', this.getManager.getGalery().then(this.displayGallery));
         $(document).on({
             ajaxStart: function() {
                 $('#load').show();

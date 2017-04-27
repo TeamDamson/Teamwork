@@ -1,7 +1,6 @@
 {
   "name": "e-gallery",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "directories": {
     "test": "tests"
@@ -12,7 +11,11 @@
   "author": "Team Damson",
   "license": "ISC",
   "dependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-preset-node6": "^11.0.0",
     "systemjs": "^0.20.12",
     "systemjs-plugin-babel": "0.0.21"
-  }
+  },
+  "devDependencies": {},
+  "description": ""
 }

@@ -1,8 +1,8 @@
 'use strict'
 
-import { kinveyUrls } from 'constants';
-import { showSuccessMessage, displayError } from 'utility';
-import { viewGallery } from 'request';
+//import { kinveyUrls } from 'constants';
+//import { showSuccessMessage, displayError } from 'utility';
+//import { viewGallery } from 'request';
 import { Validator } from 'validators';
 import { KinveyPostManager } from 'kinveyPostManager';
 import { JSONFormatter } from 'JSONFormatter';
@@ -34,16 +34,16 @@ class AuthenticationManager {
         this._postManager.registerUser(userData, this._formatter.formatType, header).then(this._onRegisterSuccess).catch(_onFail);
     }
 
-    _onLoginSuccess(userInfo) {
-        this._saveAuthInSession(userInfo);
-        let loginEvent = $.Event('login');
-        $(window).trigger(loginEvent);
-    }
-
     logOutUser() {
         this._storage.clear();
         let logOutEvent = $.Event('logout');
         $(window).trigger(logOutEvent);
+    }
+
+    _onLoginSuccess(userInfo) {
+        this._saveAuthInSession(userInfo);
+        let loginEvent = $.Event('login');
+        $(window).trigger(loginEvent);
     }
 
     _onRegisterSuccess(userInfo) {

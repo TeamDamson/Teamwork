@@ -7,7 +7,7 @@ class KinveyPostManager {
         this._headerProvider;
     }
 
-    loginUser(userData, formatType, authHeaders) {
+    loginUser(userData, formatType) {
         let authHeaders = this._headerProvider.getHeaders();
         return $.post({
             url: this.baseUrl + 'user/' + this.appKey + '/login',
@@ -17,7 +17,7 @@ class KinveyPostManager {
         })
     }
 
-    registerUser(userData, formatType, authHeaders) {
+    registerUser(userData, formatType) {
         let authHeaders = this._headerProvider.getHeaders();
         return $.post({
             url: kinveyUrls.baseUrl + 'user/' + kinveyUrls.appKey,

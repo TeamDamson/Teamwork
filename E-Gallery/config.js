@@ -9,17 +9,20 @@ SystemJS.config({
         'handlebars': './bower_components/handlebars/handlebars.js',
         //'sammy': './bower_components/sammy/lib/sammy.js',
         //'cryptojs': './bower_components/crypto-js/crypto-js.js',
+        // 'auth': './scripts/authentication.js',
+        // 'utility': './scripts/utility.js',
+        // 'request': './scripts/requests.js',
         'script': './scripts/script.js',
-        'auth': './scripts/authentication.js',
-        'utility': './scripts/utility.js',
-        'request': './scripts/requests.js',
         'constants': './scripts/helpers/constants.js',
-        'autenticationManager': './scripts/managers/authenticationManager.js',
+        'authenticationManager': './scripts/managers/authenticationManager.js',
         'user': './scripts/data/user.js',
         'validators': './scripts/helpers/validators.js',
-        'galeryApplication': './scripts',
-        'kinveyPostManager': './scripts/managers/kinveyPostManagerManager.js',
-        'JSONFormatter': './scripts/helpers/JSONFormatter.js'
+        'kinveyPostManager': './scripts/managers/kinveyPostManager.js',
+        'kinveyGetManager': './scripts/managers/kinveyGetManager.js',
+        'JSONFormatter': './scripts/helpers/JSONFormatter.js',
+        'galeryUI': './scripts/UImanagers/galeryUI.js',
+        'kinveyAuthorizationHeaderProvider': './scripts/helpers/kinveyAuthorizationHeaderProvider.js',
+        'authenticationUI': './scripts/UImanagers/authenticationUI.js'
     }
 });
 
