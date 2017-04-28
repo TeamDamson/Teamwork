@@ -10,24 +10,38 @@ const PASSWORD_MIN_LENGTH = 3;
 const USERNAME_MAX_LENGTH = 40;
 const PASSWORD_MAX_LENGTH = 20;
 
-let userController = (function () {
+let userController = (function() {
     class UserController {
         constructor(templates) {
             this.templates = templates;
+            $(document).on('login', () => {
+                $('#linkGallery').removeClass('hidden');
+                $('#register-form').addClass('hidden');
+                $('#menu').removeClass('col-md-6'); //col-md-6 -> col-md-12
+                $('#linkLogout').removeClass('hidden');
+                $('#loggedInUser').removeClass('hidden');
+            });
+            $(document).on('logout', () => {
+                $('#linkGallery').addClass('hidden');
+                $('#loggedInUser').addClass('hidden');
+                $('#menu').addClass('col-md-6');
+                $('#register-form').removeClass('hidden');
+                $('#linkLogout').addClass('hidden');
+            })
         }
 
         getHomePage(selector) {
             $(selector).empty();
-            this.templates.getTemplate('load-home-page').then(function (responseTemplate) {
+            this.templates.getTemplate('load-home-page').then(function(responseTemplate) {
                 selector.html(responseTemplate());
             });
         }
 
         getRegisterForm(selector) {
             $(selector).empty();
-            this.templates.getTemplate('show-register-form').then(function (responseTemplate) {
+            this.templates.getTemplate('show-register-form').then(function(responseTemplate) {
                 selector.html(responseTemplate());
-                $('#btn-register').on('click', function () {
+                $('#btn-register').on('click', function() {
                     let registerUserData = {
                         username: $('.form-signin input[name=user]').val(),
                         password: $('.form-signin input[name=pass]').val(),
@@ -61,22 +75,11 @@ let userController = (function () {
         }
 
         getLogInUser(selector) {
-            $(selector).empty();
-            $('#linkGallery').removeClass('hidden');
-            $('#register-form').addClass('hidden');
-            $('#menu').removeClass('col-md-6');   //col-md-6 -> col-md-12
-            $('#linkLogout').removeClass('hidden');
-            $('#loggedInUser').removeClass('hidden');
             logInUser(selector);
         }
 
-        getLogOutUser() {
-            $('#linkGallery').addClass('hidden');
-            $('#loggedInUser').addClass('hidden');
-             $('#menu').addClass('col-md-6');
-            $('#register-form').removeClass('hidden');
-            $('#linkLogout').addClass('hidden');
-            logOutUser();  
+        getLogOutUser(selector) {
+            logOutUser(selector);
         }
     }
 
