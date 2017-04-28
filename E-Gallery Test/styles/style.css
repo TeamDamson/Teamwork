@@ -1,0 +1,208 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+img {
+  max-height: 100%;
+  max-width: 100%;
+}
+body {
+  padding-bottom: 70px;
+  padding-top: 70px;
+}
+body header {
+  background-color: #55cbd2;
+}
+body header .container {
+  width: 100%;
+  font-size: 18px;
+  background-color: #55cbd2;
+  padding: 10px;
+  position: relative;
+}
+body header .container #logo {
+  padding-left: 100px;
+}
+body header .container #logo a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 34px;
+  font-family: 'Francois One', sans-serif;
+}
+body header .container #nav #menu {
+  display: inline-block;
+}
+body header .container #nav #menu ul {
+  list-style-type: none;
+}
+body header .container #nav #menu ul li {
+  padding: 5px 15px;
+}
+body header .container #nav #menu ul li a {
+  font-size: 20px;
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+}
+body header .container #nav #menu ul li a:hover {
+  text-decoration: underline;
+}
+body header .container #nav #register-form {
+  display: inline-block;
+  color: #fff;
+  font-size: 20px;
+}
+body header .container #nav #register-form input {
+  width: 150px;
+  border-radius: 5px;
+  color: #888;
+  font-size: 18px;
+}
+body header .container #nav #register-form a {
+  width: 100px;
+  font-size: 18px;
+}
+body header .container #nav #register-form *::-webkit-input-placeholder {
+  color: #ccc;
+}
+body header .container #nav #register-form *:-moz-placeholder {
+  color: #ccc;
+}
+body header .container #nav #loggedInUser {
+  margin-right: 10px;
+  color: #fff;
+}
+body main #main-view {
+  background-image: url("../images/header.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  width: 100%;
+  height: 830px;
+}
+body main #main-view #main-title {
+  padding-top: 200px;
+  padding-bottom: 230px;
+  text-align: right;
+  color: #fff;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+body main #main-view #main-title h1 {
+  font-size: 100px;
+}
+body main #main-view #main-title h3 {
+  font-size: 60px;
+}
+body main .form-signin {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+body main .form-signin .form-signin-heading,
+body main .form-signin .form-signin .checkbox {
+  margin-bottom: 10px;
+}
+body main .form-signin .checkbox {
+  font-weight: normal;
+}
+body main .form-signin .form-control {
+  position: relative;
+  font-size: 16px;
+  height: auto;
+  padding: 10px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+body main .form-signin .form-control:focus {
+  z-index: 2;
+}
+body main .form-signin input[type="text"] {
+  margin-bottom: 10px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+body main .form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+body main .account-wall {
+  margin-top: 20px;
+  padding: 40px 0px 20px 0px;
+  background-color: #f7f7f7;
+  -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+}
+body main .profile-img-card {
+  width: 96px;
+  height: 96px;
+  margin: 0 auto 10px;
+  display: block;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+}
+body main .gallery {
+  padding: 20px;
+}
+body main .gallery .galleryItems {
+  list-style-type: none;
+}
+body main .gallery .galleryItems .itemGallery .imgGallery {
+  width: 300px;
+  height: 300px;
+  display: block;
+  margin: 0 auto;
+}
+body main .gallery .galleryItems .itemGallery div {
+  text-align: center;
+}
+body main .gallery .galleryItems .itemGallery div .artist,
+body main .gallery .galleryItems .itemGallery div .title {
+  font-weight: bold;
+  text-decoration: none;
+}
+body main .gallery .galleryItems .itemGallery div .artist:hover,
+body main .gallery .galleryItems .itemGallery div .title:hover {
+  text-decoration: underline;
+  color: #337ab7;
+  cursor: pointer;
+}
+body main .gallery > div > div {
+  color: #888;
+  padding: 10px;
+  font-weight: bold;
+  font-size: 18px;
+  width: 70%;
+}
+body main .gallery > div > div strong {
+  color: #337ab7;
+}
+body main .gallery h3,
+body main .gallery h4 {
+  color: #888;
+}
+body main .gallery h3 strong,
+body main .gallery h4 strong {
+  color: #337ab7;
+}
+body main .gallery button {
+  margin-right: 15px;
+}
+body main .gallery .display-info img {
+  width: 450px;
+  height: 400px;
+}
+body footer {
+  background-color: #55cbd2;
+  color: #fff;
+  font-size: 18px;
+  padding: 10px 10px;
+  padding-left: 100px;
+}
+body .hidden {
+  display: none;
+}

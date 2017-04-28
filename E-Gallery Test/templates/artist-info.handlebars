@@ -1,0 +1,16 @@
+<div class="gallery row">
+    <div class="search col-md-4"></div>
+    {{#if paintings.length}}
+    <ul class="galleryItems list-group row col-md-8">
+        {{#each paintings}}
+        <li class="itemGallery list-group-item col-md-4">
+            <img class="img-thumbnail" src="{{image._downloadURL}}">
+            <div>{{artist}}</div>
+            <div>{{title}}</div>
+        </li>
+        {{/each}}
+    </ul>
+    {{else}}
+    <div>No paintings available</div>
+    {{/if}}
+</div>

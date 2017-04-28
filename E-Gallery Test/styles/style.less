@@ -1,0 +1,211 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+img {
+    max-height: 100%;
+    max-width: 100%;
+}
+
+body {
+    padding-bottom: 70px;
+    padding-top: 70px;
+    header {
+        background-color: #55cbd2;
+        .container {
+            width: 100%;
+            font-size: 18px;
+            background-color: #55cbd2;
+            padding: 10px;
+            position: relative;
+            #logo {
+                padding-left: 100px;
+                a {
+                    color: #fff;
+                    text-decoration: none;
+                    font-size: 34px;
+                    font-family: 'Francois One', sans-serif;
+                }
+            }
+            #nav {
+                #menu {
+                    display: inline-block;
+                    ul {
+                        list-style-type: none;
+                        li {
+                            padding: 5px 15px;
+                            a {
+                                font-size: 20px;
+                                color: #fff;
+                                text-decoration: none;
+                                cursor: pointer;
+                                &:hover {
+                                    text-decoration: underline;
+                                }
+                            }
+                        }
+                    }
+                }
+                #register-form {
+                    display: inline-block;
+                    color: #fff;
+                    font-size: 20px;
+                    input {
+                        width: 150px;
+                        border-radius: 5px;
+                        color: #888;
+                        font-size: 18px;
+                    }
+                    a {
+                        width: 100px;
+                        font-size: 18px;
+                    }
+                    *::-webkit-input-placeholder {
+                        color: #ccc;
+                    }
+                    *:-moz-placeholder {
+                        color: #ccc;
+                    }
+                }
+                #loggedInUser {
+                    margin-right: 10px;
+                    color: #fff;
+                }
+            }
+         }
+    }
+    main {
+        #main-view {
+            background-image: url("../images/header.png");
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            width: 100%;
+            height: 830px;
+            #main-title {
+                padding-top: 200px;
+                padding-bottom: 230px;
+                text-align: right;
+                color: #fff;
+                font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+                h1 {
+                    font-size: 100px;
+                }
+                h3 {
+                    font-size: 60px;
+                }
+            }
+        }
+        .form-signin {
+            max-width: 330px;
+            padding: 15px;
+            margin: 0 auto;
+            .form-signin-heading, .form-signin .checkbox {
+                margin-bottom: 10px;
+            }
+            .checkbox {
+                font-weight: normal;
+            }
+            .form-control {
+                position: relative;
+                font-size: 16px;
+                height: auto;
+                padding: 10px;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                box-sizing: border-box;
+                &:focus {
+                    z-index: 2;
+                }
+            }
+            input[type="text"] {
+                margin-bottom: 10px;
+                border-bottom-left-radius: 0;
+                border-bottom-right-radius: 0;
+            }
+            input[type="password"] {
+                margin-bottom: 10px;
+                border-top-left-radius: 0;
+                border-top-right-radius: 0;
+            }
+        }
+        .account-wall {
+            margin-top: 20px;
+            padding: 40px 0px 20px 0px;
+            background-color: #f7f7f7;
+            -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+            -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+            box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+        }
+        .profile-img-card {
+            width: 96px;
+            height: 96px;
+            margin: 0 auto 10px;
+            display: block;
+            -moz-border-radius: 50%;
+            -webkit-border-radius: 50%;
+            border-radius: 50%;
+        }
+        .gallery {
+            padding: 20px;
+            .galleryItems {
+                list-style-type: none;
+                .itemGallery {
+                    .imgGallery {
+                        width: 300px;
+                        height: 300px;
+                        display: block;
+                        margin: 0 auto;
+                    }
+                    div {
+                        text-align: center;
+                        .artist, .title {
+                            font-weight: bold;
+                            text-decoration: none;
+                            &:hover {
+                                text-decoration: underline;
+                                color: #337ab7;
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                }
+            }
+            > div > div {
+                color: #888;
+                padding: 10px;
+                font-weight: bold;
+                font-size: 18px;
+                width: 70%;
+                strong {
+                    color: #337ab7;
+                }
+            }
+            h3, h4 {
+                color: #888;
+                strong {
+                    color: #337ab7;
+                }
+            }
+            button {
+                margin-right: 15px;
+            }
+            .display-info img{
+                width: 450px;
+                height: 400px;
+            }
+        }
+    }
+    footer {
+        background-color: #55cbd2;
+        color: #fff;
+        font-size: 18px;
+        padding: 10px 10px;
+        padding-left: 100px;
+    }
+    .hidden {
+        display: none;
+    }
+}
