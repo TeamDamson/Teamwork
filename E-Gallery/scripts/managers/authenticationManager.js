@@ -6,7 +6,7 @@ import { viewGallery } from 'request';
 import { Validator } from 'validators';
 import { KinveyPostManager } from 'kinveyPostManager';
 import { JSONFormatter } from 'JSONFormatter';
-import 'jquery';
+// import 'jquery';
 
 class AuthenticationManager {
     constructor(formatter, postManager, storage, headerProvider) {

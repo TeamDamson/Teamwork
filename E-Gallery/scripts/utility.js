@@ -1,5 +1,5 @@
-import 'jquery';
-import 'jquery-ui';
+// import 'jquery';
+// import 'jquery-ui';
 function displayError(error) {
     $('#error').show()
         .text('Error: ' + error.responseJSON.description).hide("fade", 4000);

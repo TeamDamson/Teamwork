@@ -3,7 +3,7 @@
 import { kinveyUrls } from 'constants';
 import { showSuccessMessage, displayError } from 'utility';
 import { viewGallery } from 'request';
-import 'jquery';
+// import 'jquery';
 import { KinveyPostManager, AuthenticationManager, JSONFormatter } from 'authenticationManager';
 import { User } from 'user';
 

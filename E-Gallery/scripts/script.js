@@ -4,7 +4,7 @@ import { logInUser, registerUser, logOutUser } from 'auth';
 import { GalleryApplication } from 'galleryApplication';
 import { GaleryUI } from 'galeryUIManager';
 import { viewGallery } from 'request';
-import 'jquery';
+// import 'jquery';
 
 (function() {
     let headerProvider = new KinveyAuthorizationHeaderProvider(sessionStorage),

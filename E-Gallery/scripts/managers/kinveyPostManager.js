@@ -1,4 +1,4 @@
-import 'jquery';
+// import 'jquery';
 
 class KinveyPostManager {
     constructor(baseUrl, appKey, headerProvider) {

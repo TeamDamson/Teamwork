@@ -1,4 +1,4 @@
-import 'handlebars';
+// import 'handlebars';
 import { Validator } from 'validators'
 import { Patterns } from 'patterns';
 

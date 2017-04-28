@@ -1,4 +1,4 @@
-import 'jquery';
+// import 'jquery';
 
 class AuthenticationUI {
     constructor(authenticationManager, eventsParam) {
