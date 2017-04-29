@@ -151,21 +151,11 @@ body main .gallery {
 body main .gallery .galleryItems {
   list-style-type: none;
 }
-body main .gallery .galleryItems .itemGallery {
-  text-align: center;
-}
 body main .gallery .galleryItems .itemGallery .imgGallery {
   width: 300px;
   height: 300px;
   display: block;
   margin: 0 auto;
-}
-body main .gallery .galleryItems .itemGallery strong {
-  color: #337ab7;
-}
-body main .gallery .galleryItems .itemGallery .by-artist {
-  width: 300px;
-  height: 300px;
 }
 body main .gallery .galleryItems .itemGallery div {
   text-align: center;
@@ -181,49 +171,30 @@ body main .gallery .galleryItems .itemGallery div .title:hover {
   color: #337ab7;
   cursor: pointer;
 }
-body main .gallery .description {
+body main .gallery > div > div {
   color: #888;
   padding: 10px;
   font-weight: bold;
   font-size: 18px;
   width: 70%;
 }
-body main .gallery .description strong {
+body main .gallery > div > div strong {
   color: #337ab7;
 }
 body main .gallery h3,
-body main .gallery h2 {
+body main .gallery h4 {
   color: #888;
 }
 body main .gallery h3 strong,
-body main .gallery h2 strong {
+body main .gallery h4 strong {
   color: #337ab7;
 }
-body main .gallery .comment,
-body main .gallery .download,
-body main .gallery .favorite {
+body main .gallery button {
   margin-right: 15px;
 }
 body main .gallery .display-info img {
-  width: 500px;
-  height: 580px;
-}
-body main .gallery .artist-bio {
-  color: #337ab7;
-  font-size: 16px;
-  line-height: 40px;
-}
-body main .gallery .artist-img {
-  width: 200px;
-  height: 220px;
-}
-body main .gallery aside ul {
-  margin-top: 20px;
-  font-size: 16px;
-}
-body main .gallery aside .nav-pills > li.active > a {
-  background-color: #dddddd;
-  color: #000;
+  width: 450px;
+  height: 400px;
 }
 body footer {
   background-color: #55cbd2;
