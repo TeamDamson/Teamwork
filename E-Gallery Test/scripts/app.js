@@ -7,40 +7,40 @@ import { galleryController } from 'galleryController';
 
 let app = app || {};
 
-(function() {
-    app.router = Sammy(function() {
+(function () {
+    app.router = Sammy(function () {
         let selector = $('main');
 
-        this.get('#/', function() {
+        this.get('#/', function () {
             this.redirect('#/home');
         });
 
-        this.get('#/home', function() {
+        this.get('#/home', function () {
             userController.getHomePage(selector);
         });
 
-        this.get('#/register', function() {
+        this.get('#/register', function () {
             userController.getRegisterForm(selector);
         });
 
-        this.get('#/login', function() {
+        this.get('#/login', function () {
             userController.getLogInUser(selector);
         });
 
-        this.get('#/logout', function() {
-            userController.getLogOutUser(selector);
+        this.get('#/logout', function () {
+            userController.getLogOutUser();
         });
 
-        this.get('#/paintings', function() {
+        this.get('#/paintings', function () {
             galleryController.getGallery(selector);
         });
 
-        this.get('#/paintings/:id', function() {
+        this.get('#/paintings/:id', function () {
             const id = this.params["id"];
             galleryController.getPaintingById(selector, id);
         });
 
-        this.get('#/artist-info/:artist', function() {
+        this.get('#/artist-info/:artist', function () {
             const artist = this.params["artist"];
             galleryController.getPaintingByArtist(selector, artist);
         });
