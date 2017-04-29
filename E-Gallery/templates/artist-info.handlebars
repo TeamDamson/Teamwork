@@ -1,0 +1,68 @@
+<div class="gallery row">
+    <aside class="search col-md-2 position-fixed">
+        <div class="input-group">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
+            <input type="text" class="form-control" placeholder="Search by Artist or Title">
+        </div>
+        <ul class="nav nav-pills nav-stacked">
+            <li role="presentation" class="active"><a href="#">Style</a></li>
+            <li role="presentation"><a href="#">Abstract Art</a></li>
+            <li role="presentation"><a href="#">Landscape Art</a></li>
+            <li role="presentation"><a href="#">Realism</a></li>
+            <li role="presentation"><a href="#">Other</a></li>
+        </ul>
+        <ul class="nav nav-pills nav-stacked">
+            <li role="presentation" class="active"><a href="#">Subject</a></li>
+            <li role="presentation"><a href="#">Animals</a></li>
+            <li role="presentation"><a href="#">Flora</a></li>
+            <li role="presentation"><a href="#">Landscape</a></li>
+            <li role="presentation"><a href="#">Seascape</a></li>
+            <li role="presentation"><a href="#">Other</a></li>
+        </ul>
+        <ul class="nav nav-pills nav-stacked">
+            <li role="presentation" class="active"><a href="#">Medium</a></li>
+            <li role="presentation"><a href="#">Oil Painting</a></li>
+            <li role="presentation"><a href="#">Acrilic Painting</a></li>
+            <li role="presentation"><a href="#">Watercolor Painting</a></li>
+            <li role="presentation"><a href="#">Other Media</a></li>
+        </ul>
+    </aside>
+    <div class="row col-md-8 col-md-offset-2">
+        <div class="row">
+            <div class="col-md-2">
+                 <img class="img-thumbnail artist-img" src="{{paintings.[0].artist.image._downloadURL}}">
+            </div>
+            <div class="col-md-9 col-md-offset-1">
+                <div class="row artist-bio">
+                    <div class="col-md-2">
+                        <div><strong>Name:</strong></div>
+                        <div><strong>City:</strong></div>
+                        <div><strong>Web-adress:</strong></div>
+                        <div><strong>Artworks:</strong></div>
+                        <div><strong>Biography:</strong></div>
+                    </div>
+                    <div class="col-md-10">
+                         <div>{{paintings.[0].artist.name}}</div>
+                        <div>{{paintings.[0].artist.city}}</div>                      
+                        <div><a href="#">{{paintings.[0].artist.web-adress}}</a></div>                   
+                        <div>{{paintings.[0].artist.artworks}}</div>                       
+                        <div>{{paintings.[0].artist.biography}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+         {{#if paintings.length}}
+        <ul class="galleryItems list-group ">
+            {{#each paintings}}
+            <li class="itemGallery list-group-item col-md-3">
+                <img class="img-thumbnail by-artist" src="{{image._downloadURL}}">
+                <h4><strong>{{title}}</strong></h4>
+            </li>
+            {{/each}}
+        </ul>
+    </div>
+    {{else}}
+    <div>No paintings available</div>
+    {{/if}}
+</div>

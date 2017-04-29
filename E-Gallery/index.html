@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>E-Gallery</title>
+    <link rel="icon" href="./images/favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css?family=Francois+One" rel="stylesheet">
+    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="./bower_components/toastr/toastr.css">
+</head>
+
+<body>
+    <header class="navbar navbar-fixed-top">
+        <div class="container row">
+            <div id="logo" class="col-md-3">
+                <a href="#/home">E-Gallery</a>
+            </div>
+            <div id="nav" class="col-md-9 text-right">
+                <div class="row">
+                    <div id="menu" class="col-md-6">
+                        <ul class="list-inline">
+                            <li id="linkHome"><a href="#/home">Home</a></li>
+                            <li id="linkGallery" class="hidden"><a href="#/paintings">Gallery</a></li>
+                            <li id="linkLocation"><a href="#/map">Find Us</a></li>
+                            <li id="linkLogout" class="hidden"><a href="#/logout">Log Out</a></li>
+                            <li id="loggedInUser" class="hidden"></li>                            
+                        </ul>
+                    </div>
+                    <div id="register-form" class="col-md-6">
+                        <form class="login-register form-inline">
+                            <a href="#/login" id="btnLogin" class="btn btn-info">Login</a>
+                            <div class="form-group">
+                                <label class="sr-only" for="inputEmail">User Name</label>
+                                <input type="text" class="form-control" name="user" required placeholder="User Name">
+                            </div>
+                            <div class="form-group">
+                                <label class="sr-only" for="inputPassword">Password</label>
+                                <input type="password" class="form-control" name="pass" required placeholder="Password">
+                            </div>
+                            <span id="span">or</span>
+                            <a href="#/register" class="btn btn-info">Register</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+    </main>
+    <footer class="row navbar navbar-fixed-bottom">
+        <div class="col-md-3">
+            &copy; Copyright E-Gallery 2017
+        </div>
+        <div class="col-md-9"></div>
+    </footer>
+    <script src="./node_modules/systemjs/dist/system.js"></script>
+    <script src="./config.js"></script>
+</body>
+
+</html>
