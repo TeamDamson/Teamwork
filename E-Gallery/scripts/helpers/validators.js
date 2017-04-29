@@ -1,16 +1,18 @@
+import toastr from 'toastr';
+
 class Validator {
     static validatePassword(password) {
         let pattern = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/,
             message = "Password must be between 6 and 16 symbols, contain at least one digit and one special character";
         if (!pattern.test(password))
-            throw new Error(message)
+            toastr.error(message)
     }
 
     static validateUserName(username) {
         let pattern = /^[a-zA-Z0-9]+$/,
             message = "Username must start with a letter and contains alphanumetrical symbols only";
         if (!pattern.test(username))
-            throw new Error(message)
+             toastr.error(message)
     }
 
     static validateObject(objectToValidate, propertiesToValidate) {
