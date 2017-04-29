@@ -1,5 +1,23 @@
-<<<<<<< HEAD
-# Teamwork E-Gallery
-=======
-# Teamwork
->>>>>>> parent of f6ea0a9... change readme file
+
+# E-Gallery
+
+###### by Team Damson
+
+## Description
+E-Gallery SPA 
+
+- 
+- 
+- 
+- 
+- 
+
+
+## Live demo
+
+[**E-Gallery**]
+
+## Video demo
+
+[**YouTube**]
+
