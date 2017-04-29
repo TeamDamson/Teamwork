@@ -73,7 +73,7 @@ body {
                     color: #fff;
                 }
             }
-         }
+        }
     }
     main {
         #main-view {
@@ -153,11 +153,19 @@ body {
             .galleryItems {
                 list-style-type: none;
                 .itemGallery {
+                    text-align: center;
                     .imgGallery {
                         width: 300px;
                         height: 300px;
                         display: block;
                         margin: 0 auto;
+                    }
+                    strong{
+                            color: #337ab7;
+                        }
+                    .by-artist{
+                        width: 300px;
+                        height: 300px;
                     }
                     div {
                         text-align: center;
@@ -173,7 +181,7 @@ body {
                     }
                 }
             }
-            > div > div {
+            .description {
                 color: #888;
                 padding: 10px;
                 font-weight: bold;
@@ -183,18 +191,37 @@ body {
                     color: #337ab7;
                 }
             }
-            h3, h4 {
+            h3, h2 {
                 color: #888;
                 strong {
                     color: #337ab7;
                 }
             }
-            button {
+            .comment, .download, .favorite {
                 margin-right: 15px;
             }
-            .display-info img{
-                width: 450px;
-                height: 400px;
+            .display-info img {
+                width: 500px;
+                height: 580px;
+            }
+            .artist-bio{
+                color: #337ab7;
+                font-size: 16px;
+                line-height: 40px;
+            }
+            .artist-img{
+                width: 200px;
+                height: 220px;
+            }
+            aside {
+                ul {
+                    margin-top: 20px;
+                    font-size: 16px;
+                }
+                .nav-pills > li.active > a {
+                    background-color: #dddddd;
+                    color: #000;
+                }
             }
         }
     }

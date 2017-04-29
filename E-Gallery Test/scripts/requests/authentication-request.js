@@ -19,7 +19,7 @@ function logInUser(selector) {
         contentType: 'application/json'
     }).then(loginWithSuccess).catch(function (error) {
         toastr.error('Incorrect user name or password. Please try again!');
-        location.hash = '#/login';
+        location.hash = '#/home';
     });
 
     function loginWithSuccess(userInfo) {

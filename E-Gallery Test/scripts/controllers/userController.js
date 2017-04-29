@@ -18,6 +18,11 @@ let userController = (function () {
 
         getHomePage(selector) {
             $(selector).empty();
+            $('#linkGallery').addClass('hidden');
+            $('#loggedInUser').addClass('hidden');
+            $('#menu').addClass('col-md-6');
+            $('#register-form').removeClass('hidden');
+            $('#linkLogout').addClass('hidden');
             this.templates.getTemplate('load-home-page').then(function (responseTemplate) {
                 selector.html(responseTemplate());
             });
@@ -73,10 +78,10 @@ let userController = (function () {
         getLogOutUser() {
             $('#linkGallery').addClass('hidden');
             $('#loggedInUser').addClass('hidden');
-             $('#menu').addClass('col-md-6');
+            $('#menu').addClass('col-md-6');
             $('#register-form').removeClass('hidden');
             $('#linkLogout').addClass('hidden');
-            logOutUser();  
+            logOutUser();
         }
     }
 
