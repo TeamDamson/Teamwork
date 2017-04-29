@@ -17,15 +17,16 @@ function logInUser(selector) {
         data: JSON.stringify(userData),
         headers: kinveyUrls.authHeaders,
         contentType: 'application/json'
-    }).then(loginWithSuccess).catch(function (error) {
+    }).then((userInfo) => loginWithSuccess(userInfo, selector)).catch(function(error) {
         toastr.error('Incorrect user name or password. Please try again!');
-        location.hash = '#/home';
+        location.hash = '#/';
     });
 
-    function loginWithSuccess(userInfo) {
+    function loginWithSuccess(userInfo, selector) {
         saveAuthInSession(userInfo);
         toastr.success('Login successful!');
-        location.hash = '#/paintings';
+        let loginEvent = $.Event('login');
+        $(selector).trigger(loginEvent);
     }
 
     $('input[name=user]').val('');
@@ -43,7 +44,7 @@ function registerUser(selector) {
         data: JSON.stringify(userData),
         headers: kinveyUrls.authHeaders,
         contentType: 'application/json'
-    }).then(registerWithSuccess).catch(function (error) {
+    }).then(registerWithSuccess).catch(function(error) {
         toastr.error('Register unsuccessful. Try again!');
         location.hash = '#/register';
     });
@@ -55,7 +56,7 @@ function registerUser(selector) {
 
         $('#linkGallery').removeClass('hidden');
         $('#register-form').addClass('hidden');
-        $('#menu').removeClass('col-md-6');         //col-md-6 -> col-md-12
+        $('#menu').removeClass('col-md-6'); //col-md-6 -> col-md-12
         $('#linkLogout').removeClass('hidden');
         $('#loggedInUser').removeClass('hidden');
 
@@ -73,10 +74,12 @@ function saveAuthInSession(userInfo) {
     $('#loggedInUser').text('Welcome ' + userInfo.username + '!');
 }
 
-function logOutUser() {
+function logOutUser(selector) {
     sessionStorage.clear();
     toastr.success('Logout successful!');
-    location.hash = '#/home';
+    let logoutEvent = $.Event('logout');
+    $(selector).trigger(logoutEvent);
 }
+
 
 export { logInUser, registerUser, logOutUser };
