@@ -1,237 +1,305 @@
 * {
-  padding: 0;
-  margin: 0;
+    padding: 0;
+    margin: 0;
 }
+
 img {
-  max-height: 100%;
-  max-width: 100%;
+    max-height: 100%;
+    max-width: 100%;
 }
+
 body {
-  padding-bottom: 70px;
-  padding-top: 70px;
+    padding-bottom: 70px;
+    padding-top: 70px;
 }
+
 body header {
-  background-color: #55cbd2;
+    background-color: #55cbd2;
 }
+
 body header .container {
-  width: 100%;
-  font-size: 18px;
-  background-color: #55cbd2;
-  padding: 10px;
-  position: relative;
+    width: 100%;
+    font-size: 18px;
+    background-color: #55cbd2;
+    padding: 10px;
+    position: relative;
 }
+
 body header .container #logo {
-  padding-left: 100px;
+    padding-left: 100px;
 }
+
 body header .container #logo a {
-  color: #fff;
-  text-decoration: none;
-  font-size: 34px;
-  font-family: 'Francois One', sans-serif;
+    color: #fff;
+    text-decoration: none;
+    font-size: 34px;
+    font-family: 'Francois One', sans-serif;
 }
+
 body header .container #nav #menu {
-  display: inline-block;
+    display: inline-block;
 }
+
 body header .container #nav #menu ul {
-  list-style-type: none;
+    list-style-type: none;
 }
+
 body header .container #nav #menu ul li {
-  padding: 5px 15px;
+    padding: 5px 15px;
 }
+
 body header .container #nav #menu ul li a {
-  font-size: 20px;
-  color: #fff;
-  text-decoration: none;
-  cursor: pointer;
+    font-size: 20px;
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
 }
+
 body header .container #nav #menu ul li a:hover {
-  text-decoration: underline;
+    text-decoration: underline;
 }
+
 body header .container #nav #register-form {
-  display: inline-block;
-  color: #fff;
-  font-size: 20px;
+    display: inline-block;
+    color: #fff;
+    font-size: 20px;
 }
+
 body header .container #nav #register-form input {
-  width: 150px;
-  border-radius: 5px;
-  color: #888;
-  font-size: 18px;
+    width: 150px;
+    border-radius: 5px;
+    color: #888;
+    font-size: 18px;
 }
+
 body header .container #nav #register-form a {
-  width: 100px;
-  font-size: 18px;
+    width: 100px;
+    font-size: 18px;
 }
+
 body header .container #nav #register-form *::-webkit-input-placeholder {
-  color: #ccc;
+    color: #ccc;
 }
+
 body header .container #nav #register-form *:-moz-placeholder {
-  color: #ccc;
+    color: #ccc;
 }
+
 body header .container #nav #loggedInUser {
-  margin-right: 10px;
-  color: #fff;
+    margin-right: 10px;
+    color: #fff;
+    position: relative;
 }
+
 body main #main-view {
-  background-image: url("../images/header.png");
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-  width: 100%;
-  height: 830px;
+    background-image: url("../images/header.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100%;
+    height: 830px;
 }
+
 body main #main-view #main-title {
-  padding-top: 200px;
-  padding-bottom: 230px;
-  text-align: right;
-  color: #fff;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding-top: 200px;
+    padding-bottom: 230px;
+    text-align: right;
+    color: #fff;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+
 body main #main-view #main-title h1 {
-  font-size: 100px;
+    font-size: 100px;
 }
+
 body main #main-view #main-title h3 {
-  font-size: 60px;
+    font-size: 60px;
 }
+
 body main .form-signin {
-  max-width: 330px;
-  padding: 15px;
-  margin: 0 auto;
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
 }
+
 body main .form-signin .form-signin-heading,
 body main .form-signin .form-signin .checkbox {
-  margin-bottom: 10px;
+    margin-bottom: 10px;
 }
+
 body main .form-signin .checkbox {
-  font-weight: normal;
+    font-weight: normal;
 }
+
 body main .form-signin .form-control {
-  position: relative;
-  font-size: 16px;
-  height: auto;
-  padding: 10px;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
+    position: relative;
+    font-size: 16px;
+    height: auto;
+    padding: 10px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
+
 body main .form-signin .form-control:focus {
-  z-index: 2;
+    z-index: 2;
 }
+
 body main .form-signin input[type="text"] {
-  margin-bottom: 10px;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
+    margin-bottom: 10px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
 }
+
 body main .form-signin input[type="password"] {
-  margin-bottom: 10px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
 }
+
 body main .account-wall {
-  margin-top: 20px;
-  padding: 40px 0px 20px 0px;
-  background-color: #f7f7f7;
-  -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-  -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    margin-top: 20px;
+    padding: 40px 0px 20px 0px;
+    background-color: #f7f7f7;
+    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
 }
+
 body main .profile-img-card {
-  width: 96px;
-  height: 96px;
-  margin: 0 auto 10px;
-  display: block;
-  -moz-border-radius: 50%;
-  -webkit-border-radius: 50%;
-  border-radius: 50%;
+    width: 96px;
+    height: 96px;
+    margin: 0 auto 10px;
+    display: block;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
 }
+
 body main .gallery {
-  padding: 20px;
+    padding: 20px;
 }
+
 body main .gallery .galleryItems {
-  list-style-type: none;
+    list-style-type: none;
 }
+
 body main .gallery .galleryItems .itemGallery {
-  text-align: center;
+    text-align: center;
 }
+
 body main .gallery .galleryItems .itemGallery .imgGallery {
-  width: 300px;
-  height: 300px;
-  display: block;
-  margin: 0 auto;
+    width: 300px;
+    height: 300px;
+    display: block;
+    margin: 0 auto;
 }
+
 body main .gallery .galleryItems .itemGallery strong {
-  color: #337ab7;
+    color: #337ab7;
 }
+
 body main .gallery .galleryItems .itemGallery .by-artist {
-  width: 300px;
-  height: 300px;
+    width: 300px;
+    height: 300px;
 }
+
 body main .gallery .galleryItems .itemGallery div {
-  text-align: center;
+    text-align: center;
 }
+
 body main .gallery .galleryItems .itemGallery div .artist,
 body main .gallery .galleryItems .itemGallery div .title {
-  font-weight: bold;
-  text-decoration: none;
+    font-weight: bold;
+    text-decoration: none;
 }
+
 body main .gallery .galleryItems .itemGallery div .artist:hover,
 body main .gallery .galleryItems .itemGallery div .title:hover {
-  text-decoration: underline;
-  color: #337ab7;
-  cursor: pointer;
+    text-decoration: underline;
+    color: #337ab7;
+    cursor: pointer;
 }
+
 body main .gallery .description {
-  color: #888;
-  padding: 10px;
-  font-weight: bold;
-  font-size: 18px;
-  width: 70%;
+    color: #888;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 18px;
+    width: 70%;
 }
+
 body main .gallery .description strong {
-  color: #337ab7;
+    color: #337ab7;
 }
+
 body main .gallery h3,
 body main .gallery h2 {
-  color: #888;
+    color: #888;
 }
+
 body main .gallery h3 strong,
 body main .gallery h2 strong {
-  color: #337ab7;
+    color: #337ab7;
 }
+
 body main .gallery .comment,
 body main .gallery .download,
-body main .gallery .favorite {
-  margin-right: 15px;
+body main .gallery .favorite,
+body main .gallery .buy {
+    margin-right: 15px;
 }
+
 body main .gallery .display-info img {
-  width: 500px;
-  height: 580px;
+    width: 500px;
+    height: 580px;
 }
+
 body main .gallery .artist-bio {
-  color: #337ab7;
-  font-size: 16px;
-  line-height: 40px;
+    color: #337ab7;
+    font-size: 16px;
+    line-height: 40px;
 }
+
 body main .gallery .artist-img {
-  width: 200px;
-  height: 220px;
+    width: 200px;
+    height: 220px;
 }
+
 body main .gallery aside ul {
-  margin-top: 20px;
-  font-size: 16px;
+    margin-top: 20px;
+    font-size: 16px;
 }
-body main .gallery aside .nav-pills > li.active > a {
-  background-color: #dddddd;
-  color: #000;
+
+body main .gallery aside .nav-pills>li.active>a {
+    background-color: #dddddd;
+    color: #000;
 }
+
 body footer {
-  background-color: #55cbd2;
-  color: #fff;
-  font-size: 18px;
-  padding: 10px 10px;
-  padding-left: 100px;
+    background-color: #55cbd2;
+    color: #fff;
+    font-size: 18px;
+    padding: 10px 10px;
+    padding-left: 100px;
 }
+
 body .hidden {
-  display: none;
+    display: none;
+}
+
+.fluid-notification {
+    display: inline;
+    position: absolute;
+    left: 212px;
+    top: 25px;
+    min-width: 17px;
+    height: 17px;
+    line-height: 17px;
+    font-size: 10px;
+    font-weight: bold;
+    text-align: center;
+    background-color: #f0280a;
+    border-radius: 50%;
 }

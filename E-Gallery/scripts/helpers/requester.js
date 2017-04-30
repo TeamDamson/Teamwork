@@ -24,4 +24,3 @@ class Requester {
 let requester = new Requester();
 
 export { requester };
-

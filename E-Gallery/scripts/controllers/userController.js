@@ -11,18 +11,12 @@ const PASSWORD_MIN_LENGTH = 3;
 const USERNAME_MAX_LENGTH = 40;
 const PASSWORD_MAX_LENGTH = 20;
 
-let userController = (function () {
+let userController = (function() {
     class UserController {
         constructor(templates) {
+            this.shoppingCartManager = null;
             this.templates = templates;
-            $(document).on('login', () => {
-                $('#linkGallery').removeClass('hidden');
-                $('#register-form').addClass('hidden');
-                $('#menu').removeClass('col-md-6'); //col-md-6 -> col-md-12
-                $('#linkLogout').removeClass('hidden');
-                $('#loggedInUser').removeClass('hidden');
-                location.hash = '#/paintings';
-            });
+            $(document).on('login', (e) => this.onLogin(e));
             $(document).on('logout', () => {
                 $('#linkGallery').addClass('hidden');
                 $('#loggedInUser').addClass('hidden');
@@ -33,6 +27,19 @@ let userController = (function () {
             })
         }
 
+        onLogin(e) {
+            $('#linkGallery').removeClass('hidden');
+            $('#register-form').addClass('hidden');
+            $('#menu').removeClass('col-md-6'); //col-md-6 -> col-md-12
+            $('#linkLogout').removeClass('hidden');
+            $('#loggedInUser').removeClass('hidden');
+            $('#loggedInUser').text('Welcome ' + e.username + '!');
+            let shoppingCart = new ShoppingCart();
+            this.shoppingCartManager = new ShoppingCartManager(shoppingCart, e.username, window.sessionStorage)
+            $('#loggedInUser').append(() => this.shoppingCartManager.shoppingCartElement);
+            $('#loggedInUser').append($('<span>', { class: "fluid-notification" }).text(0));
+            location.hash = '#/paintings';
+        }
         getHomePage(selector) {
             $(selector).empty();
             $('#linkGallery').addClass('hidden');
@@ -40,16 +47,16 @@ let userController = (function () {
             $('#menu').addClass('col-md-6');
             $('#register-form').removeClass('hidden');
             $('#linkLogout').addClass('hidden');
-            this.templates.getTemplate('load-home-page').then(function (responseTemplate) {
+            this.templates.getTemplate('load-home-page').then(function(responseTemplate) {
                 selector.html(responseTemplate());
             });
         }
 
         getRegisterForm(selector) {
             $(selector).empty();
-            this.templates.getTemplate('show-register-form').then(function (responseTemplate) {
+            this.templates.getTemplate('show-register-form').then(function(responseTemplate) {
                 selector.html(responseTemplate());
-                $('#btn-register').on('click', function () {
+                $('#btn-register').on('click', function() {
                     let registerUserData = {
                         username: $('.form-signin input[name=user]').val(),
                         password: $('.form-signin input[name=pass]').val(),
@@ -63,7 +70,7 @@ let userController = (function () {
                     if (!Validator.validateUserName(registerUserData.username) ||
                         !Validator.validatePassword(registerUserData.password)) {
                         return
-                    } 
+                    }
                     // Validator.validateUserName(registerUserData.username);
                     // Validator.validatePassword(registerUserData.password);
                     // if (registerUserData.password.length < PASSWORD_MIN_LENGTH || registerUserData.password.length > PASSWORD_MAX_LENGTH) {
