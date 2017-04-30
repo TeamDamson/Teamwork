@@ -60,12 +60,8 @@ let userController = (function () {
                     //     toastr.error('Username must be between 3 and 40 symbols');
                     //     return;
                     // }
-                    if (!Validator.validateUserName(registerUserData.username) ||
-                        !Validator.validatePassword(registerUserData.password)) {
-                        return
-                    } 
-                    // Validator.validateUserName(registerUserData.username);
-                    // Validator.validatePassword(registerUserData.password);
+                    Validator.validateUserName(registerUserData.username);
+                    Validator.validatePassword(registerUserData.password);
                     // if (registerUserData.password.length < PASSWORD_MIN_LENGTH || registerUserData.password.length > PASSWORD_MAX_LENGTH) {
                     //     toastr.error('Password must be between 3 and 20 symbols');
                     //     return;
