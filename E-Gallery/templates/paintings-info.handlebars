@@ -9,7 +9,7 @@
             <li role="presentation"><a href="#">Abstract Art</a></li>
             <li role="presentation"><a href="#">Landscape Art</a></li>
             <li role="presentation"><a href="#">Realism</a></li>
-            <li role="presentation"><a href="#">Other</a></li>
+            <li role="presentation"><a href="#">Impressionism</a></li>
         </ul>
         <ul class="nav nav-pills nav-stacked">
             <li role="presentation" class="active"><a href="#">Subject</a></li>
@@ -17,14 +17,12 @@
             <li role="presentation"><a href="#">Flora</a></li>
             <li role="presentation"><a href="#">Landscape</a></li>
             <li role="presentation"><a href="#">Seascape</a></li>
-            <li role="presentation"><a href="#">Other</a></li>
         </ul>
         <ul class="nav nav-pills nav-stacked">
             <li role="presentation" class="active"><a href="#">Medium</a></li>
             <li role="presentation"><a href="#">Oil Painting</a></li>
             <li role="presentation"><a href="#">Acrilic Painting</a></li>
             <li role="presentation"><a href="#">Watercolor Painting</a></li>
-            <li role="presentation"><a href="#">Other Media</a></li>
         </ul>
     </aside>
     <div class="col-md-8 col-md-offset-2 display-info">
@@ -36,17 +34,32 @@
                 <h2>Artist: <strong>{{artist.name}}</strong></h3>
                     <h3>Title: <strong>{{title}}</strong></h4>
                         <br>
+                        <br> 
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="description">Tehnique: </div>
+                                <div class="description">Size: </div>
+                                <div class="description">Description: </div>
+                                <div class="description">Status: </div>
+                                <div class="description">Price: </div>
+                                <div class="description">Views: </div>
+                                <div class="description">Rating: </div>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="description"><strong>{{technique}}</strong></div>
+                                <div class="description"><strong>{{size}}</strong></div>
+                                <div class="description"><strong>{{description}}</strong></div>
+                                <div class="description"><strong>{{status}}</strong></div>
+                                <div class="description"><strong>{{price}}</strong></div>
+                                <div class="description"><span class="label label-default views">{{views}}</span></div>
+                                <div class="description"><span class="label label-default rating">{{rating}}</span></div>
+                            </div>
+                        </div>
                         <br>
-                        <div class="description">Material: <strong>{{material}}</strong></div>
-                        <div class="description">Tehnique: <strong>{{technique}}</strong></div>
-                        <div class="description">Size: <strong>{{size}}</strong></div>
-                        <div class="description">Description: <strong>{{description}}</strong></div>
-                        <div class="description">Status: <strong>{{status}}</strong></div>
-                        <div class="description">Price: <strong>{{price}}</strong></div>
-                        <div class="description">Views: <span class="label label-default">{{views}}</span></div>
-                        <div class="description">Comments: <span class="label label-default">{{comments}}</span></div>
-                        <button type="button" class="btn btn-lg favorite">Add a comment</button>
-                        <button type="button" class="btn btn-lg comment"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>Add to Favorites</button>
+                        <br>
+                        <button type="button" class="btn btn-lg like"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Like</button>
+                        <button type="button" class="btn btn-lg dislike"><span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span> Dislike</button>
+                        <button type="button" class="btn btn-lg favorite comment">Add a comment</button>
                         <button type="button" class="btn btn-lg download">Download</button>
                         <button type="button" class="btn btn-lg buy">Add to cart</button>
             </div>

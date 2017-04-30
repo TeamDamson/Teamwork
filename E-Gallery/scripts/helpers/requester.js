@@ -20,6 +20,9 @@ class Requester {
 
     }
 
+    put(url, headers, data){
+        return _makeRequest('PUT', url, headers, data);
+    }
 }
 let requester = new Requester();
 
