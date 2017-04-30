@@ -29,8 +29,7 @@ let userController = (function() {
         onLogin(e) {
             DOMManipulation.showLogedIn();
             $('#loggedInUser').text('Welcome ' + e.username + '!');
-            let shoppingCart = new ShoppingCart();
-            this.shoppingCartManager = new ShoppingCartManager(shoppingCart, e.username, window.sessionStorage)
+            this.shoppingCartManager = new ShoppingCartManager(e.username, window.sessionStorage)
             $('#loggedInUser').append(() => this.shoppingCartManager.shoppingCartElement);
             $('#loggedInUser').append($('<span>', { class: "fluid-notification" }).text(0));
             location.hash = '#/paintings';

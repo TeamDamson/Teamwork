@@ -1,6 +1,6 @@
 class ShoppingCart {
     cosntructor() {
-        this._itemsCollection = null;
+        this._itemsCollection = [];
     }
 
     get itemsCollection() {
@@ -16,4 +16,4 @@ class ShoppingCart {
     }
 }
 
-let shoppingCart = new ShoppingCart([]);
+let shoppingCart = new ShoppingCart();

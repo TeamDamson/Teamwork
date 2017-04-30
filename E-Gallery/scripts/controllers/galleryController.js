@@ -30,14 +30,18 @@ let galleryController = (function() {
             $(selector).empty();
             let result;
             this.galleryModel.getPaintingsInfo(id).then(function(data) {
-                result = data;
-                return templates.getTemplate('paintings-info');
-            }).then(function(template) {
-                selector.html(template(result));
-            }).catch(function(error) {
-                toastr.error('Unable to display painting!');
-                location.hash = '#/paintings';
-            });
+                    result = data;
+                    return templates.getTemplate('paintings-info');
+                }).then(function(template) {
+                    selector.html(template(result));
+                })
+                .then(function() {
+                    $('.buy').on('click', () => this.buy(result))
+                })
+                .catch(function(error) {
+                    toastr.error('Unable to display painting!');
+                    location.hash = '#/paintings';
+                });
 
         }
 
@@ -57,6 +61,12 @@ let galleryController = (function() {
             });
         }
 
+        buy(paintingData) {
+            userController.shoppingCartManager.shoppingCart.add({
+                id: paintingData.id,
+                price: paintingData.price
+            })
+        }
     }
 
     return new GalleryController(templates, galleryModel);

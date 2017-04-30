@@ -5,7 +5,7 @@ class ShoppingCartManager {
             src: '../../images/shopping-cart-16.png',
             alt: 'Shopping cart'
         });
-        this._shoppingCart = shoppingCart;
+        this.items = [];
         this._username = username;
         this._storage = storage;
     }
