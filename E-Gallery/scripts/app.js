@@ -20,6 +20,8 @@ let app = app || {};
         });
 
         this.get('#/register', function () {
+            // console.log('help1');
+
             userController.getRegisterForm(selector);
         });
 

@@ -16,6 +16,7 @@ let userController = (function () {
         constructor(templates) {
             this.templates = templates;
             $(document).on('login', () => {
+                // show gallery ????
                 $('#linkGallery').removeClass('hidden');
                 $('#register-form').addClass('hidden');
                 $('#menu').removeClass('col-md-6'); //col-md-6 -> col-md-12
@@ -31,10 +32,18 @@ let userController = (function () {
                 $('#linkLogout').addClass('hidden');
                 location.hash = '#/home';
             })
+
+            // hide Gallery ????
+            // $('#linkGallery').removeClass('hidden');
+            // $('#register-form').addClass('hidden');
+            // $('#menu').removeClass('col-md-6'); //col-md-6 -> col-md-12
+            // $('#linkLogout').removeClass('hidden');
+            // $('#loggedInUser').removeClass('hidden');
         }
 
         getHomePage(selector) {
             $(selector).empty();
+            // show gallery ????
             $('#linkGallery').addClass('hidden');
             $('#loggedInUser').addClass('hidden');
             $('#menu').addClass('col-md-6');
@@ -60,10 +69,24 @@ let userController = (function () {
                     //     toastr.error('Username must be between 3 and 40 symbols');
                     //     return;
                     // }
-                    if (!Validator.validateUserName(registerUserData.username) ||
-                        !Validator.validatePassword(registerUserData.password)) {
+                    try {
+                        Validator.validateUserName(registerUserData.username);
+                        Validator.validatePassword(registerUserData.password);
+                        if (registerUserData.password !== registerUserData.confirmPassword) {
+                            throw new Error('Please confirm password correct');
+                        };
+                        registerUser(selector);
+                    }
+                    catch (e) {
+                        // toastr.error(e.message);
+                        console.log('help');
+                        console.log(e.message);
+                        // location.hash = '#/register';
                         return
-                    } 
+                    }
+                    // Validator.validateUserName(registerUserData.username);
+                    // Validator.validatePassword(registerUserData.password);
+
                     // Validator.validateUserName(registerUserData.username);
                     // Validator.validatePassword(registerUserData.password);
                     // if (registerUserData.password.length < PASSWORD_MIN_LENGTH || registerUserData.password.length > PASSWORD_MAX_LENGTH) {
@@ -78,12 +101,12 @@ let userController = (function () {
                     //     toastr.error('Password contains invalid symbols');
                     //     return;
                     // }
-                    if (registerUserData.password !== registerUserData.confirmPassword) {
-                        toastr.error('Please confirm password correct');
-                        return;
-                    }
+                    // if (registerUserData.password !== registerUserData.confirmPassword) {
+                    //     toastr.error('Please confirm password correct');
+                    //     return;
+                    // }
 
-                    registerUser(selector);
+                    // registerUser(selector);
                 });
             });
         }
