@@ -2,6 +2,7 @@
 import toastr from 'toastr';
 import { galleryModel } from 'view';
 import { templates } from "templates";
+import { userController } from 'userController';
 
 let galleryController = (function() {
     class GalleryController {
@@ -29,15 +30,16 @@ let galleryController = (function() {
         getPaintingById(selector, id) {
             $(selector).empty();
             let result;
-            this.galleryModel.getPaintingsInfo(id).then(function(data) {
+            this.galleryModel.getPaintingsInfo(id)
+                .then(function(data) {
                     result = data;
                     return templates.getTemplate('paintings-info');
                 }).then(function(template) {
                     selector.html(template(result));
                 })
-                .then(function() {
-                    $('.buy').on('click', () => this.buy(result))
-                })
+                .then(() =>
+                    $('.buy').on('click', () => this.addToCart(result))
+                )
                 .catch(function(error) {
                     toastr.error('Unable to display painting!');
                     location.hash = '#/paintings';
@@ -61,9 +63,10 @@ let galleryController = (function() {
             });
         }
 
-        buy(paintingData) {
-            userController.shoppingCartManager.shoppingCart.add({
-                id: paintingData.id,
+        addToCart(paintingData) {
+            userController.shoppingCartManager.items.push({
+                id: paintingData._id,
+                image: paintingData.image,
                 price: paintingData.price
             })
         }

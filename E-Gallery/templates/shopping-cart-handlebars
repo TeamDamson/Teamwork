@@ -1,0 +1,26 @@
+<div class="modal-content">
+    <div class="modal-header">
+        <span class="close">&times;</span>
+        <h2>Modal Header</h2>
+    </div>
+    <div class="modal-body">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p> {{#if paintings.length}}
+                <ul class="shopping-cart-items">
+                    {{#each paintings}}
+                    <li class="shopping-cart-item">
+                        <img class="img-thumbnail" src="{{image._downloadURL}}">
+                        <span>
+                        <a class="title" data-id="{{_id}}" href="#/paintings/{{_id}}">{{title}}</a>
+                        </span>
+                    </li>
+                    {{/each}}
+                </ul>
+                {{else}} The cart is empty! {{/if}}.</p>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <h3>Modal Footer</h3>
+    </div>
+</div>

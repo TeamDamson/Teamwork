@@ -1,5 +1,5 @@
 class ShoppingCartManager {
-    constructor(shoppingCart, username, storage) {
+    constructor(username, storage) {
         this.shoppingCartElement = $('<img />', {
             id: 'shoppingCart',
             src: '../../images/shopping-cart-16.png',
