@@ -27,5 +27,10 @@ class DOMManipulation {
         this.clearUserPassField('');
         $('.form-signin input[name=confirmPass]').val('');
     }
+
+    static creatingDivToAddGallery(selector) {
+        $(selector).empty();
+        $(selector).append($('<div>').addClass('gallery'));
+    }
 }
 export { DOMManipulation }

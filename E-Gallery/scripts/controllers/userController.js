@@ -4,64 +4,71 @@ import { logInUser, registerUser, logOutUser } from 'authentication';
 import { viewGallery } from 'view';
 import { templates } from "templates";
 import { Validator } from "validators";
-import { DOMManipulation } from 'domManipulation'
-//import { AuthenticationManager } from 'authenticationManager';
+import { DOMManipulation } from 'domManipulation';
+import { Tamplates } from 'tamplatesMy';
 
-const USERNAME_MIN_LENGTH = 3;
-const PASSWORD_MIN_LENGTH = 3;
-const USERNAME_MAX_LENGTH = 40;
-const PASSWORD_MAX_LENGTH = 20;
+function opittt() { console.log('seem') };
 
 let userController = (function () {
     class UserController {
         constructor(templates) {
             this.templates = templates;
             $(document).on('login', () => {
-                // console.log('show');
                 DOMManipulation.showLogedIn();
                 location.hash = '#/paintings';
             });
             $(document).on('logout', () => {
                 DOMManipulation.showLogedOut();
-                // console.log('logOut');
                 location.hash = '#/home';
             })
         }
 
+        URL_AVATAR_IMG = "//ssl.gstatic.com/accounts/ui/avatar_2x.png";
+
         getHomePage(selector) {
             $(selector).empty();
             DOMManipulation.showLogedOut();
-            this.templates.getTemplate('load-home-page').then(function (responseTemplate) {
-                selector.html(responseTemplate());
-            });
+
+            let startText = {
+                wellcome: 'Welcome',
+                name: 'to E-Gallery',
+                product: 'See Our New Paintings'
+            };
+            selector.html(Tamplates.homePage(startText));
         }
 
         getRegisterForm(selector) {
+            global = this._functionOnClick;
+            let formData = {
+                imgAvatar: this.URL_AVATAR_IMG,
+                nameField: 'User Name',
+                passField: 'Password',
+                confirmPassField: 'Confirm Password',
+                button: { name: 'Register', event: 'onclick=global' }
+            };
             $(selector).empty();
-            this.templates.getTemplate('show-register-form').then(function (responseTemplate) {
-                selector.html(responseTemplate());
-                $('#btn-register').on('click', function () {
+            selector.html(Tamplates.RegisterForm(formData));
+        }
 
-                    let username = $('.form-signin input[name=user]').val();
-                    let password = $('.form-signin input[name=pass]').val();
-                    let confirmPassword = $('.form-signin input[name=confirmPass]').val();
+        _functionOnClick() {
+            let username = $('.form-signin input[name=user]').val();
+            let password = $('.form-signin input[name=pass]').val();
+            let confirmPassword = $('.form-signin input[name=confirmPass]').val();
 
-                    // debugger;
-                    try {
-                        Validator.validateUserName(username);
-                        Validator.validatePassword(password);
-                        if (password !== confirmPassword) {
-                            throw new Error('Please confirm password correct');
-                        };
+            // debugger;
+            try {
+                Validator.validateUserName(username);
+                Validator.validatePassword(password);
+                if (password !== confirmPassword) {
+                    throw new Error('Please confirm password correct');
+                };
 
-                        registerUser(selector, { username: username, password: password });
-                    }
-                    catch (e) {
-                        DOMManipulation.clearAllUsersField();
-                        toastr.error(e.message);
-                    }
-                });
-            });
+                registerUser(selector, { username: username, password: password });
+            }
+            catch (e) {
+                DOMManipulation.clearAllUsersField();
+                toastr.error(e.message);
+            }
         }
 
         getLogInUser(selector) {
