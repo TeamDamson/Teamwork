@@ -1,9 +1,10 @@
-import 'jquery';
+// import 'jquery';
 import toastr from 'toastr';
 import { logInUser, registerUser, logOutUser } from 'authentication';
 import { viewGallery } from 'view';
 import { templates } from "templates";
 import { Validator } from "validators";
+import { DOMManipulation } from 'domManipulation'
 //import { AuthenticationManager } from 'authenticationManager';
 
 const USERNAME_MIN_LENGTH = 3;
@@ -17,22 +18,16 @@ let userController = (function() {
             this.shoppingCartManager = null;
             this.templates = templates;
             $(document).on('login', (e) => this.onLogin(e));
+
             $(document).on('logout', () => {
-                $('#linkGallery').addClass('hidden');
-                $('#loggedInUser').addClass('hidden');
-                $('#menu').addClass('col-md-6');
-                $('#register-form').removeClass('hidden');
-                $('#linkLogout').addClass('hidden');
+                DOMManipulation.showLogedOut();
+                // console.log('logOut');
                 location.hash = '#/home';
             })
         }
 
         onLogin(e) {
-            $('#linkGallery').removeClass('hidden');
-            $('#register-form').addClass('hidden');
-            $('#menu').removeClass('col-md-6'); //col-md-6 -> col-md-12
-            $('#linkLogout').removeClass('hidden');
-            $('#loggedInUser').removeClass('hidden');
+            DOMManipulation.showLogedIn();
             $('#loggedInUser').text('Welcome ' + e.username + '!');
             let shoppingCart = new ShoppingCart();
             this.shoppingCartManager = new ShoppingCartManager(shoppingCart, e.username, window.sessionStorage)
@@ -42,11 +37,7 @@ let userController = (function() {
         }
         getHomePage(selector) {
             $(selector).empty();
-            $('#linkGallery').addClass('hidden');
-            $('#loggedInUser').addClass('hidden');
-            $('#menu').addClass('col-md-6');
-            $('#register-form').removeClass('hidden');
-            $('#linkLogout').addClass('hidden');
+            DOMManipulation.showLogedOut();
             this.templates.getTemplate('load-home-page').then(function(responseTemplate) {
                 selector.html(responseTemplate());
             });
@@ -56,45 +47,28 @@ let userController = (function() {
             $(selector).empty();
             this.templates.getTemplate('show-register-form').then(function(responseTemplate) {
                 selector.html(responseTemplate());
+
                 $('#btn-register').on('click', function() {
-                    let registerUserData = {
-                        username: $('.form-signin input[name=user]').val(),
-                        password: $('.form-signin input[name=pass]').val(),
-                        confirmPassword: $('.form-signin input[name=confirmPass]').val()
-                    };
 
-                    // if (registerUserData.username.length < USERNAME_MIN_LENGTH || registerUserData.username.length > USERNAME_MAX_LENGTH) {
-                    //     toastr.error('Username must be between 3 and 40 symbols');
-                    //     return;
-                    // }
-                    if (!Validator.validateUserName(registerUserData.username) ||
-                        !Validator.validatePassword(registerUserData.password)) {
-                        return
-                    }
-                    // Validator.validateUserName(registerUserData.username);
-                    // Validator.validatePassword(registerUserData.password);
-                    // if (registerUserData.password.length < PASSWORD_MIN_LENGTH || registerUserData.password.length > PASSWORD_MAX_LENGTH) {
-                    //     toastr.error('Password must be between 3 and 20 symbols');
-                    //     return;
-                    // }
-                    // if (/\W+/.test(registerUserData.username)) {
-                    //     toastr.error('Username contains invalid symbols');
-                    //     return;
-                    // }
-                    // if (/\W+/.test(registerUserData.password)) {
-                    //     toastr.error('Password contains invalid symbols');
-                    //     return;
-                    // }
-                    if (registerUserData.password !== registerUserData.confirmPassword) {
-                        toastr.error('Please confirm password correct');
-                        return;
-                    }
+                    let username = $('.form-signin input[name=user]').val();
+                    let password = $('.form-signin input[name=pass]').val();
+                    let confirmPassword = $('.form-signin input[name=confirmPass]').val();
 
-                    registerUser(selector);
+                    // debugger;
+                    try {
+                        Validator.validateUserName(username);
+                        Validator.validatePassword(password);
+                        if (password !== confirmPassword) {
+                            throw new Error('Please confirm password correct');
+                        };
+                        registerUser(selector, { username: username, password: password });
+                    } catch (e) {
+                        DOMManipulation.clearAllUsersField();
+                        toastr.error(e.message);
+                    }
                 });
             });
         }
-
 
         getLogInUser(selector) {
             logInUser(selector);

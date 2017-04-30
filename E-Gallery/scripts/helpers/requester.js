@@ -1,5 +1,5 @@
-import 'jquery';
-import 'jquery-ui';
+// import 'jquery';
+// import 'jquery-ui';
 
 function _makeRequest(method, url, headers, data) {
     return $.ajax({

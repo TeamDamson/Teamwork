@@ -1,7 +1,8 @@
 import { kinveyUrls } from 'constants';
 import toastr from 'toastr';
-import 'jquery';
+// import 'jquery';
 import CryptoJS from 'crypto-js';
+import { DOMManipulation } from 'domManipulation';
 
 function logInUser(selector) {
     //let username = $('.login-register input[name=user]').val();
@@ -17,7 +18,7 @@ function logInUser(selector) {
         data: JSON.stringify(userData),
         headers: kinveyUrls.authHeaders,
         contentType: 'application/json'
-    }).then((userInfo) => loginWithSuccess(userInfo, selector)).catch(function(error) {
+    }).then((userInfo) => loginWithSuccess(userInfo, selector)).catch(function (error) {
         toastr.error('Incorrect user name or password. Please try again!');
         location.hash = '#/';
     });
@@ -31,22 +32,23 @@ function logInUser(selector) {
         });
     }
 
-    $('input[name=user]').val('');
-    $('input[name=pass]').val('');
+    // $('input[name=user]').val('');
+    // $('input[name=pass]').val('');
+    DOMManipulation.clearUserPassField('');
 }
 
-function registerUser(selector) {
-    let userData = {
-        username: $('.form-signin input[name=user]').val(),
-        password: $('.form-signin input[name=pass]').val()
-    };
-
+function registerUser(selector, userData) {
+    // let userData = {
+    //     username: $('.form-signin input[name=user]').val(),
+    //     password: $('.form-signin input[name=pass]').val()
+    // };
+    console.log('register from request');
     $.post({
         url: kinveyUrls.baseUrl + 'user/' + kinveyUrls.appKey,
         data: JSON.stringify(userData),
         headers: kinveyUrls.authHeaders,
         contentType: 'application/json'
-    }).then(registerWithSuccess).catch(function(error) {
+    }).then(registerWithSuccess).catch(function (error) {
         toastr.error('Register unsuccessful. Try again!');
         location.hash = '#/register';
     });
@@ -56,18 +58,21 @@ function registerUser(selector) {
         saveAuthInSession(userInfo);
         $(selector).append($('<div>').addClass('gallery'));
 
-        $('#linkGallery').removeClass('hidden');
-        $('#register-form').addClass('hidden');
-        $('#menu').removeClass('col-md-6'); //col-md-6 -> col-md-12
-        $('#linkLogout').removeClass('hidden');
-        $('#loggedInUser').removeClass('hidden');
+        // $('#linkGallery').removeClass('hidden');
+        // $('#register-form').addClass('hidden');
+        // $('#menu').removeClass('col-md-6'); //col-md-6 -> col-md-12
+        // $('#linkLogout').removeClass('hidden');
+        // $('#loggedInUser').removeClass('hidden');
+
+        DOMManipulation.showLogedIn();
 
         toastr.success('User registration successful!');
         location.hash = '#/paintings';
     }
 
-    $('.form-signin input[name=user]').val('');
-    $('.form-signin input[name=pass]').val('');
+    // $('.form-signin input[name=user]').val('');
+    // $('.form-signin input[name=pass]').val('');
+    DOMManipulation.clearUserPassField('.form-signin ');
 }
 
 function saveAuthInSession(userInfo) {
@@ -78,9 +83,11 @@ function saveAuthInSession(userInfo) {
 
 function logOutUser(selector) {
     sessionStorage.clear();
-    toastr.success('Logout successful!');
+    toastr.success('Logout request!');
     let logoutEvent = $.Event('logout');
-    $(selector).trigger(logoutEvent);
+    // why selector - must be document??
+    // $(selector).trigger(logoutEvent);
+    $(document).trigger(logoutEvent);
 }
 
 
