@@ -9,8 +9,8 @@ class Validator {
     }
 
     static validateUserName(username) {
-        let pattern = /^[a-zA-Z0-9]{3,40}$/,
-            message = "Username must be between 3 and 40 symbols, contain digit and letters character";
+        let pattern = /^[a-zA-Z0-9]+$/,
+            message = "Username must start with a letter and contains alphanumetrical symbols only";
         if (!pattern.test(username))
              toastr.error(message)
     }
