@@ -5,16 +5,20 @@ class Validator {
         let pattern = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/,
             message = "Password must be between 6 and 16 symbols, contain at least one digit and one special character";
         if (!pattern.test(password)) {
-            throw Error(message);
+            toastr.error(message);
+            return false;
         }
+        return true
     }
 
     static validateUserName(username) {
         let pattern = /^[a-zA-Z0-9]{3,40}$/,
             message = "Username must be between 3 and 40 symbols, contain digit and letters character";
         if (!pattern.test(username)) {
-            throw new Error(message);
+            toastr.error(message);
+            return false;
         }
+        return true
     }
 
     static validateObject(objectToValidate, propertiesToValidate) {
