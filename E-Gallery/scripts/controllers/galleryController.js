@@ -1,4 +1,4 @@
-import 'jquery';
+// import 'jquery';
 import toastr from 'toastr';
 import { galleryModel } from 'view';
 import { templates } from "templates";

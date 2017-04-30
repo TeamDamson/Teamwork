@@ -4,8 +4,8 @@ SystemJS.config({
         'plugin-babel': './node_modules/systemjs-plugin-babel/plugin-babel.js',
         'systemjs-babel-build': './node_modules/systemjs-plugin-babel/systemjs-babel-browser.js',
 
-        'jquery': './bower_components/jquery/dist/jquery.min.js',
-        'jquery-ui': './bower_components/jquery-ui/jquery-ui.min.js',
+        // 'jquery': './bower_components/jquery/dist/jquery.min.js',
+        // 'jquery-ui': './bower_components/jquery-ui/jquery-ui.min.js',
         'bootstrap': './bower_components/bootstrap/dist/js/bootstrap.js',
         'handlebars': './bower_components/handlebars/handlebars.js',
         'sammy': './bower_components/sammy/lib/sammy.js',

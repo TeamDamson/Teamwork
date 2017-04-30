@@ -1,6 +1,6 @@
 import Handlebars from 'handlebars';
 import handlebars  from 'handlebars';
-import 'jquery';
+// import 'jquery';
 
 class HandlebarsTemplates {
     constructor(){

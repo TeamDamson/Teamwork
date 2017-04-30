@@ -1,6 +1,6 @@
 import { kinveyUrls } from 'constants';
 import toastr from 'toastr';
-import 'jquery';
+// import 'jquery';
 import CryptoJS from 'crypto-js';
 
 function logInUser(selector) {

@@ -1,4 +1,4 @@
-import 'jquery';
+// import 'jquery';
 import Sammy from 'sammy';
 import { userController } from 'userController';
 import { galleryController } from 'galleryController';

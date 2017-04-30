@@ -1,4 +1,4 @@
-import 'jquery';
+// import 'jquery';
 import toastr from 'toastr';
 import { logInUser, registerUser, logOutUser } from 'authentication';
 import { viewGallery } from 'view';

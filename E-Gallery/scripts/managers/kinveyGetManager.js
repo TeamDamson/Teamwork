@@ -1,4 +1,4 @@
-import 'jquery';
+// import 'jquery';
 
 class KinveyGetManager {
     constructor(baseUrl, appKey, appSecret) {

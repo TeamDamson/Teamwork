@@ -3,7 +3,7 @@ import toastr from 'toastr';
 import { templates } from "templates";
 import { requester } from 'requester';
 import { authenticationService } from 'authenticationService';
-import 'jquery';
+// import 'jquery';
 
 class GalleryModel {
     constructor(url, appKey, requester, authenticationService){

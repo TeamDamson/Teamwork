@@ -1,6 +1,6 @@
 "use strict";
 
-import 'jquery';
+// import 'jquery';
 import { kinveyUrls } from 'constants';
 import { Validator } from 'validators';
 import { KinveyPostManager } from 'kinveyPostManager';
