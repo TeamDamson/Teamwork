@@ -25,8 +25,10 @@ function logInUser(selector) {
     function loginWithSuccess(userInfo, selector) {
         saveAuthInSession(userInfo);
         toastr.success('Login successful!');
-        let loginEvent = $.Event('login');
-        $(selector).trigger(loginEvent);
+        $.event.trigger({
+            type: "login",
+            username: userInfo.username
+        });
     }
 }
 
@@ -59,7 +61,7 @@ function registerUser(selector, userData) {
 function saveAuthInSession(userInfo) {
     sessionStorage.setItem("username", userInfo.username);
     sessionStorage.setItem("authtoken", userInfo._kmd.authtoken);
-    $('#loggedInUser').text('Welcome ' + userInfo.username + '!');
+
 }
 
 function logOutUser(selector) {
