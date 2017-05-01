@@ -164,8 +164,8 @@ body {
                             color: #337ab7;
                         }
                     .by-artist{
-                        width: 300px;
-                        height: 300px;
+                        width: 200px;
+                        height: 200px;
                     }
                     div {
                         text-align: center;
@@ -197,8 +197,18 @@ body {
                     color: #337ab7;
                 }
             }
-            .comment, .download, .favorite {
-                margin-right: 15px;
+            .like, .dislike, .download, .comment, .buy {
+                margin-right: 10px;
+                font-size: 16px;
+                border: 1px solid #a9a9a9;
+            }
+            .like{
+                background-color:  #ccffcc;
+                border: 1px solid #80ff80;
+            }
+            .dislike{
+                background-color: #ffe6e6;
+                border: 1px solid #ffb3b3;
             }
             .display-info img {
                 width: 500px;
@@ -206,12 +216,20 @@ body {
             }
             .artist-bio{
                 color: #337ab7;
-                font-size: 16px;
+                font-size: 18px;
                 line-height: 40px;
+                div{
+                    div{
+                        border-bottom: 1px solid #dddddd;
+                        &:last-of-type{
+                            border-bottom: none;
+                        }
+                    }
+                }
             }
             .artist-img{
                 width: 200px;
-                height: 220px;
+                height: 200px;
             }
             aside {
                 ul {

@@ -3,7 +3,7 @@ SystemJS.config({
     'map': {
         'plugin-babel': './node_modules/systemjs-plugin-babel/plugin-babel.js',
         'systemjs-babel-build': './node_modules/systemjs-plugin-babel/systemjs-babel-browser.js',
-        'sammy': './bower_components/sammy/lib/sammy.js',
+        // 'sammy': './bower_components/sammy/lib/sammy.js',
 
         // sammy need this jquery????
         'jquery': './bower_components/jquery/dist/jquery.min.js',
@@ -28,6 +28,9 @@ SystemJS.config({
         'app': './scripts/app.js',
         'user': './scripts/data/user.js',
         'domManipulation': './scripts/helpers/domManipulations.js',
+        'patterns': './templates/pattern.js',
+        'tamplatesMy': './scripts/helpers/tamplatesMy.js',
+        'sammy': './bower_components/sammy/lib/sammy.js'
 
         //'authenticationManager': './scripts/requests/authenticationManager.js',       
         //'galeryApplication': './scripts',
