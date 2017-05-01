@@ -39,24 +39,24 @@ let galleryController = (function() {
                 }).then(function(template) {
                     selector.html(template(result));
 
-                self.galleryModel.countViews(result);
+                    self.galleryModel.countViews(result);
 
-                $('.like').on('click', function () {
-                    self.galleryModel.rateLikes(result);
-                });
-
-                $('.dislike').on('click', function () {
-                    self.galleryModel.rateDislikes(result);
-                });
-
-                $('.download').on('click', function () {
-                    self.galleryModel.downloadPainting(result.image._id)
-                    .then(downloadWithSuccess)
-                    .catch(function (error) {
-                        toastr.error('Unable to download painting!');
-                        location.hash = '#/paintings/:id';
+                    $('.like').on('click', function() {
+                        self.galleryModel.rateLikes(result);
                     });
-                });
+
+                    $('.dislike').on('click', function() {
+                        self.galleryModel.rateDislikes(result);
+                    });
+
+                    $('.download').on('click', function() {
+                        self.galleryModel.downloadPainting(result.image._id)
+                            .then(downloadWithSuccess)
+                            .catch(function(error) {
+                                toastr.error('Unable to download painting!');
+                                location.hash = '#/paintings/:id';
+                            });
+                    });
                 })
                 .then(() =>
                     $('.buy').on('click', () => this.addToCart(result))
@@ -94,6 +94,8 @@ let galleryController = (function() {
             userController.shoppingCartManager.items.push({
                 id: paintingData._id,
                 image: paintingData.image,
+                title: paintingData.title,
+                author: paintingData.artist.name,
                 price: paintingData.price
             });
             cartElement.on('click', () => {
