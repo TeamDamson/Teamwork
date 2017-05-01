@@ -17,6 +17,7 @@ class ShoppingCartController {
         }
         this.templates.getTemplate('shopping-cart')
             .then(template => $(cartContainer).html(template(result)))
+            .then(() => $('#total-price').html(this.shoppingCartManager.totalPrice))
             .then(() => $('.close').on('click', () => $(".cart-content").css('display', 'none')));
     }
 

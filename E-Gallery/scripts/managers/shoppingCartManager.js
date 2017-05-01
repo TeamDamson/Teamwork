@@ -10,7 +10,21 @@ class ShoppingCartManager {
         this._username = username;
         this._storage = storage;
     }
+    get totalPrice() {
+        let sum = 0;
+        for (var i = 0; i < this.items.length; i++) {
+            sum += +this.items[i].price.replace(/[^0-9]/g, '');
+        }
+        return sum + " " + this.currency;
+    }
 
+    get currency() {
+        if (this.items.length > 0) {
+            return this.items[0].price.replace(/[0-9]/g, '');
+        } else {
+            return "USD";
+        }
+    }
     storeCart() {
         this._storage.setItem(this._user.name, this._shoppingCart.toString())
     }

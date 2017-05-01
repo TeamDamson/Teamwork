@@ -386,6 +386,12 @@ body .hidden {
     width: 100px;
 }
 
+.cart-footer div {
+    display: inline-block;
+    margin: 5px;
+    padding: 5px;
+}
+
 @-webkit-keyframes animatetop {
     from {
         top: -300px;
