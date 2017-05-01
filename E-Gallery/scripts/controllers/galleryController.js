@@ -77,11 +77,7 @@ let galleryController = (function() {
                 price: paintingData.price
             });
             cartElement.on('click', () => {
-                let cartContainer = $('div', {
-                    id: 'cart-container'
-                });
-                $(cartContainer).appendTo($('nav'));
-                shoppingCartController.viewCart('#cart-container')
+                shoppingCartController.viewCart($('#menu'))
             });
         }
     }
