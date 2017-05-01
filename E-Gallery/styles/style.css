@@ -315,6 +315,10 @@ body .hidden {
     display: none;
 }
 
+#shoppingCart:hover {
+    cursor: pointer;
+}
+
 #fluid-notification {
     display: inline;
     position: absolute;
