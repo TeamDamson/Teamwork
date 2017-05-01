@@ -303,35 +303,23 @@ body .hidden {
     border-radius: 50%;
 }
 
-
-/* Modal Header */
-
-.modal-header {
+.cart-header {
     padding: 2px 16px;
     background-color: #5cb85c;
     color: white;
 }
 
-
-/* Modal Body */
-
-.modal-body {
+.cart-body {
     padding: 2px 16px;
 }
 
-
-/* Modal Footer */
-
-.modal-footer {
+.cart-footer {
     padding: 2px 16px;
     background-color: #5cb85c;
     color: white;
 }
 
-
-/* Modal Content */
-
-.modal-content {
+.cart-content {
     position: relative;
     background-color: #fefefe;
     margin: auto;
