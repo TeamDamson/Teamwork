@@ -310,7 +310,7 @@ body .hidden {
     display: none;
 }
 
-.fluid-notification {
+#fluid-notification {
     display: inline;
     position: absolute;
     left: 212px;
