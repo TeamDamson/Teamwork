@@ -67,7 +67,7 @@ let galleryController = (function() {
         addToCart(paintingData) {
             let newItmensCount = userController.shoppingCartManager.shoppingItemsCountElement.text(),
                 cartElement = userController.shoppingCartManager.shoppingCartElement,
-                cartCountElement = userController.shoppingCartManager.shoppingCartCountElement,
+                cartCountElement = userController.shoppingCartManager.shoppingItemsCountElement,
                 shoppingCartController = new ShoppingCartController(templates, userController.shoppingCartManager);
             newItmensCount++;
             cartCountElement.text(newItmensCount);
