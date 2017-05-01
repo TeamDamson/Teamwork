@@ -10,7 +10,7 @@ class ShoppingCartController {
     }
 
     viewCart(selector) {
-        let cartContainer = $('<div>');
+        let cartContainer = $('#shopping-cart');
         cartContainer.appendTo(selector);
         let result = {
             paintings: this.shoppingCartManager.items
