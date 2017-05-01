@@ -5,6 +5,7 @@ class ShoppingCartManager {
             src: '../../images/shopping-cart-16.png',
             alt: 'Shopping cart'
         });
+        this.shoppingItemsCountElement = $('<span>', { id: "fluid-notification" });
         this.items = [];
         this._username = username;
         this._storage = storage;
