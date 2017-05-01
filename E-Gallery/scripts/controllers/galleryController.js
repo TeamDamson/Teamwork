@@ -31,12 +31,32 @@ let galleryController = (function() {
         getPaintingById(selector, id) {
             $(selector).empty();
             let result;
+            let self = this;
             this.galleryModel.getPaintingsInfo(id)
                 .then(function(data) {
                     result = data;
                     return templates.getTemplate('paintings-info');
                 }).then(function(template) {
                     selector.html(template(result));
+
+                self.galleryModel.countViews(result);
+
+                $('.like').on('click', function () {
+                    self.galleryModel.rateLikes(result);
+                });
+
+                $('.dislike').on('click', function () {
+                    self.galleryModel.rateDislikes(result);
+                });
+
+                $('.download').on('click', function () {
+                    self.galleryModel.downloadPainting(result.image._id)
+                    .then(downloadWithSuccess)
+                    .catch(function (error) {
+                        toastr.error('Unable to download painting!');
+                        location.hash = '#/paintings/:id';
+                    });
+                });
                 })
                 .then(() =>
                     $('.buy').on('click', () => this.addToCart(result))
@@ -80,6 +100,14 @@ let galleryController = (function() {
                 shoppingCartController.viewCart($('#menu'))
             });
         }
+    }
+
+    function downloadWithSuccess(data) {
+        let url = data._downloadURL;
+        let link = document.createElement('a');
+        link.download = url.substr(url.lastIndexOf('/'));
+        link.href = url;
+        link.click();
     }
 
     return new GalleryController(templates, galleryModel);
