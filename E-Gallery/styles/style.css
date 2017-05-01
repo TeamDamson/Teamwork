@@ -88,6 +88,7 @@ body header .container #nav #register-form *:-moz-placeholder {
 body header .container #nav #loggedInUser {
     margin-right: 10px;
     color: #fff;
+    position: relative;
 }
 
 body main #main-view {
