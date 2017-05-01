@@ -42,7 +42,7 @@ let userController = (function() {
             $('#loggedInUser').text('Welcome ' + e.username + '!');
             this.shoppingCartManager = new ShoppingCartManager(e.username, window.sessionStorage)
             $('#loggedInUser').append(() => this.shoppingCartManager.shoppingCartElement);
-            $('#loggedInUser').append(() => this.shoppingCartManager.shoppingNumberElement.text(0));
+            $('#loggedInUser').append(() => this.shoppingCartManager.shoppingItemsCountElement.text(0));
             location.hash = '#/paintings';
         }
 

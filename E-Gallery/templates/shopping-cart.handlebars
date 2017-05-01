@@ -5,15 +5,11 @@
     </div>
     <div class="cart-body">
         <div class="cart-content">
-            <span class="close">&times;</span>
             <p> {{#if paintings.length}}
-                <ul class="shopping-cart-items">git pul
+                <ul class="shopping-cart-items">
                     {{#each paintings}}
                     <li class="shopping-cart-item">
-                        <img class="img-thumbnail" src="{{image._downloadURL}}">
-                        <span>
-                        <a class="title" data-id="{{_id}}" href="#/paintings/{{_id}}">{{title}}</a>
-                        </span>
+                        <img class="cart-thumbnail" src="{{image._downloadURL}}">
                     </li>
                     {{/each}}
                 </ul>

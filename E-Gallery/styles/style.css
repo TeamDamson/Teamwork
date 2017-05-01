@@ -8,6 +8,11 @@ img {
     max-width: 100%;
 }
 
+.cart-thumbnail {
+    max-height: 10%;
+    max-width: 10%;
+}
+
 body {
     padding-bottom: 70px;
     padding-top: 70px;
@@ -341,6 +346,7 @@ body .hidden {
 }
 
 .cart-content {
+    display: "block";
     position: relative;
     background-color: #fefefe;
     margin: auto;

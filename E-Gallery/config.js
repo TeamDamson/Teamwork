@@ -30,7 +30,8 @@ SystemJS.config({
         'domManipulation': './scripts/helpers/domManipulations.js',
         'patterns': './templates/pattern.js',
         'tamplatesMy': './scripts/helpers/tamplatesMy.js',
-        'sammy': './bower_components/sammy/lib/sammy.js'
+        'sammy': './bower_components/sammy/lib/sammy.js',
+        'shoppingCartController': './scripts/controllers/shoppingCartController.js'
 
         //'authenticationManager': './scripts/requests/authenticationManager.js',       
         //'galeryApplication': './scripts',
