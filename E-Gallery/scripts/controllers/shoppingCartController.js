@@ -16,7 +16,8 @@ class ShoppingCartController {
             paintings: this.shoppingCartManager.items
         }
         this.templates.getTemplate('shopping-cart')
-            .then(template => $(selector).html(template(result)));
+            .then(template => $(cartContainer).html(template(result)))
+            .then(() => $('.close').on('click', () => $(".cart-content").css('display', 'none')));
     }
 
     removeItem(paintingData) {
