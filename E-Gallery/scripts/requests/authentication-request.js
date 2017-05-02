@@ -1,8 +1,9 @@
 import { kinveyUrls } from 'constants';
 import toastr from 'toastr';
 // import 'jquery';
-import CryptoJS from 'crypto-js';
+// import CryptoJS from 'crypto-js';
 import { DOMManipulation } from 'domManipulation';
+import { requester } from 'requester';
 
 function logInUser(selector) {
 
@@ -12,7 +13,7 @@ function logInUser(selector) {
     };
     DOMManipulation.clearUserPassField('.login-register ');
 
-    $.post({
+    requester.post({
         url: kinveyUrls.baseUrl + 'user/' + kinveyUrls.appKey + '/login',
         data: JSON.stringify(userData),
         headers: kinveyUrls.authHeaders,
@@ -21,6 +22,16 @@ function logInUser(selector) {
         toastr.error('Incorrect user name or password. Please try again!');
         location.hash = '#/';
     });
+
+    // $.post({
+    //     url: kinveyUrls.baseUrl + 'user/' + kinveyUrls.appKey + '/login',
+    //     data: JSON.stringify(userData),
+    //     headers: kinveyUrls.authHeaders,
+    //     contentType: 'application/json'
+    // }).then((userInfo) => loginWithSuccess(userInfo, selector)).catch(function (error) {
+    //     toastr.error('Incorrect user name or password. Please try again!');
+    //     location.hash = '#/';
+    // });
 
     function loginWithSuccess(userInfo, selector) {
         saveAuthInSession(userInfo);
@@ -35,7 +46,7 @@ function logInUser(selector) {
 function registerUser(selector, userData) {
 
     // console.log('register from request');
-    $.post({
+    requester.post({
         url: kinveyUrls.baseUrl + 'user/' + kinveyUrls.appKey,
         data: JSON.stringify(userData),
         headers: kinveyUrls.authHeaders,
@@ -47,7 +58,7 @@ function registerUser(selector, userData) {
 
     function registerWithSuccess(userInfo) {
         saveAuthInSession(userInfo);
-  
+
         DOMManipulation.creatingDivToAddGallery(selector);
         DOMManipulation.showLogedIn();
 

@@ -10,7 +10,7 @@ SystemJS.config({
         // 'jquery-ui': './bower_components/jquery-ui/jquery-ui.min.js',
         'bootstrap': './bower_components/bootstrap/dist/js/bootstrap.js',
         'handlebars': './bower_components/handlebars/handlebars.js',
-        'crypto-js': './bower_components/crypto-js/crypto-js.js',
+        // 'crypto-js': './bower_components/crypto-js/crypto-js.js',
         'toastr': './bower_components/toastr/toastr.js',
 
         'authentication': './scripts/requests/authentication-request.js',
@@ -26,7 +26,7 @@ SystemJS.config({
         'userController': './scripts/controllers/userController.js',
         'galleryController': './scripts/controllers/galleryController.js',
         'app': './scripts/app.js',
-        'user': './scripts/data/user.js',
+        // 'user': './scripts/data/user.js',
         'domManipulation': './scripts/helpers/domManipulations.js',
         'patterns': './templates/pattern.js',
         'tamplatesMy': './scripts/helpers/tamplatesMy.js',
