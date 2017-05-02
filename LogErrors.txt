@@ -1,4 +1,23 @@
+#1
 2-5-2017 - 9.21h
 при опит да се логнеш с празни userName i password
 Failed to load resource: the server responded with a status of 400 (Bad Request)
+baas.kinvey.com/user/kid_r1MLNB66l/login:1 POST https://baas.kinvey.com/user/kid_r1MLNB66l/login 400
+-------------------------------------------
+
+#2
+2-5-2017 - 9.48
+след влизане с валиден user, при натискане на някой от линковете в ляво
+:8081/bower_components/sammy/lib/sammy.js:112 [Tue May 02 2017 09:47:29 GMT+0300 (FLE Daylight Time)] body 404 Not Found get /  Error: 404 Not Found get / 
+    at Sammy.Application.error (:8081/bower_components/sammy/lib/sammy.js:1372)
+    at Sammy.Application.notFound (:8081/bower_components/sammy/lib/sammy.js:1361)
+    at Sammy.Application.runRoute (:8081/bower_components/sammy/lib/sammy.js:1198)
+    at Sammy.Application._checkLocation (:8081/bower_components/sammy/lib/sammy.js:1391)
+    at context_prototype.eval (:8081/bower_components/sammy/lib/sammy.js:993)
+    at HTMLBodyElement.listener_callback (:8081/bower_components/sammy/lib/sammy.js:701)
+    at HTMLBodyElement.dispatch (:8081/bower_components/jquery/dist/jquery.min.js:3)
+    at HTMLBodyElement.q.handle (:8081/bower_components/jquery/dist/jquery.min.js:3)
+    at Object.trigger (:8081/bower_components/jquery/dist/jquery.min.js:4)
+    at HTMLBodyElement.eval (:8081/bower_components/jquery/dist/jquery.min.js:4)
+----------------------------------------------
 
