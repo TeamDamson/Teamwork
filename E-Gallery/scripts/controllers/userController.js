@@ -8,8 +8,6 @@ import { DOMManipulation } from 'domManipulation';
 import { Tamplates } from 'tamplatesMy';
 import { ShoppingCartController } from 'shoppingCartController';
 
-function opittt() { console.log('seem') };
-
 let userController = (function() {
     class UserController {
         constructor(templates) {
