@@ -1,0 +1,4 @@
+2-5-2017 - 9.21h
+при опит да се логнеш с празни userName i password
+Failed to load resource: the server responded with a status of 400 (Bad Request)
+
