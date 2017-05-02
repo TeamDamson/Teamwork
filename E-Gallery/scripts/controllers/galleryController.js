@@ -3,13 +3,14 @@ import toastr from 'toastr';
 import { galleryModel } from 'view';
 import { templates } from "templates";
 import { userController } from 'userController';
-import { ShoppingCartController } from 'shoppingCartController';
+
 
 let galleryController = (function() {
     class GalleryController {
         constructor(templates, galleryModel) {
             this.templates = templates;
             this.galleryModel = galleryModel;
+
         }
 
         getGallery(selector) {
@@ -86,9 +87,7 @@ let galleryController = (function() {
 
         addToCart(paintingData) {
             let newItmensCount = userController.shoppingCartManager.shoppingItemsCountElement.text(),
-                cartElement = userController.shoppingCartManager.shoppingCartElement,
-                cartCountElement = userController.shoppingCartManager.shoppingItemsCountElement,
-                shoppingCartController = new ShoppingCartController(templates, userController.shoppingCartManager);
+                cartCountElement = userController.shoppingCartManager.shoppingItemsCountElement;
             newItmensCount++;
             cartCountElement.text(newItmensCount);
             userController.shoppingCartManager.items.push({
@@ -98,9 +97,7 @@ let galleryController = (function() {
                 author: paintingData.artist.name,
                 price: paintingData.price
             });
-            cartElement.on('click', () => {
-                shoppingCartController.viewCart($('#menu'))
-            });
+
         }
     }
 

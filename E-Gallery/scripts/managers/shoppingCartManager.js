@@ -1,5 +1,5 @@
 class ShoppingCartManager {
-    constructor(username, storage) {
+    constructor(storage) {
         this.shoppingCartElement = $('<img />', {
             id: 'shoppingCart',
             src: '../../images/shopping-cart-16.png',
@@ -7,8 +7,7 @@ class ShoppingCartManager {
         });
         this.shoppingItemsCountElement = $('<span>', { id: "fluid-notification" });
         this.items = [];
-        this._username = username;
-        this._storage = storage;
+        this.storage = storage;
     }
     get totalPrice() {
         let sum = 0;

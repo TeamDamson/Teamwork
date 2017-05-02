@@ -6,13 +6,15 @@ import { templates } from "templates";
 import { Validator } from "validators";
 import { DOMManipulation } from 'domManipulation';
 import { Tamplates } from 'tamplatesMy';
+import { ShoppingCartController } from 'shoppingCartController';
 
 function opittt() { console.log('seem') };
 
 let userController = (function() {
     class UserController {
         constructor(templates) {
-            this.shoppingCartManager = null;
+            this.shoppingCartController = null;
+            this.shoppingCartManager = new ShoppingCartManager("", window.storage);
             this.templates = templates;
 
             $(document).on('login', (e) => this.onLogin(e));
@@ -40,7 +42,12 @@ let userController = (function() {
         onLogin(e) {
             DOMManipulation.showLogedIn();
             $('#loggedInUser').text('Welcome ' + e.username + '!');
-            this.shoppingCartManager = new ShoppingCartManager(e.username, window.sessionStorage)
+            this.shoppingCartManager.username = e.username;
+            this.shoppingCartController = new ShoppingCartController(templates, userController.shoppingCartManager);
+            let cartElement = userController.shoppingCartManager.shoppingCartElement;
+            cartElement.on('click', () => {
+                this.shoppingCartController.viewCart($('#menu'))
+            });
             $('#loggedInUser').append(() => this.shoppingCartManager.shoppingCartElement);
             $('#loggedInUser').append(() => this.shoppingCartManager.shoppingItemsCountElement.text(0));
             location.hash = '#/paintings';
