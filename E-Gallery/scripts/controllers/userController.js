@@ -7,8 +7,6 @@ import { Validator } from "validators";
 import { DOMManipulation } from 'domManipulation';
 import { Tamplates } from 'tamplatesMy';
 
-function opittt() { console.log('seem') };
-
 let userController = (function() {
     class UserController {
         constructor(templates) {
