@@ -32,6 +32,7 @@ let galleryController = (function () {
         getPaintingById(selector, id) {
             $(selector).empty();
             let result;
+            let resultComments;
             let self = this;
             this.galleryModel.getPaintingsInfo(id)
                 .then(function (data) {
