@@ -132,6 +132,54 @@ let galleryController = (function () {
             });
 
         }
+
+        getPaintingsByStyle(selector, style) {
+            $(selector).empty();
+            let resultStyle;
+            this.galleryModel.getPaintingsInfoByStyle(style).then(function (data) {
+                resultStyle = {
+                    paintings: data
+                };
+                return templates.getTemplate('load-gallery');
+            }).then(function (template) {
+                selector.html(template(resultStyle));
+            }).catch(function (error) {
+                toastr.error('Unable to display paintings!');
+                location.hash = '#/paintings';
+            });
+        }
+
+        getPaintingsBySubject(selector, subject) {
+            $(selector).empty();
+            let resultSubject;
+            this.galleryModel.getPaintingsInfoBySubject(subject).then(function (data) {
+                resultSubject = {
+                    paintings: data
+                };
+                return templates.getTemplate('load-gallery');
+            }).then(function (template) {
+                selector.html(template(resultSubject));
+            }).catch(function (error) {
+                toastr.error('Unable to display paintings!');
+                location.hash = '#/paintings';
+            });
+        }
+
+        getPaintingsByTechnique(selector, technique) {
+            $(selector).empty();
+            let resultTechnique;
+            this.galleryModel.getPaintingsInfoByTechnique(technique).then(function (data) {
+                resultTechnique = {
+                    paintings: data
+                };
+                return templates.getTemplate('load-gallery');
+            }).then(function (template) {
+                selector.html(template(resultTechnique));
+            }).catch(function (error) {
+                toastr.error('Unable to display paintings!');
+                location.hash = '#/paintings';
+            });
+        }
     }
 
     function downloadWithSuccess(data) {

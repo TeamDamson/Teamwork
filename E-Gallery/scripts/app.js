@@ -44,6 +44,21 @@ let app = app || {};
             const artist = this.params["artist"];
             galleryController.getPaintingByArtist(selector, artist);
         });
+
+        this.get('#/style/:style', function () {
+            const style = this.params["style"];
+            galleryController.getPaintingsByStyle(selector, style);
+        });
+
+         this.get('#/subject/:subject', function () {
+            const subject = this.params["subject"];
+            galleryController.getPaintingsBySubject(selector, subject);
+        });
+
+         this.get('#/technique/:technique', function () {
+            const technique = this.params["technique"];
+            galleryController.getPaintingsByTechnique(selector, technique);
+        });
     });
 
     app.router.run('#/');
