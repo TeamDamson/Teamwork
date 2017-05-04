@@ -84,6 +84,13 @@ class GalleryModel {
 
         return this._requester.get(requestUrl, requestHeaders);
     }
+
+     addNewComment(data){
+        let requestUrl = this._url + 'appdata/' + this._appKey + '/comments';
+        let requestHeaders = this._authenticationService.getKinveyUserAuthHeaders();
+
+        return this._requester.post(requestUrl, requestHeaders, data);
+    }
 }
 
 let galleryModel = new GalleryModel(kinveyUrls.baseUrl, kinveyUrls.appKey, requester, authenticationService);

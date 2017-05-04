@@ -56,11 +56,11 @@ let galleryController = (function () {
                             .then(downloadWithSuccess)
                             .catch(function (error) {
                                 toastr.error('Unable to download painting!');
-                                location.hash = '#/paintings/:id';
                             });
                     });
 
                     $('.comment').on('click', function () {
+                        $('#comments-container').toggleClass('hidden');
                         self.galleryModel.getAllComments(result._id).then(function (data) {
                             resultComments = {
                                 comments: data
@@ -68,6 +68,26 @@ let galleryController = (function () {
                             return templates.getTemplate('comments');
                         }).then(function (template) {
                             $('#comments-container').html(template(resultComments));
+
+                            $('#add-comment').on('click', function (ev) {
+                                let data = {
+                                    date: moment().format("ll"),
+                                    text: $('#textarea-comment').val(),
+                                    user: sessionStorage.getItem("username"),
+                                    paintingId: result._id
+                                };
+                                self.galleryModel.addNewComment(data).then(function () {
+                                    if (data.text === "") {
+                                        toastr.error("You have not write a comment!");
+                                        ev.preventDefault();
+                                        return false;
+                                    }
+                                    toastr.success('Comment was added');
+                                    $('#comments-container').addClass('hidden');
+                                }).catch(function (error) {
+                                    toastr.error('Try again');
+                                });
+                            });
 
                         });
                     });
