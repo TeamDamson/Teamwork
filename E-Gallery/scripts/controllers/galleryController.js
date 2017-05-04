@@ -5,7 +5,7 @@ import { templates } from "templates";
 import { userController } from 'userController';
 
 
-let galleryController = (function() {
+let galleryController = (function () {
     class GalleryController {
         constructor(templates, galleryModel) {
             this.templates = templates;
@@ -16,14 +16,14 @@ let galleryController = (function() {
         getGallery(selector) {
             $(selector).empty();
             let result;
-            this.galleryModel.getAllPaintings().then(function(data) {
+            this.galleryModel.getAllPaintings().then(function (data) {
                 result = {
                     paintings: data
                 };
                 return templates.getTemplate('load-gallery');
-            }).then(function(template) {
+            }).then(function (template) {
                 selector.html(template(result));
-            }).catch(function(error) {
+            }).catch(function (error) {
                 toastr.error('Unable to display gallery!');
                 location.hash = '#/home';
             });
@@ -34,35 +34,47 @@ let galleryController = (function() {
             let result;
             let self = this;
             this.galleryModel.getPaintingsInfo(id)
-                .then(function(data) {
+                .then(function (data) {
                     result = data;
                     return templates.getTemplate('paintings-info');
-                }).then(function(template) {
+                }).then(function (template) {
                     selector.html(template(result));
 
                     self.galleryModel.countViews(result);
 
-                    $('.like').on('click', function() {
+                    $('.like').on('click', function () {
                         self.galleryModel.rateLikes(result);
                     });
 
-                    $('.dislike').on('click', function() {
+                    $('.dislike').on('click', function () {
                         self.galleryModel.rateDislikes(result);
                     });
 
-                    $('.download').on('click', function() {
+                    $('.download').on('click', function () {
                         self.galleryModel.downloadPainting(result.image._id)
                             .then(downloadWithSuccess)
-                            .catch(function(error) {
+                            .catch(function (error) {
                                 toastr.error('Unable to download painting!');
                                 location.hash = '#/paintings/:id';
                             });
+                    });
+
+                    $('.comment').on('click', function () {
+                        self.galleryModel.getAllComments(result._id).then(function (data) {
+                            resultComments = {
+                                comments: data
+                            };
+                            return templates.getTemplate('comments');
+                        }).then(function (template) {
+                            $('#comments-container').html(template(resultComments));
+
+                        });
                     });
                 })
                 .then(() =>
                     $('.buy').on('click', () => this.addToCart(result))
                 )
-                .catch(function(error) {
+                .catch(function (error) {
                     toastr.error('Unable to display painting!');
                     location.hash = '#/paintings';
                 });
@@ -72,14 +84,14 @@ let galleryController = (function() {
         getPaintingByArtist(selector, artist) {
             $(selector).empty();
             let result;
-            this.galleryModel.getArtistsInfo(artist).then(function(data) {
+            this.galleryModel.getArtistsInfo(artist).then(function (data) {
                 result = {
                     paintings: data
                 };
                 return templates.getTemplate('artist-info');
-            }).then(function(template) {
+            }).then(function (template) {
                 selector.html(template(result));
-            }).catch(function(error) {
+            }).catch(function (error) {
                 toastr.error('Unable to display painting!');
                 location.hash = '#/paintings';
             });

@@ -74,6 +74,16 @@ class GalleryModel {
 
         return this._requester.get(requestUrl, requestHeaders);
     }
+
+    getAllComments(id) {
+        var filter = JSON.stringify({
+            "paintingId": id
+        });
+        let requestUrl = this._url + 'appdata/' + this._appKey + '/comments?query=' + filter;
+        let requestHeaders = this._authenticationService.getKinveyUserAuthHeaders();
+
+        return this._requester.get(requestUrl, requestHeaders);
+    }
 }
 
 let galleryModel = new GalleryModel(kinveyUrls.baseUrl, kinveyUrls.appKey, requester, authenticationService);

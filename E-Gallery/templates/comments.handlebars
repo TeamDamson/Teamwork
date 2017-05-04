@@ -1,0 +1,23 @@
+<div class="comments-box">
+    <h4>Comments</h4>
+    <ul>
+{{#each comments}}
+        <li>
+            <div class="row">
+                <div class="col-md-1">
+                    <span class="glyphicon glyphicon-user" aria-hidden="true">
+                </div>
+                <div class="col-md-11">
+                    <div>by <strong> {{user}} </strong> on <em> {{date}}</em></div>
+                    <div>
+                        {{text}}
+                    </div>
+                </div>
+            </div>
+        </li>
+{{/each}}
+    </ul>
+
+    <textarea name="addCommentBox" id="textarea-comment" cols="73" rows="4"></textarea>
+    <button type="button" class="btn btn-md" text-right ">Add comment</button>
+</div>
