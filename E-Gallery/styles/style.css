@@ -6,6 +6,14 @@ img {
   max-height: 100%;
   max-width: 100%;
 }
+
+.cart-thumbnail {
+    max-height: 10%;
+    max-width: 10%;
+    margin: 5px;
+    padding: 5px;
+}
+
 body {
   padding-bottom: 70px;
   padding-top: 70px;
@@ -71,6 +79,7 @@ body header .container #nav #register-form *:-moz-placeholder {
 body header .container #nav #loggedInUser {
   margin-right: 10px;
   color: #fff;
+  position: relative;
 }
 body main #main-view {
   background-image: url("../images/header.png");
