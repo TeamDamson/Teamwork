@@ -294,6 +294,10 @@ body footer {
 body .hidden {
   display: none;
 }
+#shoppingCart{
+  width: 40px;
+  margin-left: 15px;
+}
 #shoppingCart:hover {
     cursor: pointer;
 }
@@ -301,8 +305,8 @@ body .hidden {
 #fluid-notification {
     display: inline;
     position: absolute;
-    left: 212px;
-    top: 25px;
+    left: 180px;
+    top: 16px;
     min-width: 17px;
     line-height: 17px;
     font-size: 10px;
