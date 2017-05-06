@@ -27,4 +27,8 @@ class ShoppingCartManager {
     storeCart() {
         this._storage.setItem(this._user.name, this._shoppingCart.toString())
     }
+
+    isAdded(id) {
+        return this.items.find(item => item.id === id)
+    }
 }
