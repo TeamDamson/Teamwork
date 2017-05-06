@@ -20,6 +20,7 @@ let userController = (function() {
             $(document).on('logout', () => {
                 DOMManipulation.showLogedOut();
                 location.hash = '#/home';
+                $('#linkHome').html('<a href="#/home">Home</a>');
             })
         }
 
@@ -49,6 +50,7 @@ let userController = (function() {
             });
             $('#loggedInUser').append(() => this.shoppingCartManager.shoppingCartElement);
             $('#loggedInUser').append(() => this.shoppingCartManager.shoppingItemsCountElement.text(0));
+            $('#linkHome').html('<a href="#/paintings">Home</a>');
             location.hash = '#/paintings';
         }
 
