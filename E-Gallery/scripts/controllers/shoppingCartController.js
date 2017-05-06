@@ -21,7 +21,13 @@ class ShoppingCartController {
             .then(() => $('.close').on('click', () => $(".cart-content").css('display', 'none')))
             .then(() => $('.remove-item').on('click', (e) => {
                 this.removeItem(e.target.id);
-            }));
+            }))
+            .then(() => $('.order-button').on('click', () => this.viewOrder(result, cartContainer)));
+    }
+
+    viewOrder(result, cartContainer) {
+        this.templates.getTemplate('order-form')
+            .then(template => $(cartContainer).html(template(result)));
     }
 
     removeItem(id) {
