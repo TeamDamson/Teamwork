@@ -41,6 +41,7 @@ let userController = (function() {
             DOMManipulation.showLogedIn();
             $('#loggedInUser').text('Welcome ' + e.username + '!');
             this.shoppingCartManager.username = e.username;
+            userController.shoppingCartManager.items = [];
             this.shoppingCartController = new ShoppingCartController(templates, userController.shoppingCartManager);
             let cartElement = userController.shoppingCartManager.shoppingCartElement;
             cartElement.on('click', () => {
