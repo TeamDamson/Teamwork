@@ -32,6 +32,7 @@ let galleryController = (function() {
             $(selector).empty();
             let result;
             let resultComments;
+            //let arrayComments = [];
             let self = this;
             this.galleryModel.getPaintingsInfo(id)
                 .then(function(data) {
@@ -58,36 +59,46 @@ let galleryController = (function() {
                             });
                     });
 
-                    $('.comment').on('click', function() {
+                    $('.comment').on('click', function () {
                         $('#comments-container').toggleClass('hidden');
-                        self.galleryModel.getAllComments(result._id).then(function(data) {
+                        self.galleryModel.getAllComments(result._id).then(function (data) {
+                            //arrayComments = data;
                             resultComments = {
                                 comments: data
                             };
                             return templates.getTemplate('comments');
-                        }).then(function(template) {
+                        }).then(function (template) {
                             $('#comments-container').html(template(resultComments));
 
-                            $('#add-comment').on('click', function(ev) {
-                                let data = {
+                            $('#add-comment').on('click', function (ev) {
+                                let content = {
                                     date: moment().format("ll"),
                                     text: $('#textarea-comment').val(),
                                     user: sessionStorage.getItem("username"),
                                     paintingId: result._id
                                 };
-                                self.galleryModel.addNewComment(data).then(function() {
-                                    if (data.text === "") {
-                                        toastr.error("You have not write a comment!");
-                                        ev.preventDefault();
-                                        return false;
-                                    }
+                                if (content.text === "") {
+                                    toastr.error("You have not write a comment!");
+                                    ev.preventDefault();
+                                    return;
+                                }
+                                self.galleryModel.addNewComment(content).then(function (data) {
+                                    //arrayComments.push(data);
                                     toastr.success('Comment was added');
-                                    $('#comments-container').addClass('hidden');
-                                }).catch(function(error) {
+                                    //$('#comments-container').html(template({comments:arrayComments}));
+                                }).catch(function (error) {
                                     toastr.error('Try again');
                                 });
-                            });
 
+                                self.galleryModel.getAllComments(result._id).then(function (data) {
+                                    resultComments = {
+                                        comments: data
+                                    };
+                                    return templates.getTemplate('comments');
+                                }).then(function (template) {
+                                    $('#comments-container').html(template(resultComments));
+                                });
+                            });
                         });
                     });
                 })

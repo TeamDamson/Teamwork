@@ -297,7 +297,6 @@ body main .gallery .artist-img {
 
 body main .gallery .comments-box {
     padding: 10px;
-    margin-right: 35px;
 }
 
 body main .gallery .comments-box ul {
@@ -494,4 +493,9 @@ body .hidden {
 .order-button:active {
     position: relative;
     top: 1px;
+}
+
+.remove-item:hover {
+    box-shadow: 3px 3px 3px #ccc;
+    cursor: pointer;
 }
