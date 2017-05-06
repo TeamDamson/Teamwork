@@ -59,6 +59,10 @@ let app = app || {};
             const technique = this.params["technique"];
             galleryController.getPaintingsByTechnique(selector, technique);
         });
+
+        this.get('#/contact', function () {
+            userController.getContactForm(selector);
+        });
     });
 
     app.router.run('#/');

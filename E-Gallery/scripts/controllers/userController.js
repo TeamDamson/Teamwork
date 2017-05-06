@@ -38,6 +38,13 @@ let userController = (function() {
             selector.html(Tamplates.homePage(startText));
         }
 
+        getContactForm(selector) {
+            $(selector).empty();
+            this.templates.getTemplate('contact-form').then(function (responseTemplate) {
+                selector.html(responseTemplate());
+            });
+        }
+
         onLogin(e) {
             DOMManipulation.showLogedIn();
             $('#loggedInUser').text('Welcome ' + e.username + '!');
