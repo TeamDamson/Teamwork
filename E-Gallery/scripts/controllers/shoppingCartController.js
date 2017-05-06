@@ -10,7 +10,6 @@ class ShoppingCartController {
     }
 
     viewCart(selector) {
-        $('#shopping-cart').attr('height', '200px')
         let cartContainer = $('#shopping-cart');
         cartContainer.appendTo(selector);
         let result = {
