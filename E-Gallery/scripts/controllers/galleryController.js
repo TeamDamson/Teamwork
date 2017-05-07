@@ -21,6 +21,7 @@ let galleryController = (function() {
                 };
                 return templates.getTemplate('load-gallery');
             }).then(function(template) {
+                $('aside').removeClass('hidden');
                 selector.html(template(result));
             }).catch(function(error) {
                 toastr.error('Unable to display gallery!');
@@ -114,7 +115,6 @@ let galleryController = (function() {
                     toastr.error('Unable to display painting!');
                     location.hash = '#/paintings';
                 });
-
         }
 
         getPaintingByArtist(selector, artist) {
