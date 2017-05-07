@@ -1,4 +1,4 @@
-import toastr from 'toastr';
+// import toastr from 'toastr';
 
 class Validator {
     static validatePassword(password) {

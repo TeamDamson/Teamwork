@@ -24,6 +24,11 @@ let userController = (function () {
                 location.hash = '#/home';
                 $('#linkHome').html('<a href="#/home">Home</a>');
             })
+            // $(document).on('register', (e) => {
+            //     // console.log('errorLoging');
+            //     // to check kind of error
+            //     location.hash = '#/home';
+            // })
         }
 
         URL_AVATAR_IMG = "//ssl.gstatic.com/accounts/ui/avatar_2x.png";
@@ -63,6 +68,19 @@ let userController = (function () {
             location.hash = '#/paintings';
         }
 
+        getLoginRegister(selector) {
+            let username = $('.login-register input[name=user]').val();
+            let password = $('.login-register input[name=pass]').val();
+            // debugger;
+            if (username && password) {
+                logInUser(selector);
+                return
+            };
+            this.getRegisterForm(selector);
+            $('.form-signin input[name=user]').val(username);
+            $('.form-signin input[name=pass]').val(password);
+            return
+        }
 
         getRegisterForm(selector) {
             global = this._functionOnClick;
@@ -75,10 +93,12 @@ let userController = (function () {
             };
             $(selector).empty();
             selector.html(Tamplates.RegisterForm(formData));
+            $("#reg-form").slideDown("slow");
         }
 
 
-        _functionOnClick() {
+        _functionOnClick(selector) {
+            // console.log('kelp');
             let username = $('.form-signin input[name=user]').val();
             let password = $('.form-signin input[name=pass]').val();
             let confirmPassword = $('.form-signin input[name=confirmPass]').val();
@@ -90,7 +110,8 @@ let userController = (function () {
                 if (password !== confirmPassword) {
                     throw new Error('Please confirm password correct');
                 };
-
+                console.log('help');
+                // debugger;
                 registerUser(selector, { username: username, password: password });
             } catch (e) {
                 DOMManipulation.clearAllUsersField();
@@ -100,13 +121,9 @@ let userController = (function () {
                     "data-toggle": "popover",
                     "data-trigger": "focus",
                     // "data-delay":{show: 200, hide: 1000}
-                });// = 'title="Popover Header"';//.attr('data-content="Some content inside the popover"');
-                // data-toggle="popover" title="Popover Header" data-content="Some content inside the popover"
-                // $('.form-signin input[name=pass]').attr() = 'data-content="Some content inside the popover"';
-                // $(document).ready(function () {
+                });
                 $('[data-toggle="popover"]').popover();
-                // });
-                toastr.error(e.message);
+                // toastr.error(e.message);
             }
 
         }

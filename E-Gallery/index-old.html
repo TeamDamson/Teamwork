@@ -12,18 +12,15 @@
     <meta property="og:type" content="website" />
     <meta property="og:title" content="E-Gallery" />
     <meta property="og:description" content="The best E-Gallery" />
-    <meta property="og:image" content="http://storage.googleapis.com/e8bba42ae61d461f8b9f5ba304c666e6/86352ed2-db1b-4e84-bfaa-3a0ca113f3b0/header.png"/>
+    <meta property="og:image" content="http://storage.googleapis.com/e8bba42ae61d461f8b9f5ba304c666e6/86352ed2-db1b-4e84-bfaa-3a0ca113f3b0/header.png"
+    />
 
     <link rel="icon" href="./images/favicon.ico" type="image/x-icon">
-
-    <!--fonts-->
     <link href="https://fonts.googleapis.com/css?family=Francois+One" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-    <!--font-family: 'Montserrat', sans-serif;-->
-
-    <!--styles-->
     <link rel="stylesheet" href="./styles/style.css">
     <link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.css">
+    <!--<link rel="stylesheet" href="./bower_components/bootstrap/js/tooltip.js">
+    <link rel="stylesheet" href="./bower_components/bootstrap/js/popover.js">-->
     <link rel="stylesheet" href="./bower_components/toastr/toastr.css">
 </head>
 
@@ -57,21 +54,18 @@
                         </ul>
                     </div>
                     <div id="register-form" class="col-md-6">
-
                         <form class="login-register form-inline">
-                            <!--<a href="#/login" id="btnLogin" class="btn btn-info">Login</a>-->
+                            <a href="#/login" id="btnLogin" class="btn btn-info">Login</a>
                             <div class="form-group">
-                                <!--<label class="sr-only" for="inputEmail">User Name</label>-->
-                                <input type="text" class="form-control" name="user" autofocus placeholder="User Name">
+                                <label class="sr-only" for="inputEmail">User Name</label>
+                                <input type="text" class="form-control" name="user" required placeholder="User Name">
                             </div>
                             <div class="form-group">
-                                <!--<label class="sr-only" for="inputPassword">Password</label>-->
-                                <input type="password" class="form-control" name="pass" placeholder="Password">
+                                <label class="sr-only" for="inputPassword">Password</label>
+                                <input type="password" class="form-control" name="pass" required placeholder="Password">
                             </div>
-                            <!--<span id="span">or</span>-->
-                            <a href="#/loginRegister" class="btn btn-info">Login/Register</a>
-                            <!--formaction="#/register"-->
-                            <!--<button type="submit" class="btn btn-info" onclick="myFunction()">Login/Register</button>-->
+                            <span id="span">or</span>
+                            <a href="#/register" class="btn btn-info">Register</a>
                         </form>
                     </div>
                     <div id="shopping-cart"></div>
@@ -91,13 +85,11 @@
             <div class="row">
                 <!--google-->
                 <!--<div class="g-plus" data-action="share" data-annotation="none" data-height="24"></div>-->
-                <div class="col-md-4 col-md-offset-2">
-                    <a class="twitter-share-button" href="https://gallery-957d0.firebaseapp.com/#/paintings" data-size="large">Tweet</a>
-                </div>
+                <div class="col-md-4 col-md-offset-2"><a class="twitter-share-button" href="https://gallery-957d0.firebaseapp.com/#/paintings" data-size="large">
+Tweet</a></div>
                 <div class="col-md-6">
-                    <div class="fb-share-button" data-href="https://gallery-957d0.firebaseapp.com/#/paintings" data-layout="button" data-size="large" data-mobile-iframe="true">
-                        <a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fgallery-957d0.firebaseapp.com%2F%23%2Fpaintings&amp;src=sdkpreparse">Share</a>
-                    </div>
+                    <div class="fb-share-button" data-href="https://gallery-957d0.firebaseapp.com/#/paintings" data-layout="button" data-size="large"
+                        data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fgallery-957d0.firebaseapp.com%2F%23%2Fpaintings&amp;src=sdkpreparse">Share</a></div>
                 </div>
             </div>
         </div>
@@ -137,7 +129,7 @@
 
     <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/sammy.js/0.7.6/sammy.min.js"></script>-->
 
-    <!--<script src="./bower_components/moment/moment.js"></script>-->
+    <script src="./bower_components/moment/moment.js"></script>
 
     <script src="./node_modules/systemjs/dist/system.js"></script>
     <script src="./config.js"></script>
