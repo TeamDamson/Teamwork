@@ -85,6 +85,23 @@ body #wrapper {
   padding-top: 60px;
   padding-bottom: 60px;
 }
+body #wrapper aside .input-group > div {
+  border: 1px solid #ccc;
+  display: inline-block;
+  width: 80px;
+}
+body #wrapper aside .input-group #select {
+  border: none;
+}
+body #wrapper aside .input-group #search-input {
+  width: 175px;
+  padding: 21px 10px;
+  line-height: 28px;
+  display: inline-block;
+}
+body #wrapper aside .input-group button {
+  padding: 11px;
+}
 body #wrapper aside ul {
   margin-top: 20px;
   font-size: 16px;

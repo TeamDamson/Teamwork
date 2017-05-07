@@ -127,7 +127,17 @@ class GalleryModel {
 
     getPaintingsByTitle(title){
          var filter = JSON.stringify({
-            "title": title
+            "title": {"$regex":`^(?i)${title}`}
+        });
+        let requestUrl = this._url + 'appdata/' + this._appKey + '/paintings/?query=' + filter;
+        let requestHeaders = this._authenticationService.getKinveyUserAuthHeaders();
+
+        return this._requester.get(requestUrl, requestHeaders);
+    }
+
+    getPaintingsByArtist(artist){
+         var filter = JSON.stringify({
+            "artist.name": {"$regex":`^(?i)${artist}`}
         });
         let requestUrl = this._url + 'appdata/' + this._appKey + '/paintings/?query=' + filter;
         let requestHeaders = this._authenticationService.getKinveyUserAuthHeaders();

@@ -66,8 +66,17 @@ let app = app || {};
 
          $('#search-btn').on('click', function () {
             let data = $('#search-input').val();
+            let option = $('#select').val();
+
             $('#search-input').val('');
-            galleryController.search(selector, data);
+            
+            if(option === 'title'){
+                galleryController.searchByTitle(selector, data);
+            }
+            else if(option === 'artist'){
+                galleryController.searchByArtist(selector, data);
+            }
+            
         });
 
         this.get('#/send', function () {
