@@ -13,17 +13,7 @@ function logInUser(selector) {
     };
     DOMManipulation.clearUserPassField('.login-register ');
 
-    requester.post({
-        url: kinveyUrls.baseUrl + 'user/' + kinveyUrls.appKey + '/login',
-        data: JSON.stringify(userData),
-        headers: kinveyUrls.authHeaders,
-        contentType: 'application/json'
-    }).then((userInfo) => loginWithSuccess(userInfo, selector)).catch(function (error) {
-        toastr.error('Incorrect user name or password. Please try again!');
-        location.hash = '#/';
-    });
-
-    // $.post({
+    // requester.post({
     //     url: kinveyUrls.baseUrl + 'user/' + kinveyUrls.appKey + '/login',
     //     data: JSON.stringify(userData),
     //     headers: kinveyUrls.authHeaders,
@@ -32,6 +22,16 @@ function logInUser(selector) {
     //     toastr.error('Incorrect user name or password. Please try again!');
     //     location.hash = '#/';
     // });
+
+    $.post({
+        url: kinveyUrls.baseUrl + 'user/' + kinveyUrls.appKey + '/login',
+        data: JSON.stringify(userData),
+        headers: kinveyUrls.authHeaders,
+        contentType: 'application/json'
+    }).then((userInfo) => loginWithSuccess(userInfo, selector)).catch(function (error) {
+        toastr.error('Incorrect user name or password. Please try again!');
+        location.hash = '#/';
+    });
 
     function loginWithSuccess(userInfo, selector) {
         saveAuthInSession(userInfo);

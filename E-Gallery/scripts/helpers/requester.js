@@ -12,15 +12,11 @@ function _makeRequest(method, url, headers, data) {
 
 class Requester {
     get(url, headers) {
-        // return $.get(url, headers);
         return _makeRequest('GET', url, headers);
     }
 
-    // post(url, headers, data) {
-    post(post) {
-        $.post(post);
-        return $.post(post);
-        //return _makeRequest('POST', url, headers, data);
+     post(url, headers, data) {
+        return _makeRequest('POST', url, headers, data);
     }
 
     put(url, headers, data) {

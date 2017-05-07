@@ -88,13 +88,13 @@ body #wrapper {
 body #wrapper aside .input-group > div {
   border: 1px solid #ccc;
   display: inline-block;
-  width: 80px;
+  width: 35%;
 }
 body #wrapper aside .input-group #select {
   border: none;
 }
 body #wrapper aside .input-group #search-input {
-  width: 175px;
+  width: 65%;
   padding: 21px 10px;
   line-height: 28px;
   display: inline-block;
