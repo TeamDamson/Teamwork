@@ -18,9 +18,9 @@ class Requester {
 
     // post(url, headers, data) {
     post(post) {
-        // $.post(post);
+        $.post(post);
         return $.post(post);
-        // return _makeRequest('POST', url, headers, data);
+        //return _makeRequest('POST', url, headers, data);
     }
 
     put(url, headers, data) {

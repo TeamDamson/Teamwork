@@ -10,7 +10,6 @@ let galleryController = (function() {
         constructor(templates, galleryModel) {
             this.templates = templates;
             this.galleryModel = galleryModel;
-
         }
 
         getGallery(selector) {
@@ -32,6 +31,8 @@ let galleryController = (function() {
         getPaintingById(selector, id) {
             $(selector).empty();
             let result;
+            let resultComments;
+            //let arrayComments = [];
             let self = this;
             this.galleryModel.getPaintingsInfo(id)
                 .then(function(data) {
@@ -55,13 +56,60 @@ let galleryController = (function() {
                             .then(downloadWithSuccess)
                             .catch(function(error) {
                                 toastr.error('Unable to download painting!');
-                                location.hash = '#/paintings/:id';
                             });
                     });
+
+                    $('.comment').on('click', function () {
+                        $('#comments-container').toggleClass('hidden');
+                        self.galleryModel.getAllComments(result._id).then(function (data) {
+                            //arrayComments = data;
+                            resultComments = {
+                                comments: data
+                            };
+                            return templates.getTemplate('comments');
+                        }).then(function (template) {
+                            $('#comments-container').html(template(resultComments));
+
+                            $('#add-comment').on('click', function (ev) {
+                                let content = {
+                                    date: moment().format("ll"),
+                                    text: $('#textarea-comment').val(),
+                                    user: sessionStorage.getItem("username"),
+                                    paintingId: result._id
+                                };
+                                if (content.text === "") {
+                                    toastr.error("You have not write a comment!");
+                                    ev.preventDefault();
+                                    return;
+                                }
+                                self.galleryModel.addNewComment(content).then(function (data) {
+                                    //arrayComments.push(data);
+                                    toastr.success('Comment was added');
+                                    //$('#comments-container').html(template({comments:arrayComments}));
+                                }).catch(function (error) {
+                                    toastr.error('Try again');
+                                });
+
+                                self.galleryModel.getAllComments(result._id).then(function (data) {
+                                    resultComments = {
+                                        comments: data
+                                    };
+                                    return templates.getTemplate('comments');
+                                }).then(function (template) {
+                                    $('#comments-container').html(template(resultComments));
+                                });
+                            });
+                        });
+                    });
                 })
-                .then(() =>
-                    $('.buy').on('click', () => this.addToCart(result))
-                )
+                .then(() => {
+                    $('.buy').on('click', () => this.addToCart(result));
+                    if (userController.shoppingCartManager.isAdded(id)) {
+                        $('.buy').attr('disabled', true);
+                    } else {
+                        $('.buy').attr('disabled', false);
+                    }
+                })
                 .catch(function(error) {
                     toastr.error('Unable to display painting!');
                     location.hash = '#/paintings';
@@ -97,7 +145,55 @@ let galleryController = (function() {
                 author: paintingData.artist.name,
                 price: paintingData.price
             });
+            $('.buy').attr('disabled', true);
+        }
 
+        getPaintingsByStyle(selector, style) {
+            $(selector).empty();
+            let resultStyle;
+            this.galleryModel.getPaintingsInfoByStyle(style).then(function(data) {
+                resultStyle = {
+                    paintings: data
+                };
+                return templates.getTemplate('load-gallery');
+            }).then(function(template) {
+                selector.html(template(resultStyle));
+            }).catch(function(error) {
+                toastr.error('Unable to display paintings!');
+                location.hash = '#/paintings';
+            });
+        }
+
+        getPaintingsBySubject(selector, subject) {
+            $(selector).empty();
+            let resultSubject;
+            this.galleryModel.getPaintingsInfoBySubject(subject).then(function(data) {
+                resultSubject = {
+                    paintings: data
+                };
+                return templates.getTemplate('load-gallery');
+            }).then(function(template) {
+                selector.html(template(resultSubject));
+            }).catch(function(error) {
+                toastr.error('Unable to display paintings!');
+                location.hash = '#/paintings';
+            });
+        }
+
+        getPaintingsByTechnique(selector, technique) {
+            $(selector).empty();
+            let resultTechnique;
+            this.galleryModel.getPaintingsInfoByTechnique(technique).then(function(data) {
+                resultTechnique = {
+                    paintings: data
+                };
+                return templates.getTemplate('load-gallery');
+            }).then(function(template) {
+                selector.html(template(resultTechnique));
+            }).catch(function(error) {
+                toastr.error('Unable to display paintings!');
+                location.hash = '#/paintings';
+            });
         }
     }
 

@@ -184,6 +184,15 @@ body main .profile-img-card {
     border-radius: 50%;
 }
 
+body main .contact-form {
+    margin-top: 20px;
+}
+
+body main .contact-form div,
+body main .contact-form button {
+    font-size: 18px;
+}
+
 body main .gallery {
     padding: 20px;
 }
@@ -242,12 +251,12 @@ body main .gallery .description strong {
 }
 
 body main .gallery h3,
-body main .gallery h2 {
+body main .gallery h4 {
     color: #888;
 }
 
 body main .gallery h3 strong,
-body main .gallery h2 strong {
+body main .gallery h4 strong {
     color: #337ab7;
 }
 
@@ -295,6 +304,44 @@ body main .gallery .artist-img {
     height: 200px;
 }
 
+body main .gallery .comments-box {
+    padding: 10px;
+}
+
+body main .gallery .comments-box ul {
+    list-style-type: none;
+    color: #888;
+}
+
+body main .gallery .comments-box ul li {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    margin: 10px 0;
+    padding: 10px;
+    font-size: 18px;
+}
+
+body main .gallery .comments-box ul li em {
+    font-size: 14px;
+    float: right;
+}
+
+body main .gallery .comments-box ul li .glyphicon-user {
+    border: 1px solid #a9a9a9;
+    font-size: 25px;
+}
+
+body main .gallery .comments-box button {
+    font-size: 16px;
+    border: 1px solid #a9a9a9;
+}
+
+body main .gallery .comments-box #textarea-comment {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 10px;
+}
+
 body main .gallery aside ul {
     margin-top: 20px;
     font-size: 16px;
@@ -317,6 +364,11 @@ body .hidden {
     display: none;
 }
 
+#shoppingCart {
+    width: 40px;
+    margin-left: 15px;
+}
+
 #shoppingCart:hover {
     cursor: pointer;
 }
@@ -324,8 +376,8 @@ body .hidden {
 #fluid-notification {
     display: inline;
     position: absolute;
-    left: 212px;
-    top: 25px;
+    left: 180px;
+    top: 16px;
     min-width: 17px;
     line-height: 17px;
     font-size: 10px;
@@ -335,6 +387,10 @@ body .hidden {
     border-radius: 50%;
 }
 
+#shopping-cart {
+    overflow-y: auto;
+}
+
 .cart-header {
     padding: 2px 16px;
     background-color: #5cb85c;
@@ -342,6 +398,7 @@ body .hidden {
 }
 
 .cart-body {
+    overflow-y: auto;
     padding: 2px 16px;
 }
 
@@ -353,6 +410,8 @@ body .hidden {
 
 .cart-content {
     display: "block";
+    height: 200px;
+    overflow-y: auto;
     position: relative;
     background-color: #fefefe;
     margin: auto;
@@ -364,7 +423,7 @@ body .hidden {
     -webkit-animation-name: animatetop;
     -webkit-animation-duration: 0.4s;
     animation-name: animatetop;
-    animation-duration: 0.4s
+    animation-duration: 0.4s;
 }
 
 .shopping-cart-item div {
@@ -395,21 +454,98 @@ body .hidden {
 @-webkit-keyframes animatetop {
     from {
         top: -300px;
-        opacity: 0
+        opacity: 0;
     }
     to {
         top: 0;
-        opacity: 1
+        opacity: 1;
     }
 }
 
 @keyframes animatetop {
     from {
         top: -300px;
-        opacity: 0
+        opacity: 0;
     }
     to {
         top: 0;
-        opacity: 1
+        opacity: 1;
     }
+}
+
+#remove-item {
+    display: inline-block;
+    width: 50px;
+    color: red;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.remove-item:hover {
+    box-shadow: 3px 3px 3px #ccc;
+    cursor: pointer;
+}
+
+.order-button {
+    background-color: #44c767;
+    -moz-border-radius: 28px;
+    -webkit-border-radius: 28px;
+    border-radius: 28px;
+    border: 1px solid #044f0c;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    font-size: 17px;
+    padding: 16px 31px;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #2f6627;
+}
+
+.order-button:hover {
+    background-color: #5cbf2a;
+}
+
+.order-button:active {
+    position: relative;
+    top: 1px;
+}
+
+.remove-item:hover {
+    box-shadow: 3px 3px 3px #ccc;
+    cursor: pointer;
+}
+
+.order-container input[type=text],
+select,
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+}
+
+.order-container input[type=submit] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.order-container input[type=submit]:hover {
+    background-color: #45a049;
+}
+
+.order-container {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+    height: 200px;
+    overflow: auto;
 }

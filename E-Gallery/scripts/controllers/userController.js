@@ -22,6 +22,7 @@ let userController = (function () {
             $(document).on('logout', () => {
                 DOMManipulation.showLogedOut();
                 location.hash = '#/home';
+                $('#linkHome').html('<a href="#/home">Home</a>');
             })
         }
 
@@ -39,10 +40,18 @@ let userController = (function () {
             selector.html(Tamplates.homePage(startText));
         }
 
+        getContactForm(selector) {
+            $(selector).empty();
+            this.templates.getTemplate('contact-form').then(function (responseTemplate) {
+                selector.html(responseTemplate());
+            });
+        }
+
         onLogin(e) {
             DOMManipulation.showLogedIn();
             $('#loggedInUser').text('Welcome ' + e.username + '!');
             this.shoppingCartManager.username = e.username;
+            userController.shoppingCartManager.items = [];
             this.shoppingCartController = new ShoppingCartController(templates, userController.shoppingCartManager);
             let cartElement = userController.shoppingCartManager.shoppingCartElement;
             cartElement.on('click', () => {
@@ -50,6 +59,7 @@ let userController = (function () {
             });
             $('#loggedInUser').append(() => this.shoppingCartManager.shoppingCartElement);
             $('#loggedInUser').append(() => this.shoppingCartManager.shoppingItemsCountElement.text(0));
+            $('#linkHome').html('<a href="#/paintings">Home</a>');
             location.hash = '#/paintings';
         }
 
