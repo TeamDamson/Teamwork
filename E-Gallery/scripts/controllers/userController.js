@@ -9,7 +9,6 @@ import { Tamplates } from 'tamplatesMy';
 import { ShoppingCartController } from 'shoppingCartController';
 import bootstrap from 'bootstrap';
 
-
 let userController = (function () {
     class UserController {
         constructor(templates) {
@@ -42,6 +41,7 @@ let userController = (function () {
 
         getContactForm(selector) {
             $(selector).empty();
+            $('aside').addClass('hidden');
             this.templates.getTemplate('contact-form').then(function (responseTemplate) {
                 selector.html(responseTemplate());
             });
@@ -60,6 +60,7 @@ let userController = (function () {
             $('#loggedInUser').append(() => this.shoppingCartManager.shoppingCartElement);
             $('#loggedInUser').append(() => this.shoppingCartManager.shoppingItemsCountElement.text(0));
             $('#linkHome').html('<a href="#/paintings">Home</a>');
+            $('aside').removeClass('hidden');
             location.hash = '#/paintings';
         }
 
@@ -112,10 +113,12 @@ let userController = (function () {
         }
 
         getLogInUser(selector) {
+             $('aside').removeClass('hidden');
             logInUser(selector);
         }
 
         getLogOutUser(selector) {
+             $('aside').addClass('hidden');
             logOutUser(selector);
         }
     }

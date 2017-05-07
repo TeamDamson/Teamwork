@@ -1,31 +1,4 @@
-<div class="gallery row">
-    <aside class="search col-md-2 position-fixed">
-        <div class="input-group">
-            <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
-            <input type="text" class="form-control" placeholder="Search by Artist or Title">
-        </div>
-        <ul class="nav nav-pills nav-stacked">
-            <li role="presentation" class="active"><a href="#">Style</a></li>
-            <li role="presentation"><a href="#/style/Abstract Art">Abstract Art</a></li>
-            <li role="presentation"><a href="#/style/Landscape Art">Landscape Art</a></li>
-            <li role="presentation"><a href="#/style/Realism">Realism</a></li>
-            <li role="presentation"><a href="#/style/Impressionism">Impressionism</a></li>
-        </ul>
-        <ul class="nav nav-pills nav-stacked">
-            <li role="presentation" class="active"><a href="#">Subject</a></li>
-            <li role="presentation"><a href="#/subject/Animals">Animals</a></li>
-            <li role="presentation"><a href="#/subject/Flora">Flora</a></li>
-            <li role="presentation"><a href="#/subject/Landscape">Landscape</a></li>
-            <li role="presentation"><a href="#/subject/Seascape">Seascape</a></li>
-        </ul>
-        <ul class="nav nav-pills nav-stacked">
-            <li role="presentation" class="active"><a href="#">Tehnique</a></li>
-            <li role="presentation"><a href="#/technique/Oil Painting">Oil Painting</a></li>
-            <li role="presentation"><a href="#/technique/Acrylic Painting">Acrilic Painting</a></li>
-            <li role="presentation"><a href="#/technique/Watercolor Painting">Watercolor Painting</a></li>
-        </ul>
-    </aside>
-    <div class="row col-md-8 col-md-offset-2">
+<div class="gallery">
         <div class="row">
             <div class="col-md-3">
                  <img class="img-thumbnail artist-img" src="{{paintings.[0].artist.image._downloadURL}}">
@@ -60,7 +33,6 @@
             </li>
             {{/each}}
         </ul>
-    </div>
     {{else}}
     <div>No paintings available</div>
     {{/if}}

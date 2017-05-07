@@ -2,8 +2,7 @@
 import Sammy from 'sammy';
 import { userController } from 'userController';
 import { galleryController } from 'galleryController';
-
-//sessionStorage.clear();
+import { galleryModel } from 'view';
 
 let app = app || {};
 
@@ -63,6 +62,23 @@ let app = app || {};
         this.get('#/contact', function () {
             userController.getContactForm(selector);
         });
+
+         $('#search-btn').on('click', function () {
+            let data = $('#search-input').val();
+            $('#search-input').val('');
+            galleryController.search(selector, data);
+        });
+
+        $('#btnContactUs').on('click', function () {
+            let data = {
+                'name': $('#name').val(),
+                'e-mail': $('#email').val(),
+                'subject': $('#subject').val(),
+                'message': $('#message').val()
+            };
+            galleryModel.addMessage(data);
+        });
+        
     });
 
     app.router.run('#/');
