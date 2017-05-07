@@ -7,8 +7,10 @@ import { Validator } from "validators";
 import { DOMManipulation } from 'domManipulation';
 import { Tamplates } from 'tamplatesMy';
 import { ShoppingCartController } from 'shoppingCartController';
+import bootstrap from 'bootstrap';
 
-let userController = (function() {
+
+let userController = (function () {
     class UserController {
         constructor(templates) {
             this.shoppingCartController = null;
@@ -82,6 +84,18 @@ let userController = (function() {
                 registerUser(selector, { username: username, password: password });
             } catch (e) {
                 DOMManipulation.clearAllUsersField();
+                $('.form-signin input[name=pass]').attr({
+                    // "title": "Popover Header",
+                    "data-content": "This filed is requerd",
+                    "data-toggle": "popover",
+                    "data-trigger": "focus",
+                    // "data-delay":{show: 200, hide: 1000}
+                });// = 'title="Popover Header"';//.attr('data-content="Some content inside the popover"');
+                // data-toggle="popover" title="Popover Header" data-content="Some content inside the popover"
+                // $('.form-signin input[name=pass]').attr() = 'data-content="Some content inside the popover"';
+                // $(document).ready(function () {
+                $('[data-toggle="popover"]').popover();
+                // });
                 toastr.error(e.message);
             }
 
