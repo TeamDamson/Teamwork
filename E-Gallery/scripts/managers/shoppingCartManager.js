@@ -32,3 +32,5 @@ class ShoppingCartManager {
         return this.items.find(item => item.id === id)
     }
 }
+
+export { ShoppingCartManager }

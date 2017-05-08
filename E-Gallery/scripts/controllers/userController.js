@@ -7,6 +7,7 @@ import { Validator } from "validators";
 import { DOMManipulation } from 'domManipulation';
 import { Tamplates } from 'tamplatesMy';
 import { ShoppingCartController } from 'shoppingCartController';
+import { ShoppingCartManager } from 'shoppingCartManager';
 import bootstrap from 'bootstrap';
 
 let userController = (function() {
