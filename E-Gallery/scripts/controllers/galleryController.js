@@ -33,7 +33,6 @@ let galleryController = (function () {
             $(selector).empty();
             let result;
             let resultComments;
-            //let arrayComments = [];
             let self = this;
             this.galleryModel.getPaintingsInfo(id)
                 .then(function (data) {
@@ -41,16 +40,6 @@ let galleryController = (function () {
                     return templates.getTemplate('paintings-info');
                 }).then(function (template) {
                     selector.html(template(result));
-
-                    //self.galleryModel.countViews(result);
-
-                    //$('.like').on('click', function() {
-                    //     self.galleryModel.rateLikes(result);
-                    // });
-
-                    // $('.dislike').on('click', function() {
-                    //     self.galleryModel.rateDislikes(result);
-                    // });
 
                     $('.like').on('click', function () {
                         self.galleryModel.rateLikes(result)
@@ -82,10 +71,10 @@ let galleryController = (function () {
                             });
                     });
 
+                    $('#comments-container').addClass('hidden');
                     $('.comment').on('click', function () {
                         $('#comments-container').toggleClass('hidden');
                         self.galleryModel.getAllComments(result._id).then(function (data) {
-                            //arrayComments = data;
                             resultComments = {
                                 comments: data
                             };
@@ -106,9 +95,7 @@ let galleryController = (function () {
                                     return;
                                 }
                                 self.galleryModel.addNewComment(content).then(function (data) {
-                                    //arrayComments.push(data);
                                     toastr.success('Comment was added');
-                                    //$('#comments-container').html(template({comments:arrayComments}));
                                 }).catch(function (error) {
                                     toastr.error('Try again');
                                 });
