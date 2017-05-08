@@ -72,7 +72,6 @@ let userController = (function () {
         getLoginRegister(selector) {
             let username = $('.login-register input[name=user]').val();
             let password = $('.login-register input[name=pass]').val();
-            // debugger;
             if (username && password) {
                 logInUser(selector);
                 return
@@ -94,47 +93,40 @@ let userController = (function () {
             };
             $(selector).empty();
             selector.html(Tamplates.RegisterForm(formData));
-            $("#reg-form").slideDown("slow");
-            $('.form-signin input[name=pass]').attr({
-                // "title": "Popover Header",
-                "data-content": "This filed is requerd",
-                "data-toggle": "popover",
-                "data-trigger": "focus",
-                // "data-delay":{show: 200, hide: 1000}
-            });
-            $('[data-toggle="popover"]').popover();
+            $("#reg-form").slideDown("normal");
+            this._validateImputField('[data-toggle="popoverName"]', 'name');
+            this._validateImputField('[data-toggle="popoverPass"]', 'pass');
         }
 
+        _validateImputField(selector, field) {
+            let element = $(selector);
+            element.focusout(() => {
+                let value = element.val();
+                try {
+                    Validator.validateField(value, field);
+                } catch (e) {
+                    element.attr('data-content', e.message);
+                    element.popover();
+                    element.focus();
+                }
+            });
+        }
 
         _functionOnClick(selector) {
-            // console.log('kelp');
             let username = $('.form-signin input[name=user]').val();
             let password = $('.form-signin input[name=pass]').val();
             let confirmPassword = $('.form-signin input[name=confirmPass]').val();
-
-
             try {
                 Validator.validateUserName(username);
                 Validator.validatePassword(password);
                 if (password !== confirmPassword) {
-                    throw new Error('Please confirm password correct');
+                    throw new Error('Please confirm password correctly!');
                 };
-                console.log('help');
-                // debugger;
                 registerUser(selector, { username: username, password: password });
             } catch (e) {
-                DOMManipulation.clearAllUsersField();
-                // $('.form-signin input[name=pass]').attr({
-                //     // "title": "Popover Header",
-                //     "data-content": "This filed is requerd",
-                //     "data-toggle": "popover",
-                //     "data-trigger": "focus",
-                //     // "data-delay":{show: 200, hide: 1000}
-                // });
-                // $('[data-toggle="popover"]').popover();
                 toastr.error(e.message);
+                $('.form-signin input[name=confirmPass]').focus();
             }
-
         }
 
         getLogInUser(selector) {
@@ -147,7 +139,6 @@ let userController = (function () {
             logOutUser(selector);
         }
     }
-
     return new UserController(templates);
 })();
 

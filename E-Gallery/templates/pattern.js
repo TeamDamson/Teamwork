@@ -58,10 +58,19 @@ class Patt {
                 <div class="account-wall">
                     <img id="profile-img" class="profile-img-card" src={{imgAvatar}} />
                     <form class="form-signin">
-                        <input type="text" class="form-control" name="user" placeholder={{nameField}} required autofocus>
-                        <input type="password" class="form-control" name="pass" placeholder={{passField}} required>
-                        <input type="password" class="form-control" name="confirmPass" placeholder={{confirmPassField}} required>
-                        <button class="btn btn-lg btn-info btn-block" id="btn-register" {{{button.event}}}()>{{button.name}}</button>
+                        <input type="text" class="form-control" name="user" placeholder={{nameField}} autofocus requered
+                            data-content="This filed is requerd"
+                            data-toggle="popoverName"
+                            data-trigger="delay={show: 0, hide: 1000}">
+                        <input type="password" class="form-control" name="pass" placeholder={{passField}} 
+                            data-content="This filed is requerd"
+                            data-toggle="popoverPass"
+                            data-trigger="delay={show: 0, hide: 1000}">
+                        <input type="password" class="form-control" name="confirmPass" placeholder={{confirmPassField}}
+                            data-content="This filed is requerd"
+                            data-toggle="popoverConfirmPass"
+                            data-trigger="delay={show: 0, hide: 1000}">
+                        <a href="#/loginRegister" class="btn btn-lg btn-info btn-block" id="btn-register" {{{button.event}}}()>{{button.name}}</a>
                     </form>
                 </div>
             </div>

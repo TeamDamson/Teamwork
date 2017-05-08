@@ -12,6 +12,10 @@ function logInUser(selector) {
         username: $('.login-register input[name=user]').val(),
         password: $('.login-register input[name=pass]').val()
     };
+    // let userData = {
+    //     username: username,
+    //     password: password
+    // };
     DOMManipulation.clearUserPassField('.login-register ');
 
     // requester.post({
@@ -95,7 +99,7 @@ function logInUser(selector) {
 
 function registerUser(selector, userData) {
 
-    console.log('register from request');
+    // console.log('register from request');
     // requester.post({
         $.post({
         url: kinveyUrls.baseUrl + 'user/' + kinveyUrls.appKey,
@@ -138,4 +142,3 @@ function logOutUser(selector) {
 
 
 export { logInUser, registerUser, logOutUser };
-// export { logInUser, logOutUser };

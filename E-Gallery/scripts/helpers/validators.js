@@ -15,6 +15,19 @@ class Validator {
             throw new Error(message)
     }
 
+    static validateField(name, field) {
+        switch (field) {
+            case "name":
+                this.validateUserName(name);
+                break;
+            case "pass":
+                this.validatePassword(name);
+                break;
+            default:
+                throw Error ('wrong field name');
+        }
+    }
+
     static validateObject(objectToValidate, propertiesToValidate) {
         let message = "Missing object property/method";
         if (!isObject(objectToValidate)) {
