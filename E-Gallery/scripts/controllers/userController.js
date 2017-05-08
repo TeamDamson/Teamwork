@@ -133,7 +133,6 @@ let userController = (function() {
         }
 
         getLogInUser(selector) {
-            $('aside').removeClass('hidden');
             logInUser(selector);
         }
 
