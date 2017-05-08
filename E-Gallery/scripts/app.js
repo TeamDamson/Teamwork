@@ -27,9 +27,9 @@ let app = app || {};
             userController.getLoginRegister(selector);
         });
 
-        this.get('#/login', function () {
-            userController.getLogInUser(selector);
-        });
+        // this.get('#/login', function () {
+        //     userController.getLogInUser(selector);
+        // });
 
         this.get('#/logout', function () {
             userController.getLogOutUser();

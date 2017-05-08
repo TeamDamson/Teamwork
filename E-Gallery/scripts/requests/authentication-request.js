@@ -43,22 +43,27 @@ function logInUser(selector) {
 }
 
 function registerUser(selector, userData) {
-        $.post({
+    $.post({
         url: kinveyUrls.baseUrl + 'user/' + kinveyUrls.appKey,
         data: JSON.stringify(userData),
         headers: kinveyUrls.authHeaders,
         contentType: 'application/json'
     })
-        .then(()=>{
+        .then((userInfo) => {
             saveAuthInSession(userInfo);
             DOMManipulation.creatingDivToAddGallery(selector);
             DOMManipulation.showLogedIn();
             toastr.success('User registration successful!');
             location.hash = '#/paintings';
-        }))
-        .catch(function (error) {
-            let errMessage = error.statusText + '! Register unsuccessful. Try again! ';
-            toastr.error(errMessage);
+        })
+        .catch(function (e) {
+            if (e.statusText === 'Conflict') {
+                toastr.error('User exist, try with other name!');
+            } else {
+                let errMessage = e.statusText + '! Register unsuccessful. Try again! ';
+                toastr.error(errMessage);
+            }
+
             location.hash = '#/register';
         });
 

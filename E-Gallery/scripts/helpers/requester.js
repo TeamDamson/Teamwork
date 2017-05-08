@@ -15,7 +15,7 @@ class Requester {
         return _makeRequest('GET', url, headers);
     }
 
-     post(url, headers, data) {
+    post(url, headers, data) {
         return _makeRequest('POST', url, headers, data);
     }
 
