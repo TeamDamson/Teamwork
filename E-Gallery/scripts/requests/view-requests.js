@@ -86,7 +86,7 @@ class GalleryModel {
 
     downloadPainting(id){
         let requestUrl = this._url + 'blob/' + this._appKey + '/' + id;
-        let requestHeaders = this._authenticationService.getKinveyPaintingsAuthHeaders();
+        let requestHeaders = this._authenticationService.getKinveyUserAuthHeaders();
 
         return this._requester.get(requestUrl, requestHeaders);
     }
