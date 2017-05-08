@@ -92,6 +92,9 @@ let userController = (function () {
                 confirmPassField: 'Confirm Password',
                 button: { name: 'Register', event: 'onclick=global' }
             };
+            $(selector).empty();
+            selector.html(Tamplates.RegisterForm(formData));
+            $("#reg-form").slideDown("slow");
             $('.form-signin input[name=pass]').attr({
                 // "title": "Popover Header",
                 "data-content": "This filed is requerd",
@@ -100,9 +103,6 @@ let userController = (function () {
                 // "data-delay":{show: 200, hide: 1000}
             });
             $('[data-toggle="popover"]').popover();
-            $(selector).empty();
-            selector.html(Tamplates.RegisterForm(formData));
-            $("#reg-form").slideDown("slow");
         }
 
 

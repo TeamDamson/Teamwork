@@ -61,7 +61,7 @@ class Patt {
                         <input type="text" class="form-control" name="user" placeholder={{nameField}} required autofocus>
                         <input type="password" class="form-control" name="pass" placeholder={{passField}} required>
                         <input type="password" class="form-control" name="confirmPass" placeholder={{confirmPassField}} required>
-                        <button class="btn btn-lg btn-info btn-block" id="btn-register" {{{button.event}}}()>{{button.name}}<button>
+                        <button class="btn btn-lg btn-info btn-block" id="btn-register" {{{button.event}}}()>{{button.name}}</button>
                     </form>
                 </div>
             </div>
