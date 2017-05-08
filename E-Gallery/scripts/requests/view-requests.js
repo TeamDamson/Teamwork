@@ -124,6 +124,33 @@ class GalleryModel {
 
         return this._requester.get(requestUrl, requestHeaders);
     }
+
+    getPaintingsByTitle(title){
+         var filter = JSON.stringify({
+            "title": {"$regex":`^(?i)${title}`}
+        });
+        let requestUrl = this._url + 'appdata/' + this._appKey + '/paintings/?query=' + filter;
+        let requestHeaders = this._authenticationService.getKinveyUserAuthHeaders();
+
+        return this._requester.get(requestUrl, requestHeaders);
+    }
+
+    getPaintingsByArtist(artist){
+         var filter = JSON.stringify({
+            "artist.name": {"$regex":`^(?i)${artist}`}
+        });
+        let requestUrl = this._url + 'appdata/' + this._appKey + '/paintings/?query=' + filter;
+        let requestHeaders = this._authenticationService.getKinveyUserAuthHeaders();
+
+        return this._requester.get(requestUrl, requestHeaders);
+    }
+
+    addMessage(data){
+        let requestUrl = this._url + 'appdata/' + this._appKey + '/messages';
+        let requestHeaders = this._authenticationService.getKinveyUserAuthHeaders();
+
+        return this._requester.post(requestUrl, requestHeaders, data);
+    }
 }
 
 let galleryModel = new GalleryModel(kinveyUrls.baseUrl, kinveyUrls.appKey, requester, authenticationService);

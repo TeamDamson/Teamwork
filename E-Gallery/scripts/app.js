@@ -2,8 +2,8 @@
 import Sammy from 'sammy';
 import { userController } from 'userController';
 import { galleryController } from 'galleryController';
-
-//sessionStorage.clear();
+import { galleryModel } from 'view';
+import toastr from 'toastr';
 
 let app = app || {};
 
@@ -67,6 +67,42 @@ let app = app || {};
         this.get('#/contact', function () {
             userController.getContactForm(selector);
         });
+
+         $('#search-btn').on('click', function () {
+            let data = $('#search-input').val();
+            let option = $('#select').val();
+
+            $('#search-input').val('');
+            
+            if(option === 'title'){
+                galleryController.searchByTitle(selector, data);
+            }
+            else if(option === 'artist'){
+                galleryController.searchByArtist(selector, data);
+            }
+            
+        });
+
+        this.get('#/send', function () {
+            let data = {
+                'name': $('#name').val(),
+                'e-mail': $('#email').val(),
+                'subject': $('#subject').val(),
+                'message': $('#message').val()
+            };
+
+            $('#name').val('');
+            $('#email').val('');
+            $('#subject').val('');
+            $('#message').val('');
+            
+            galleryModel.addMessage(data).then(function (success) {
+                toastr.success('Your message was send successfuly!');
+            }).catch(function (error) {
+                toastr.error('Send your message again.');
+            });
+        });
+        
     });
 
     app.router.run('#/');

@@ -21,6 +21,7 @@ let galleryController = (function() {
                 };
                 return templates.getTemplate('load-gallery');
             }).then(function(template) {
+                $('aside').removeClass('hidden');
                 selector.html(template(result));
             }).catch(function(error) {
                 toastr.error('Unable to display gallery!');
@@ -114,7 +115,6 @@ let galleryController = (function() {
                     toastr.error('Unable to display painting!');
                     location.hash = '#/paintings';
                 });
-
         }
 
         getPaintingByArtist(selector, artist) {
@@ -192,6 +192,40 @@ let galleryController = (function() {
                 selector.html(template(resultTechnique));
             }).catch(function(error) {
                 toastr.error('Unable to display paintings!');
+                location.hash = '#/paintings';
+            });
+        }
+
+         searchByTitle(selector, title) {
+            $(selector).empty();
+            let result;
+            this.galleryModel.getPaintingsByTitle(title).then(function (data) {
+                result = {
+                    paintings: data
+                };
+                return templates.getTemplate('load-gallery');
+            }).then(function (template) {
+                selector.html(template(result));
+
+            }).catch(function (error) {
+                toastr.error('Unable to display painting!');
+                location.hash = '#/paintings';
+            });
+        }
+
+        searchByArtist(selector, artist) {
+            $(selector).empty();
+            let result;
+            this.galleryModel.getPaintingsByArtist(artist).then(function (data) {
+                result = {
+                    paintings: data
+                };
+                return templates.getTemplate('load-gallery');
+            }).then(function (template) {
+                selector.html(template(result));
+
+            }).catch(function (error) {
+                toastr.error('Unable to display painting!');
                 location.hash = '#/paintings';
             });
         }

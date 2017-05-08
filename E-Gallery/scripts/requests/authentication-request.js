@@ -15,6 +15,7 @@ function logInUser(selector) {
     DOMManipulation.clearUserPassField('.login-register ');
 
     // requester.post({
+// <<<<<<< HEAD
     //     url: kinveyUrls.baseUrl + 'user/' + kinveyUrls.appKey + '/login',
     //     data: JSON.stringify(userData),
     //     headers: kinveyUrls.authHeaders,
@@ -23,6 +24,8 @@ function logInUser(selector) {
     //     .catch(function (error) {  });
 
     // requester.post({
+// =======
+// >>>>>>> e7ea330dcf2ee5b2b92b174b947641601e50012f
     //     url: kinveyUrls.baseUrl + 'user/' + kinveyUrls.appKey + '/login',
     //     data: JSON.stringify(userData),
     //     headers: kinveyUrls.authHeaders,
@@ -34,11 +37,16 @@ function logInUser(selector) {
     //     $.event.trigger('errorLoging');
     // });
 
+// <<<<<<< HEAD
     requester.post({
+// =======
+//     $.post({
+// >>>>>>> e7ea330dcf2ee5b2b92b174b947641601e50012f
         url: kinveyUrls.baseUrl + 'user/' + kinveyUrls.appKey + '/login',
         data: JSON.stringify(userData),
         headers: kinveyUrls.authHeaders,
         contentType: 'application/json'
+// <<<<<<< HEAD
     })
         .then((userInfo) => {
             saveAuthInSession(userInfo);
@@ -60,6 +68,19 @@ function logInUser(selector) {
             let errMessage = 'Error:' + error.statusText;
             toastr.error(errMessage);
             location.hash = '#/'
+// =======
+//     }).then((userInfo) => loginWithSuccess(userInfo, selector)).catch(function (error) {
+//         toastr.error('Incorrect user name or password. Please try again!');
+//         location.hash = '#/';
+//     });
+
+//     function loginWithSuccess(userInfo, selector) {
+//         saveAuthInSession(userInfo);
+//         toastr.success('Login successful!');
+//         $.event.trigger({
+//             type: "login",
+//             username: userInfo.username
+// >>>>>>> e7ea330dcf2ee5b2b92b174b947641601e50012f
         });
 
     // function loginWithSuccess(userInfo, selector) {
