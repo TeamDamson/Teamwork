@@ -9,7 +9,7 @@ import { Tamplates } from 'tamplatesMy';
 import { ShoppingCartController } from 'shoppingCartController';
 import bootstrap from 'bootstrap';
 
-let userController = (function () {
+let userController = (function() {
     class UserController {
         constructor(templates) {
             this.shoppingCartController = null;
@@ -19,15 +19,16 @@ let userController = (function () {
             $(document).on('login', (e) => this.onLogin(e));
 
             $(document).on('logout', () => {
-                DOMManipulation.showLogedOut();
-                location.hash = '#/home';
-                $('#linkHome').html('<a href="#/home">Home</a>');
-            })
-            // $(document).on('register', (e) => {
-            //     // console.log('errorLoging');
-            //     // to check kind of error
-            //     location.hash = '#/home';
-            // })
+                    DOMManipulation.showLogedOut();
+                    location.hash = '#/home';
+                    $('#linkHome').html('<a href="#/home">Home</a>');
+                    $("#shopping-cart").hide();
+                })
+                // $(document).on('register', (e) => {
+                //     // console.log('errorLoging');
+                //     // to check kind of error
+                //     location.hash = '#/home';
+                // })
         }
 
         URL_AVATAR_IMG = "//ssl.gstatic.com/accounts/ui/avatar_2x.png";
@@ -47,7 +48,7 @@ let userController = (function () {
         getContactForm(selector) {
             $(selector).empty();
             $('aside').addClass('hidden');
-            this.templates.getTemplate('contact-form').then(function (responseTemplate) {
+            this.templates.getTemplate('contact-form').then(function(responseTemplate) {
                 selector.html(responseTemplate());
             });
         }
@@ -56,9 +57,10 @@ let userController = (function () {
             DOMManipulation.showLogedIn();
             $('#loggedInUser').text('Welcome ' + e.username + '!');
             this.shoppingCartManager.username = e.username;
-            userController.shoppingCartManager.items = [];
+            this.shoppingCartManager.items = [];
             this.shoppingCartController = new ShoppingCartController(templates, userController.shoppingCartManager);
-            let cartElement = userController.shoppingCartManager.shoppingCartElement;
+            let cartElement = this.shoppingCartManager.shoppingCartElement;
+            cartElement.show();
             cartElement.on('click', () => {
                 this.shoppingCartController.viewCart($('#menu'))
             });

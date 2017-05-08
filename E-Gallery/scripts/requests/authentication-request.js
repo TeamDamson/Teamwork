@@ -14,11 +14,11 @@ function logInUser(selector) {
     DOMManipulation.clearUserPassField('.login-register ');
     // this post method must be changed
     $.post({
-        url: kinveyUrls.baseUrl + 'user/' + kinveyUrls.appKey + '/login',
-        data: JSON.stringify(userData),
-        headers: kinveyUrls.authHeaders,
-        contentType: 'application/json'
-    })
+            url: kinveyUrls.baseUrl + 'user/' + kinveyUrls.appKey + '/login',
+            data: JSON.stringify(userData),
+            headers: kinveyUrls.authHeaders,
+            contentType: 'application/json'
+        })
         .then((userInfo) => {
             saveAuthInSession(userInfo);
             toastr.success('Login successful!');
@@ -44,19 +44,23 @@ function logInUser(selector) {
 
 function registerUser(selector, userData) {
     $.post({
-        url: kinveyUrls.baseUrl + 'user/' + kinveyUrls.appKey,
-        data: JSON.stringify(userData),
-        headers: kinveyUrls.authHeaders,
-        contentType: 'application/json'
-    })
+            url: kinveyUrls.baseUrl + 'user/' + kinveyUrls.appKey,
+            data: JSON.stringify(userData),
+            headers: kinveyUrls.authHeaders,
+            contentType: 'application/json'
+        })
         .then((userInfo) => {
             saveAuthInSession(userInfo);
             DOMManipulation.creatingDivToAddGallery(selector);
             DOMManipulation.showLogedIn();
             toastr.success('User registration successful!');
             location.hash = '#/paintings';
+            $.event.trigger({
+                type: "login",
+                username: userInfo.username
+            });
         })
-        .catch(function (e) {
+        .catch(function(e) {
             if (e.statusText === 'Conflict') {
                 toastr.error('User exist, try with other name!');
             } else {
