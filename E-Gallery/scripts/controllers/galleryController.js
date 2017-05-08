@@ -5,7 +5,7 @@ import { templates } from "templates";
 import { userController } from 'userController';
 
 
-let galleryController = (function() {
+let galleryController = (function () {
     class GalleryController {
         constructor(templates, galleryModel) {
             this.templates = templates;
@@ -15,15 +15,15 @@ let galleryController = (function() {
         getGallery(selector) {
             $(selector).empty();
             let result;
-            this.galleryModel.getAllPaintings().then(function(data) {
+            this.galleryModel.getAllPaintings().then(function (data) {
                 result = {
                     paintings: data
                 };
                 return templates.getTemplate('load-gallery');
-            }).then(function(template) {
+            }).then(function (template) {
                 $('aside').removeClass('hidden');
                 selector.html(template(result));
-            }).catch(function(error) {
+            }).catch(function (error) {
                 toastr.error('Unable to display gallery!');
                 location.hash = '#/home';
             });
@@ -36,26 +36,48 @@ let galleryController = (function() {
             //let arrayComments = [];
             let self = this;
             this.galleryModel.getPaintingsInfo(id)
-                .then(function(data) {
+                .then(function (data) {
                     result = data;
                     return templates.getTemplate('paintings-info');
-                }).then(function(template) {
+                }).then(function (template) {
                     selector.html(template(result));
 
-                    self.galleryModel.countViews(result);
+                    //self.galleryModel.countViews(result);
 
-                    $('.like').on('click', function() {
-                        self.galleryModel.rateLikes(result);
+                    //$('.like').on('click', function() {
+                    //     self.galleryModel.rateLikes(result);
+                    // });
+
+                    // $('.dislike').on('click', function() {
+                    //     self.galleryModel.rateDislikes(result);
+                    // });
+
+                    $('.like').on('click', function () {
+                        self.galleryModel.rateLikes(result)
+                            .then(function (data) {
+                                return self.galleryModel.getLikes(data.paintingId);
+                            }).then(function (array) {
+                                $('.likes').text(array.length);
+                                $('.rate-like').removeClass('hidden');
+                                $('.like').attr('disabled', true);
+                            });
                     });
 
-                    $('.dislike').on('click', function() {
-                        self.galleryModel.rateDislikes(result);
+                    $('.dislike').on('click', function () {
+                        self.galleryModel.rateDislikes(result)
+                            .then(function (data) {
+                                return self.galleryModel.getDislikes(data.paintingId);
+                            }).then(function (array) {
+                                $('.dislikes').text(array.length);
+                                $('.rate-dislike').removeClass('hidden');
+                                $('.dislike').attr('disabled', true);
+                            });
                     });
 
-                    $('.download').on('click', function() {
+                    $('.download').on('click', function () {
                         self.galleryModel.downloadPainting(result.image._id)
                             .then(downloadWithSuccess)
-                            .catch(function(error) {
+                            .catch(function (error) {
                                 toastr.error('Unable to download painting!');
                             });
                     });
@@ -111,7 +133,7 @@ let galleryController = (function() {
                         $('.buy').attr('disabled', false);
                     }
                 })
-                .catch(function(error) {
+                .catch(function (error) {
                     toastr.error('Unable to display painting!');
                     location.hash = '#/paintings';
                 });
@@ -120,14 +142,14 @@ let galleryController = (function() {
         getPaintingByArtist(selector, artist) {
             $(selector).empty();
             let result;
-            this.galleryModel.getArtistsInfo(artist).then(function(data) {
+            this.galleryModel.getArtistsInfo(artist).then(function (data) {
                 result = {
                     paintings: data
                 };
                 return templates.getTemplate('artist-info');
-            }).then(function(template) {
+            }).then(function (template) {
                 selector.html(template(result));
-            }).catch(function(error) {
+            }).catch(function (error) {
                 toastr.error('Unable to display painting!');
                 location.hash = '#/paintings';
             });
@@ -151,14 +173,14 @@ let galleryController = (function() {
         getPaintingsByStyle(selector, style) {
             $(selector).empty();
             let resultStyle;
-            this.galleryModel.getPaintingsInfoByStyle(style).then(function(data) {
+            this.galleryModel.getPaintingsInfoByStyle(style).then(function (data) {
                 resultStyle = {
                     paintings: data
                 };
                 return templates.getTemplate('load-gallery');
-            }).then(function(template) {
+            }).then(function (template) {
                 selector.html(template(resultStyle));
-            }).catch(function(error) {
+            }).catch(function (error) {
                 toastr.error('Unable to display paintings!');
                 location.hash = '#/paintings';
             });
@@ -167,14 +189,14 @@ let galleryController = (function() {
         getPaintingsBySubject(selector, subject) {
             $(selector).empty();
             let resultSubject;
-            this.galleryModel.getPaintingsInfoBySubject(subject).then(function(data) {
+            this.galleryModel.getPaintingsInfoBySubject(subject).then(function (data) {
                 resultSubject = {
                     paintings: data
                 };
                 return templates.getTemplate('load-gallery');
-            }).then(function(template) {
+            }).then(function (template) {
                 selector.html(template(resultSubject));
-            }).catch(function(error) {
+            }).catch(function (error) {
                 toastr.error('Unable to display paintings!');
                 location.hash = '#/paintings';
             });
@@ -183,20 +205,20 @@ let galleryController = (function() {
         getPaintingsByTechnique(selector, technique) {
             $(selector).empty();
             let resultTechnique;
-            this.galleryModel.getPaintingsInfoByTechnique(technique).then(function(data) {
+            this.galleryModel.getPaintingsInfoByTechnique(technique).then(function (data) {
                 resultTechnique = {
                     paintings: data
                 };
                 return templates.getTemplate('load-gallery');
-            }).then(function(template) {
+            }).then(function (template) {
                 selector.html(template(resultTechnique));
-            }).catch(function(error) {
+            }).catch(function (error) {
                 toastr.error('Unable to display paintings!');
                 location.hash = '#/paintings';
             });
         }
 
-         searchByTitle(selector, title) {
+        searchByTitle(selector, title) {
             $(selector).empty();
             let result;
             this.galleryModel.getPaintingsByTitle(title).then(function (data) {

@@ -38,34 +38,80 @@ class GalleryModel {
         return this._requester.get(requestUrl, requestHeaders);
     }
 
-    countViews(painting){
-        let requestUrl = this._url + 'appdata/' + this._appKey + '/paintings/' + painting._id;
-        let requestHeaders = this._authenticationService.getKinveyPaintingsAuthHeaders();
+    // countViews(painting){
+    //     let requestUrl = this._url + 'appdata/' + this._appKey + '/paintings/' + painting._id;
+    //     let requestHeaders = this._authenticationService.getKinveyPaintingsAuthHeaders();
 
-        painting.views = Number(painting.views) + 1;
-        $('.views').text(painting.views);
+    //     painting.views = Number(painting.views) + 1;
+    //     $('.views').text(painting.views);
 
-        return this._requester.put(requestUrl, requestHeaders, painting);
+    //     return this._requester.put(requestUrl, requestHeaders, painting);
+    // }
+
+    // rateLikes(painting){
+    //     let requestUrl = this._url + 'appdata/' + this._appKey + '/paintings/' + painting._id;
+    //     let requestHeaders = this._authenticationService.getKinveyPaintingsAuthHeaders();
+
+    //     painting.rating = Number(painting.rating) + 1;
+    //     $('.rating').text(painting.rating);
+
+    //     return this._requester.put(requestUrl, requestHeaders, painting);
+    // }
+
+     rateLikes(painting){
+        let requestUrl = this._url + 'appdata/' + this._appKey + '/rateLikes';
+        let requestHeaders = this._authenticationService.getKinveyUserAuthHeaders();
+
+        let data = {
+            paintingId : painting._id,
+            like: 1
+        };
+
+        return this._requester.post(requestUrl, requestHeaders, data);
     }
 
-    rateLikes(painting){
-        let requestUrl = this._url + 'appdata/' + this._appKey + '/paintings/' + painting._id;
-        let requestHeaders = this._authenticationService.getKinveyPaintingsAuthHeaders();
+    getLikes(paintingId){
+        var filter = JSON.stringify({
+            "paintingId": paintingId
+        });
 
-        painting.rating = Number(painting.rating) + 1;
-        $('.rating').text(painting.rating);
+        let requestUrl = this._url + 'appdata/' + this._appKey + '/rateLikes/?query=' + filter;
+        let requestHeaders = this._authenticationService.getKinveyUserAuthHeaders();
 
-        return this._requester.put(requestUrl, requestHeaders, painting);
+        return this._requester.get(requestUrl, requestHeaders);
     }
+
+    // rateDislikes(painting){
+    //     let requestUrl = this._url + 'appdata/' + this._appKey + '/paintings/' + painting._id;
+    //     let requestHeaders = this._authenticationService.getKinveyPaintingsAuthHeaders();
+
+    //     painting.rating = Number(painting.rating) - 1;
+    //     $('.rating').text(painting.rating);
+
+    //     return this._requester.put(requestUrl, requestHeaders, painting);
+    // }
 
     rateDislikes(painting){
-        let requestUrl = this._url + 'appdata/' + this._appKey + '/paintings/' + painting._id;
-        let requestHeaders = this._authenticationService.getKinveyPaintingsAuthHeaders();
+        let requestUrl = this._url + 'appdata/' + this._appKey + '/rateDislikes';
+        let requestHeaders = this._authenticationService.getKinveyUserAuthHeaders();
 
-        painting.rating = Number(painting.rating) - 1;
-        $('.rating').text(painting.rating);
+        let data = {
+            paintingId : painting._id,
+            dislike: 1
+        };
 
-        return this._requester.put(requestUrl, requestHeaders, painting);
+        return this._requester.post(requestUrl, requestHeaders, data);
+    }
+
+    getDislikes(paintingId){
+        var filter = JSON.stringify({
+            "paintingId": paintingId
+        });
+
+        let requestUrl = this._url + 'appdata/' + this._appKey + '/rateDislikes/?query=' + filter;
+        let requestHeaders = this._authenticationService.getKinveyUserAuthHeaders();
+
+        return this._requester.get(requestUrl, requestHeaders);
     }
 
     downloadPainting(id){
