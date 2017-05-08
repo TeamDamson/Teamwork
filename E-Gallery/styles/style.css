@@ -22,7 +22,7 @@ body header {
 }
 body header .container {
   width: 100%;
-  font-size: 18px;
+  font-size: 12px;
   background-color: #55cbd2;
   padding: 10px;
   position: relative;
@@ -46,7 +46,7 @@ body header .container #nav #menu ul li {
   padding: 5px 15px;
 }
 body header .container #nav #menu ul li a {
-  font-size: 20px;
+  font-size: 18px;
   color: #fff;
   text-decoration: none;
   cursor: pointer;
@@ -63,7 +63,7 @@ body header .container #nav #register-form input {
     width: 150px;
     border-radius: 0px;
     color: #888;
-    font-size: 18px;
+    font-size: 14px;
 }
 body header .container #nav #register-form a {
     border: 1px solid #2eb8b8;
@@ -81,9 +81,12 @@ body header .container #nav #loggedInUser {
   position: relative;
 }
 body #wrapper {
-  background-color: #F8FBFB;
-  padding-top: 60px;
-  padding-bottom: 60px;
+  /*background-color: #F8FBFB;*/
+  /*background: none;*/
+  /*padding-top: 60px;
+  padding-bottom: 60px;*/
+  /*margin-top: 60px;*/
+  /*opacity: 0;*/
 }
 body #wrapper aside .input-group > div {
   border: 1px solid #ccc;
@@ -114,44 +117,57 @@ body #wrapper main #main-title {
   padding-top: 60px;
   padding-bottom: 60px;
   text-align: right;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  /*text-color: white;*/
+  text-shadow: 0 0 20px #1e494b;
+  font-family: 'Montserrat', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 body #wrapper main #main-title h1 {
-  font-size: 170px;
+  font-size: 150px;
   color: white;
-  background: url("../images/header.png");
-  background-position: center center;
+  line-height: 80%;
+  /*background: url("../images/header.png");*/
+  /*background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-size: cover;
-  width: 100%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  background-size: cover;*/
+  /*width: 100%;*/
+  /*-webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;*/
 }
 body #wrapper main #main-title h3 {
-  font-size: 110px;
+  font-size: 80px;
   color: white;
-  background: url("../images/header.png");
-  background-position: center center;
+  line-height: 80%;
+  /*background: url("../images/header.png");*/
+  /*background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
-  width: 100%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  width: 100%;*/
+  /*-webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;*/
 }
 body #wrapper main #main-title h4 {
   font-size: 18px;
   color: white;
+  
+  /*background: url("../images/header.png");*/
+  /*background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  width: 100%;*/
+  /*-webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;*/
+}
+.homeImage {
   background: url("../images/header.png");
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-size: cover;
-  width: 100%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  background-size: 100%;
 }
+
 body #wrapper main .form-signin {
   max-width: 330px;
   padding: 15px;
@@ -335,10 +351,11 @@ body #wrapper main .gallery .comments-box #textarea-comment {
 body footer {
   background-color: #55cbd2;
   color: #fff;
-  font-size: 18px;
+  font-size: 14px;
   padding: 10px 10px;
   padding-left: 100px;
 }
+
 body .hidden {
   display: none;
 }
@@ -506,8 +523,8 @@ textarea {
 }
 
 /*new slide-down*/
-#reg-form {
+/*#reg-form {*/
     /*padding: 50px;*/
-    display: none;
-}
+    /*display: none;*/
+/*}*/
 

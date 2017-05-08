@@ -39,7 +39,16 @@ class Patt {
         {{/each}}
         </ul>`;
 
-    loadHomePage =
+    loadHomePage2 =
+    `<div class="container-fluid homeImage">
+        <h4>hdjfhjhf</h4>
+        <br>
+        <br>
+        <br>
+        <br>
+    </div>`;
+
+      loadHomePage =
     `<div id="main-view">
         <div class="container">
             <div id="main-title">

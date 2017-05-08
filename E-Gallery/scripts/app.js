@@ -24,7 +24,10 @@ let app = app || {};
         });
 
         this.get('#/loginRegister', function () {
-            userController.getLoginRegister(selector);
+            // console.log(selector);
+            debugger;
+            userController.getLoginRegister($('.dropdown-menu'));
+            
         });
 
         // this.get('#/login', function () {
