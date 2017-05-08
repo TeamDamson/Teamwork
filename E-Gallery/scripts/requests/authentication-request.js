@@ -38,9 +38,9 @@ function logInUser(selector) {
     // });
 
 // <<<<<<< HEAD
-    requester.post({
+    // requester.post({
 // =======
-//     $.post({
+    $.post({
 // >>>>>>> e7ea330dcf2ee5b2b92b174b947641601e50012f
         url: kinveyUrls.baseUrl + 'user/' + kinveyUrls.appKey + '/login',
         data: JSON.stringify(userData),
@@ -96,7 +96,8 @@ function logInUser(selector) {
 function registerUser(selector, userData) {
 
     console.log('register from request');
-    requester.post({
+    // requester.post({
+        $.post({
         url: kinveyUrls.baseUrl + 'user/' + kinveyUrls.appKey,
         data: JSON.stringify(userData),
         headers: kinveyUrls.authHeaders,

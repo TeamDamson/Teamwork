@@ -92,6 +92,14 @@ let userController = (function () {
                 confirmPassField: 'Confirm Password',
                 button: { name: 'Register', event: 'onclick=global' }
             };
+            $('.form-signin input[name=pass]').attr({
+                // "title": "Popover Header",
+                "data-content": "This filed is requerd",
+                "data-toggle": "popover",
+                "data-trigger": "focus",
+                // "data-delay":{show: 200, hide: 1000}
+            });
+            $('[data-toggle="popover"]').popover();
             $(selector).empty();
             selector.html(Tamplates.RegisterForm(formData));
             $("#reg-form").slideDown("slow");
@@ -116,26 +124,26 @@ let userController = (function () {
                 registerUser(selector, { username: username, password: password });
             } catch (e) {
                 DOMManipulation.clearAllUsersField();
-                $('.form-signin input[name=pass]').attr({
-                    // "title": "Popover Header",
-                    "data-content": "This filed is requerd",
-                    "data-toggle": "popover",
-                    "data-trigger": "focus",
-                    // "data-delay":{show: 200, hide: 1000}
-                });
-                $('[data-toggle="popover"]').popover();
-                // toastr.error(e.message);
+                // $('.form-signin input[name=pass]').attr({
+                //     // "title": "Popover Header",
+                //     "data-content": "This filed is requerd",
+                //     "data-toggle": "popover",
+                //     "data-trigger": "focus",
+                //     // "data-delay":{show: 200, hide: 1000}
+                // });
+                // $('[data-toggle="popover"]').popover();
+                toastr.error(e.message);
             }
 
         }
 
         getLogInUser(selector) {
-             $('aside').removeClass('hidden');
+            $('aside').removeClass('hidden');
             logInUser(selector);
         }
 
         getLogOutUser(selector) {
-             $('aside').addClass('hidden');
+            $('aside').addClass('hidden');
             logOutUser(selector);
         }
     }
