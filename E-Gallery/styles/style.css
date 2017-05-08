@@ -28,11 +28,7 @@ body header .container {
   position: relative;
 }
 body header .container #logo {
-/*<<<<<<< HEAD*/
     padding-left: 50px;
-/*=======
-  padding-left: 100px;
->>>>>>> e7ea330dcf2ee5b2b92b174b947641601e50012f*/
 }
 body header .container #logo a {
   color: #fff;
@@ -64,26 +60,14 @@ body header .container #nav #register-form {
   font-size: 20px;
 }
 body header .container #nav #register-form input {
-/*<<<<<<< HEAD*/
     width: 150px;
     border-radius: 0px;
     color: #888;
-    font-size: 12px;
-/*=======
-  width: 150px;
-  border-radius: 5px;
-  color: #888;
-  font-size: 18px;
->>>>>>> e7ea330dcf2ee5b2b92b174b947641601e50012f*/
+    font-size: 18px;
 }
 body header .container #nav #register-form a {
-/*<<<<<<< HEAD*/
-    width: 100px;
-    font-size: 12px;
-/*=======
-  width: 100px;
-  font-size: 18px;
->>>>>>> e7ea330dcf2ee5b2b92b174b947641601e50012f*/
+    border: 1px solid #2eb8b8;
+    font-size: 18px;
 }
 body header .container #nav #register-form *::-webkit-input-placeholder {
   color: #ccc;
@@ -92,279 +76,6 @@ body header .container #nav #register-form *:-moz-placeholder {
   color: #ccc;
 }
 body header .container #nav #loggedInUser {
-
-/*<<<<<<< HEAD
-    margin-right: 10px;
-    color: #fff;
-    position: relative;
-}
-
-body main #main-view {
-    background-image: url("../images/header.png");
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    /*width: 100%;
-    height: 830px;*/
-/*}*/
-/*
-body main #main-view #main-title {
-    /*padding-top: 20px;*/
-    /*padding-bottom: 230px;
-    text-align: center;
-    color:wheat;
-    /*font-family: 'Montserrat', sans-serif;
-    font-family: 'Montserrat', 'Arial Narrow', Arial, sans-serif;
-}
-
-body main #main-view #main-title h1 {
-    font-size: 100px;
-}
-
-body main #main-view #main-title h3 {
-    font-size: 60px;
-}
-
-body main #main-view #main-title h4 {
-    font-size: 40px;
-}
-
-body main .form-signin {
-    max-width: 330px;
-    padding: 15px;
-    margin: 0 auto;
-}
-
-body main .form-signin .form-signin-heading,
-body main .form-signin .form-signin .checkbox {
-    margin-bottom: 10px;
-}
-
-body main .form-signin .checkbox {
-    font-weight: normal;
-}
-
-body main .form-signin .form-control {
-    position: relative;
-    font-size: 12px;
-    height: auto;
-    padding: 10px;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-}
-
-body main .form-signin .form-control:focus {
-    z-index: 2;
-}
-
-body main .form-signin input[type="text"] {
-    margin-bottom: 10px;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-}
-
-body main .form-signin input[type="password"] {
-    margin-bottom: 10px;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-}
-
-body main .account-wall {
-    margin-top: 20px;
-    padding: 40px 0px 20px 0px;
-    background-color: #f7f7f7;
-    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-}
-
-body main .profile-img-card {
-    width: 96px;
-    height: 96px;
-    margin: 0 auto 10px;
-    display: block;
-    -moz-border-radius: 50%;
-    -webkit-border-radius: 50%;
-    border-radius: 50%;
-}
-
-body main .contact-form {
-    margin-top: 20px;
-}
-
-body main .contact-form div,
-body main .contact-form button {
-    font-size: 18px;
-}
-
-body main .gallery {
-    padding: 20px;
-}
-
-body main .gallery .galleryItems {
-    list-style-type: none;
-}
-
-body main .gallery .galleryItems .itemGallery {
-    text-align: center;
-}
-
-body main .gallery .galleryItems .itemGallery .imgGallery {
-    width: 300px;
-    height: 300px;
-    display: block;
-    margin: 0 auto;
-}
-
-body main .gallery .galleryItems .itemGallery strong {
-    color: #337ab7;
-}
-
-body main .gallery .galleryItems .itemGallery .by-artist {
-    width: 200px;
-    height: 200px;
-}
-
-body main .gallery .galleryItems .itemGallery div {
-    text-align: center;
-}
-
-body main .gallery .galleryItems .itemGallery div .artist,
-body main .gallery .galleryItems .itemGallery div .title {
-    font-weight: bold;
-    text-decoration: none;
-}
-
-body main .gallery .galleryItems .itemGallery div .artist:hover,
-body main .gallery .galleryItems .itemGallery div .title:hover {
-    text-decoration: underline;
-    color: #337ab7;
-    cursor: pointer;
-}
-
-body main .gallery .description {
-    color: #888;
-    padding: 10px;
-    font-weight: bold;
-    font-size: 18px;
-    width: 70%;
-}
-
-body main .gallery .description strong {
-    color: #337ab7;
-}
-
-body main .gallery h3,
-body main .gallery h4 {
-    color: #888;
-}
-
-body main .gallery h3 strong,
-body main .gallery h4 strong {
-    color: #337ab7;
-}
-
-body main .gallery .like,
-body main .gallery .dislike,
-body main .gallery .download,
-body main .gallery .comment,
-body main .gallery .buy {
-    margin-right: 10px;
-    font-size: 16px;
-    border: 1px solid #a9a9a9;
-}
-
-body main .gallery .like {
-    background-color: #ccffcc;
-    border: 1px solid #80ff80;
-}
-
-body main .gallery .dislike {
-    background-color: #ffe6e6;
-    border: 1px solid #ffb3b3;
-}
-
-body main .gallery .display-info img {
-    width: 500px;
-    height: 580px;
-}
-
-body main .gallery .artist-bio {
-    color: #337ab7;
-    font-size: 18px;
-    line-height: 40px;
-}
-
-body main .gallery .artist-bio div div {
-    border-bottom: 1px solid #dddddd;
-}
-
-body main .gallery .artist-bio div div:last-of-type {
-    border-bottom: none;
-}
-
-body main .gallery .artist-img {
-    width: 200px;
-    height: 200px;
-}
-
-body main .gallery .comments-box {
-    padding: 10px;
-}
-
-body main .gallery .comments-box ul {
-    list-style-type: none;
-    color: #888;
-}
-
-body main .gallery .comments-box ul li {
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    margin: 10px 0;
-    padding: 10px;
-    font-size: 18px;
-}
-
-body main .gallery .comments-box ul li em {
-    font-size: 14px;
-    float: right;
-}
-
-body main .gallery .comments-box ul li .glyphicon-user {
-    border: 1px solid #a9a9a9;
-    font-size: 25px;
-}
-
-body main .gallery .comments-box button {
-    font-size: 16px;
-    border: 1px solid #a9a9a9;
-}
-
-body main .gallery .comments-box #textarea-comment {
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    padding: 10px;
-}
-
-body main .gallery aside ul {
-    margin-top: 20px;
-    font-size: 16px;
-}
-
-body main .gallery aside .nav-pills>li.active>a {
-    background-color: #dddddd;
-    color: #000;
-}
-
-body footer {
-    background-color: #55cbd2;
-    color: #fff;
-    font-size: 14px;
-    padding: 10px 10px;
-    padding-left: 50px;
-=======*/
   margin-right: 10px;
   color: #fff;
   position: relative;
@@ -408,7 +119,6 @@ body #wrapper main #main-title {
 body #wrapper main #main-title h1 {
   font-size: 170px;
   color: white;
-  /* Fallback: assume this color ON TOP of image */
   background: url("../images/header.png");
   background-position: center center;
   background-repeat: no-repeat;
@@ -421,7 +131,18 @@ body #wrapper main #main-title h1 {
 body #wrapper main #main-title h3 {
   font-size: 110px;
   color: white;
-  /* Fallback: assume this color ON TOP of image */
+  background: url("../images/header.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  width: 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+body #wrapper main #main-title h4 {
+  font-size: 18px;
+  color: white;
   background: url("../images/header.png");
   background-position: center center;
   background-repeat: no-repeat;
@@ -617,7 +338,6 @@ body footer {
   font-size: 18px;
   padding: 10px 10px;
   padding-left: 100px;
-/*>>>>>>> e7ea330dcf2ee5b2b92b174b947641601e50012f*/
 }
 body .hidden {
   display: none;
@@ -778,7 +498,6 @@ textarea {
   background-color: #45a049;
 }
 .order-container {
-/*<<<<<<< HEAD*/
     border-radius: 5px;
     background-color: #f2f2f2;
     padding: 20px;
@@ -791,11 +510,4 @@ textarea {
     padding: 50px;
     display: none;
 }
-/*=======
-  border-radius: 5px;
-  background-color: #f2f2f2;
-  padding: 20px;
-  height: 200px;
-  overflow: auto;
-}
->>>>>>> e7ea330dcf2ee5b2b92b174b947641601e50012f*/
+
