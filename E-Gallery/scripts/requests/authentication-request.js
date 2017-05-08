@@ -1,7 +1,5 @@
 import { kinveyUrls } from 'constants';
 import toastr from 'toastr';
-// import 'jquery';
-// import CryptoJS from 'crypto-js';
 import { DOMManipulation } from 'domManipulation';
 import { requester } from 'requester';
 import { userController } from 'userController';
@@ -12,45 +10,14 @@ function logInUser(selector) {
         username: $('.login-register input[name=user]').val(),
         password: $('.login-register input[name=pass]').val()
     };
-    // let userData = {
-    //     username: username,
-    //     password: password
-    // };
+
     DOMManipulation.clearUserPassField('.login-register ');
-
-    // requester.post({
-// <<<<<<< HEAD
-    //     url: kinveyUrls.baseUrl + 'user/' + kinveyUrls.appKey + '/login',
-    //     data: JSON.stringify(userData),
-    //     headers: kinveyUrls.authHeaders,
-    //     contentType: 'application/json'
-    // }).then((userInfo) => { saveAuthInSession(userInfo); console.log('mite true');isLoged.loged = true })
-    //     .catch(function (error) {  });
-
-    // requester.post({
-// =======
-// >>>>>>> e7ea330dcf2ee5b2b92b174b947641601e50012f
-    //     url: kinveyUrls.baseUrl + 'user/' + kinveyUrls.appKey + '/login',
-    //     data: JSON.stringify(userData),
-    //     headers: kinveyUrls.authHeaders,
-    //     contentType: 'application/json'
-    // }).then((userInfo) => loginWithSuccess(userInfo, selector)).catch(function (error) {
-    //     // toastr.error('Incorrect user name or password. Please try again!');
-    //     location.hash = '#/';
-    //     console.log('error');
-    //     $.event.trigger('errorLoging');
-    // });
-
-// <<<<<<< HEAD
-    // requester.post({
-// =======
+    // this post method must be changed
     $.post({
-// >>>>>>> e7ea330dcf2ee5b2b92b174b947641601e50012f
         url: kinveyUrls.baseUrl + 'user/' + kinveyUrls.appKey + '/login',
         data: JSON.stringify(userData),
         headers: kinveyUrls.authHeaders,
         contentType: 'application/json'
-// <<<<<<< HEAD
     })
         .then((userInfo) => {
             saveAuthInSession(userInfo);
@@ -60,8 +27,8 @@ function logInUser(selector) {
                 username: userInfo.username
             });
         })
-        .catch((error) => {
-            if (error.statusText === 'Unauthorized') {
+        .catch((e) => {
+            if (e.statusText === 'Unauthorized') {
                 location.hash = '#/register';
                 userController.getRegisterForm(selector);
                 $('.form-signin input[name=user]').val(userData.username);
@@ -72,55 +39,28 @@ function logInUser(selector) {
             let errMessage = 'Error:' + error.statusText;
             toastr.error(errMessage);
             location.hash = '#/'
-// =======
-//     }).then((userInfo) => loginWithSuccess(userInfo, selector)).catch(function (error) {
-//         toastr.error('Incorrect user name or password. Please try again!');
-//         location.hash = '#/';
-//     });
-
-//     function loginWithSuccess(userInfo, selector) {
-//         saveAuthInSession(userInfo);
-//         toastr.success('Login successful!');
-//         $.event.trigger({
-//             type: "login",
-//             username: userInfo.username
-// >>>>>>> e7ea330dcf2ee5b2b92b174b947641601e50012f
         });
-
-    // function loginWithSuccess(userInfo, selector) {
-    //     saveAuthInSession(userInfo);
-    //     toastr.success('Login successful!');
-    //     $.event.trigger({
-    //         type: "login",
-    //         username: userInfo.username
-    //     });
-    // }
 }
 
 function registerUser(selector, userData) {
-
-    // console.log('register from request');
-    // requester.post({
         $.post({
         url: kinveyUrls.baseUrl + 'user/' + kinveyUrls.appKey,
         data: JSON.stringify(userData),
         headers: kinveyUrls.authHeaders,
         contentType: 'application/json'
     })
-        .then(registerWithSuccess)
+        .then(()=>{
+            saveAuthInSession(userInfo);
+            DOMManipulation.creatingDivToAddGallery(selector);
+            DOMManipulation.showLogedIn();
+            toastr.success('User registration successful!');
+            location.hash = '#/paintings';
+        }))
         .catch(function (error) {
             let errMessage = error.statusText + '! Register unsuccessful. Try again! ';
             toastr.error(errMessage);
             location.hash = '#/register';
         });
-
-    function registerWithSuccess(userInfo) {
-        saveAuthInSession(userInfo);
-        DOMManipulation.creatingDivToAddGallery(selector);
-        DOMManipulation.showLogedIn();
-        toastr.success('User registration successful!');
-        location.hash = '#/paintings';
-    }
 
     DOMManipulation.clearUserPassField('.form-signin ');
 }
