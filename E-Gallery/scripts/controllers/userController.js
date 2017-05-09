@@ -75,6 +75,7 @@ let userController = (function() {
         getLoginRegister(selector) {
             let username = $('.login-register input[name=user]').val();
             let password = $('.login-register input[name=pass]').val();
+            // debugger;
             if (username && password) {
                 logInUser(selector);
                 return

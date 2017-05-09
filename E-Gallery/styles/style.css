@@ -27,7 +27,7 @@ body header {
 
 body header .container {
   width: 100%;
-  font-size: 18px;
+  font-size: 12px;
   background-color: #55cbd2;
   padding: 10px;
   position: relative;
@@ -57,7 +57,7 @@ body header .container #nav #menu ul li {
 }
 
 body header .container #nav #menu ul li a {
-  font-size: 20px;
+  font-size: 18px;
   color: #fff;
   text-decoration: none;
   cursor: pointer;
@@ -74,10 +74,17 @@ body header .container #nav #register-form {
 }
 
 body header .container #nav #register-form input {
-  width: 150px;
+/* <<<<<<< save-changes-from-brach-DP */
+/*   width: 150px;
   border-radius: 0px;
   color: #888;
-  font-size: 18px;
+  font-size: 18px; */
+/* ======= */
+    width: 150px;
+    border-radius: 0px;
+    color: #888;
+    font-size: 14px;
+/* >>>>>>> refactored-By-Dimitar-Popov */
 }
 
 body header .container #nav #register-form a {
@@ -98,9 +105,19 @@ body header .container #nav #loggedInUser {
   color: #fff;
   position: relative;
 }
+/* <<<<<<< save-changes-from-brach-DP */
 
 body #wrapper aside {
   padding-top: 60px;
+/* ======= */
+/* body #wrapper { */
+  /*background-color: #F8FBFB;*/
+  /*background: none;*/
+  /*padding-top: 60px;
+  padding-bottom: 60px;*/
+  /*margin-top: 60px;*/
+  /*opacity: 0;*/
+/* >>>>>>> refactored-By-Dimitar-Popov */
 }
 
 body #wrapper aside .input-group > div {
@@ -147,22 +164,68 @@ body #wrapper #main-view {
 
 body #wrapper main #main-title {
   text-align: right;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  /*text-color: white;*/
+  text-shadow: 0 0 20px #1e494b;
+  font-family: 'Montserrat', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 body #wrapper main #main-title h1 {
-  font-size: 170px;
+  font-size: 150px;
   color: white;
+/* <<<<<<< save-changes-from-brach-DP */
 }
 
 body #wrapper main #main-title h2 {
   font-size: 110px;
   color: white;
+/* ======= */
+  line-height: 80%;
+  /*background: url("../images/header.png");*/
+  /*background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;*/
+  /*width: 100%;*/
+  /*-webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;*/
+}
+body #wrapper main #main-title h3 {
+  font-size: 80px;
+  color: white;
+  line-height: 80%;
+  /*background: url("../images/header.png");*/
+  /*background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  width: 100%;*/
+  /*-webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;*/
+/* >>>>>>> refactored-By-Dimitar-Popov */
 }
 
 body #wrapper main #main-title h4 {
   font-size: 32px;
   color: white;
+/* <<<<<<< save-changes-from-brach-DP */
+/* ======= */
+  
+  /*background: url("../images/header.png");*/
+  /*background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  width: 100%;*/
+  /*-webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;*/
+}
+.homeImage {
+  background: url("../images/header.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100%;
+/* >>>>>>> refactored-By-Dimitar-Popov */
 }
 
 body #wrapper main .form-signin {
@@ -378,7 +441,7 @@ body #wrapper main .gallery .comments-box #textarea-comment {
 body footer {
   background-color: #55cbd2;
   color: #fff;
-  font-size: 18px;
+  font-size: 14px;
   padding: 10px 10px;
   padding-left: 100px;
 }
@@ -588,6 +651,13 @@ min-height: 18%;
 
 
 /*new slide-down*/
+/* <<<<<<< save-changes-from-brach-DP */
+/* ======= */
+/*#reg-form {*/
+    /*padding: 50px;*/
+    /*display: none;*/
+/*}*/
+/* >>>>>>> refactored-By-Dimitar-Popov */
 
 #reg-form {
   /*padding: 50px;*/

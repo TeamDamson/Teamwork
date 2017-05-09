@@ -12,12 +12,8 @@
     <meta property="og:type" content="website" />
     <meta property="og:title" content="E-Gallery" />
     <meta property="og:description" content="The best E-Gallery" />
-<!-- <<<<<<< save-changes-from-brach-DP -->
-    <meta property="og:image" content="http://storage.googleapis.com/e8bba42ae61d461f8b9f5ba304c666e6/86352ed2-db1b-4e84-bfaa-3a0ca113f3b0/header.png" />
-<!-- ======= -->
-<!--     <meta property="og:image" content="http://storage.googleapis.com/e8bba42ae61d461f8b9f5ba304c666e6/86352ed2-db1b-4e84-bfaa-3a0ca113f3b0/header.png"
-    /> -->
-<!-- >>>>>>> refactored-By-Dimitar-Popov -->
+    <meta property="og:image" content="http://storage.googleapis.com/e8bba42ae61d461f8b9f5ba304c666e6/86352ed2-db1b-4e84-bfaa-3a0ca113f3b0/header.png"
+    />
 
     <link rel="icon" href="./images/favicon.ico" type="image/x-icon">
 
@@ -36,11 +32,10 @@
     <!--facebook share-->
     <div id="fb-root"></div>
     <script>
-        (function(d, s, id) {
+        (function (d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0];
             if (d.getElementById(id)) return;
-            js = d.createElement(s);
-            js.id = id;
+            js = d.createElement(s); js.id = id;
             js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.9";
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
@@ -74,9 +69,28 @@
                                 <!--<a href="#/loginRegister" class="btn btn-info btn-sm">Login or Register</a>-->
                                 <!--formaction="#/register"-->
                                 <a href="#/loginRegister" id="dropId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <button type="submit" class="btn btn-info">Login/Register</button>
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="dropId"> </div>
+                                <button type="submit" class="btn btn-info">Login/Register</button>
+                            </a>
+                                <div class="dropdown-menu" aria-labelledby="dropId">
+                                    <div id="reg-form">
+                                        <div class="row">
+                                            <div class="col-sm-6 col-md-4 col-md-offset-4">
+                                                <div class="account-wall">
+                                                    <img id="profile-img" class="profile-img-card" src={{imgAvatar}} />
+                                                    <form class="form-signin">
+                                                        <input type="text" class="form-control" name="user" placeholder={{nameField}} autofocus requered data-content="This filed is requerd"
+                                                            data-toggle="popoverName" data-trigger="delay={show: 0, hide: 1000}">
+                                                        <input type="password" class="form-control" name="pass" placeholder={{passField}} data-content="This filed is requerd" data-toggle="popoverPass"
+                                                            data-trigger="delay={show: 0, hide: 1000}">
+                                                        <input type="password" class="form-control" name="confirmPass" placeholder={{confirmPassField}} data-content="This filed is requerd"
+                                                            data-toggle="popoverConfirmPass" data-trigger="delay={show: 0, hide: 1000}">
+                                                        <a href="#/loginRegister" class="btn btn-lg btn-info btn-block" id="btn-register" {{{button.event}}}()>{{button.name}}</a>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </form>
 
                         </div>
@@ -87,13 +101,8 @@
         </div>
     </header>
     <div id="wrapper">
-<!-- <<<<<<< save-changes-from-brach-DP -->
-<!--         <div class="row"> -->
-<!--             <aside class="position-fixed hidden"> -->
-<!-- ======= -->
         <div class="row  homeImage">
             <aside class="col-md-2 position-fixed hidden">
-<!-- >>>>>>> refactored-By-Dimitar-Popov -->
                 <div class="input-group">
                     <div>
                         <select id="select" name="select">
@@ -128,10 +137,7 @@
                     <li role="presentation"><a href="#/technique/Watercolor Painting">Watercolor Painting</a></li>
                 </ul>
             </aside>
-<!-- <<<<<<< save-changes-from-brach-DP -->
-<!-- ======= -->
             <!--<main class="col-md-8 col-md-offset-2">-->
-<!-- >>>>>>> refactored-By-Dimitar-Popov -->
             <main>
 
             </main>
@@ -157,7 +163,7 @@
     </footer>
     <!--twitter share-->
     <script>
-        window.twttr = (function(d, s, id) {
+        window.twttr = (function (d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0],
                 t = window.twttr || {};
             if (d.getElementById(id)) return t;
@@ -167,7 +173,7 @@
             fjs.parentNode.insertBefore(js, fjs);
 
             t._e = [];
-            t.ready = function(f) {
+            t.ready = function (f) {
                 t._e.push(f);
             };
 
@@ -185,28 +191,25 @@
 
     <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/sammy.js/0.7.6/sammy.min.js"></script>-->
 
-    <script src="./bower_components/moment/moment.js"></script>
+    <!--<script src="./bower_components/moment/moment.js"></script>-->
 
     <script src="./node_modules/systemjs/dist/system.js"></script>
     <script src="./config.js"></script>
     <script>
-        let global = function() {}
+        let global = function () { }
     </script>
     <!--<script src="./scripts/data/painting.js"></script>-->
-<!-- <<<<<<< save-changes-from-brach-DP -->
-<!-- ======= -->
     <script src="./scripts/managers/shoppingCartManager.js"></script>
     <script src="./scripts/data/shoppingCart.js"></script>
-<!--     <script>
-        $('.dropdown').on('show.bs.dropdown', function (e) {
+    <script>
+        $('#dropdown').on('show.bs.dropdown', function (e) {
             $(this).find('.dropdown-menu').first().stop(true, true).slideDown(300);
         });
 
-        $('.dropdown').on('hide.bs.dropdown', function (e) {
+        $('#dropdown').on('hide.bs.dropdown', function (e) {
             $(this).find('.dropdown-menu').first().stop(true, true).slideUp(200);
         });
-    </script> -->
-<!-- >>>>>>> refactored-By-Dimitar-Popov -->
+    </script>
 </body>
 
 </html>
