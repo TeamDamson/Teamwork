@@ -50,14 +50,11 @@ class Patt {
 
       loadHomePage =
     `<div id="main-view">
-        <div class="container">
             <div id="main-title">
                 <h1>{{wellcome}}</h1>
                 <h1>{{name}}</h1>
-                <h3>{{product}}</h3>
-                <h4>This is the new application for true picture connoisseurs, you can sell, buy, it's you! </h4>
+                <h4>This is new application for true picture connoisseurs, you can sell, buy, it's you!</h4>
             </div>
-        </div>
     </div>`;
 
     showRegisterForm =

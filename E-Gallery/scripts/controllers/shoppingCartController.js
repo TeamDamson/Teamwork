@@ -27,7 +27,8 @@ class ShoppingCartController {
 
     viewOrder(result, cartContainer) {
         this.templates.getTemplate('order-form')
-            .then(template => $(cartContainer).html(template(result)));
+            .then(template => $(cartContainer).html(template(result)))
+            .then(() => $('.close').on('click', () => $(".order-container").css('display', 'none')));
     }
 
     removeItem(id) {

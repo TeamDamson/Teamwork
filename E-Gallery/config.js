@@ -26,7 +26,8 @@ SystemJS.config({
         'patterns': './templates/pattern.js',
         'tamplatesMy': './scripts/helpers/tamplatesMy.js',
         'sammy': './bower_components/sammy/lib/sammy.js',
-        'shoppingCartController': './scripts/controllers/shoppingCartController.js'     
+        'shoppingCartController': './scripts/controllers/shoppingCartController.js',
+        'shoppingCartManager': './scripts/managers/shoppingCartManager.js',
     }
 });
 
