@@ -16,8 +16,11 @@ const user = {
 
 describe('Validator Tests', () => {
 
-	it('It works', () => {
+	it('Shoud Throw with invalid name', () => {
 		expect(() => { Validator.validateUserName("$$$") }).to.throw();
+	})
+	it('Shoud Throw with invalid password', () => {
+		expect(() => { Validator.validatePassword("password") }).to.throw();
 	})
 });
 
