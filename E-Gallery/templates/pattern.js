@@ -44,9 +44,17 @@ class Patt {
             <div id="main-title">
                 <h1>{{wellcome}}</h1>
                 <h1>{{name}}</h1>
-                <h4>This is new application for true picture connoisseurs, you can sell, buy, it's you!</h4>
             </div>
     </div>`;
+
+    //    loadHomePage =
+    // `<div id="main-view">
+    //         <div id="main-title">
+    //             <h1>{{wellcome}}</h1>
+    //             <h1>{{name}}</h1>
+    //             <h4>This is new application for true picture connoisseurs, you can sell, buy, it's you!</h4>
+    //         </div>
+    // </div>`;
 
     showRegisterForm =
     `<div id="reg-form">

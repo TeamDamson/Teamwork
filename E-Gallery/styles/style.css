@@ -27,7 +27,7 @@ body header {
 
 body header .container {
   width: 100%;
-  font-size: 18px;
+  font-size: 16px;
   background-color: #55cbd2;
   padding: 10px;
   position: relative;
@@ -74,15 +74,15 @@ body header .container #nav #register-form {
 }
 
 body header .container #nav #register-form input {
-  width: 150px;
+  width: 140px;
   border-radius: 0px;
   color: #888;
-  font-size: 18px;
+  font-size: 14px;
 }
 
 body header .container #nav #register-form a {
   border: 1px solid #2eb8b8;
-  font-size: 18px;
+  font-size: 14px;
 }
 
 body header .container #nav #register-form *::-webkit-input-placeholder {
@@ -147,16 +147,18 @@ body #wrapper #main-view {
 
 body #wrapper main #main-title {
   text-align: right;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: 'Montserrat', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 body #wrapper main #main-title h1 {
-  font-size: 170px;
+  font-size: 150px;
   color: white;
+  line-height: 80%;
+  text-shadow: 0 0 20px #1e494b
 }
 
 body #wrapper main #main-title h2 {
-  font-size: 110px;
+  font-size: 90px;
   color: white;
 }
 
@@ -589,7 +591,7 @@ min-height: 18%;
 
 /*new slide-down*/
 
-#reg-form {
+/*#reg-form {*/
   /*padding: 50px;*/
-  display: none;
-}
+  /*display: none;*/
+/*}*/
