@@ -13,7 +13,7 @@ E-Gallery SPA in which you can:
 - Post Comment
 
 ## Live demo
-[**E-gallery**](https://gallery-957d0.firebaseapp.com/#/homel)
+[**E-gallery**](https://gallery-957d0.firebaseapp.com/#/home)
 
 ## Video demo
 
